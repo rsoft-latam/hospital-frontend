@@ -1,0 +1,74 @@
+@import "../../../styles/_var.scss";
+
+.dashboard {
+  height: 100%;
+
+  .splash {
+    padding: 30px 24px;
+    //background: linear-gradient(to right, #00ACC1 0%, #00BCD4 100%);
+    background: url('/assets/img/demo/splash.jpg');
+    position: relative;
+
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .welcome {
+      color: white;
+      margin-left: 16px;
+
+      .message {
+        font-size: 22px;
+      }
+
+      .extra {
+        margin-top: 4px;
+        font-weight: 300;
+        font-size: 14px;
+        margin-left: 1px;
+        cursor: pointer;
+      }
+    }
+
+    .earnings {
+      color: rgba(255,255,255, .9);
+
+      .title {
+
+      }
+
+      .value {
+        margin-top: 4px;
+        font-size: 32px;
+      }
+    }
+
+    .divider {
+      height: 50px;
+      width: 1px;
+      margin: 0 36px 0 32px;
+      background: rgba(255,255,255, .2);
+    }
+
+    .actions {
+
+      .button {
+        background: white;
+        color: $color__text-darkest;
+        width: 100%;
+
+        & + .button {
+          margin-top: 6px;
+        }
+      }
+    }
+  }
+
+  .dashboard-front {
+    @include responsivePadding();
+  }
+}

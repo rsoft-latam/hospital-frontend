@@ -1,0 +1,38 @@
+<div class="dashboard" fxLayout="column">
+  <div class="splash">
+    <div class="container" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-between" fxLayoutGap.lt-md="24px">
+      <div fxLayout="row" fxLayoutAlign="center" fxLayoutAlign.gt-sm="start">
+        <img class="avatar" src="assets/img/demo/avatars/noavatar.png">
+        <div class="welcome" fxLayout="column" fxLayoutAlign="center start">
+          <div class="message">
+            Welcome back, David!
+          </div>
+          <div class="extra">
+            Your last login was on friday. Click here to get back where you left.
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center" fxLayoutAlign.gt-sm="start">
+        <div class="earnings" fxLayout="column" fxLayoutAlign="center start">
+          <div class="title">Total Earnings</div>
+          <div class="value">$19,525.16</div>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div class="divider"></div>
+        </div>
+        <div class="actions" fxLayout="column" fxLayoutAlign="center start">
+          <button class="button" type="button" mat-button>Request Payout</button>
+          <button class="button" type="button" mat-button>Create Invoice</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <mat-tab-group class="dashboard-tabs">
+    <mat-tab label="STATISTICS">
+      <elastic-dashboard-statistics [hideHeader]="true"></elastic-dashboard-statistics>
+    </mat-tab>
+    <mat-tab label="CRM">
+      <elastic-dashboard-crm [hideHeader]="true"></elastic-dashboard-crm>
+    </mat-tab>
+  </mat-tab-group>
+</div>

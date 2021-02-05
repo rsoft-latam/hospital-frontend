@@ -1,0 +1,46 @@
+<div class="autocomplete group card alternative no-border mat-elevation-z2" fxLayout="column" fxLayoutGap="24px">
+  <div class="group-title">Material Menu</div>
+  <div class="divider reverse"></div>
+  <div class="section" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+    <div fxFlex.gt-md>
+      <div fxLayout="column">
+        <div class="section-title">Menu with Icons</div>
+        <div class="section-tag">&lt;mat-menu&gt;</div>
+        <p>Menus offer a list of options that are displayed when triggered. The position (before, after) and (above, below) is automatically decided, but can be overridden with e.g. x-position='before'.</p>
+        <div class="section-info">Example:</div>
+        <code vrHighlight class="html">&lt;mat-menu&gt;<br/>  &lt;button mat-menu-item&gt;<br/>    &lt;mat-icon&gt;dialpad&lt;/mat-icon&gt;<br/>  &lt;/button&gt;<br/>&lt;/mat-menu&gt;</code>
+      </div>
+    </div>
+    <mat-tab-group class="preview-tabs mat-elevation-z2" fxFlex="auto" fxFlex.gt-md="70%">
+      <mat-tab label="PREVIEW">
+        <div class="preview" fxLayout="row" fxLayoutAlign="center center">
+          <mat-card fxFlex="90%" fxFlex.gt-sm="80%">
+            <mat-card-content fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center">
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item>
+                  <mat-icon> dialpad </mat-icon>
+                  <span> Redial </span>
+                </button>
+                <button mat-menu-item disabled>
+                  <mat-icon> voicemail </mat-icon>
+                  <span> Check voicemail </span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon> notifications_off </mat-icon>
+                  <span> Disable alerts </span>
+                </button>
+              </mat-menu>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="HTML">
+        <code [innerHTML]="menuHTML" vrHighlight class="html"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

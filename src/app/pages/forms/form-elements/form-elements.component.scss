@@ -1,0 +1,28 @@
+@import "../../../../styles/_var.scss";
+
+.form-elements {
+
+  @include responsivePadding();
+
+  .card.alternative {
+
+    .content {
+      padding-top: 16px;
+
+      .source {
+        @include responsivePadding(left, true);
+        @include responsivePadding(right, true);
+        margin-bottom: 12px;
+      }
+
+      .result {
+
+        .description {
+          color: $color__text-dark;
+          margin: 0 0 8px 0;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

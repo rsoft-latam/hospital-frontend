@@ -1,0 +1,149 @@
+<div class="card group card alternative no-border mat-elevation-z2" fxLayout="column" fxLayoutGap="24px">
+  <div class="group-title">Material Progress</div>
+  <div class="divider reverse"></div>
+  <div class="section" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch"
+       fxLayoutAlign.gt-md="start start" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+    <div fxFlex.gt-md>
+      <div fxLayout="column">
+        <div class="section-title">Progress Bar</div>
+        <div class="section-tag">&lt;mat-progress-bar&gt;</div>
+        <p>Progress indicators allow you to display the progress of e.g. background tasks running.</p>
+        <div class="section-info">Example:</div>
+        <p><code vrHighlight class="html">&lt;mat-progress-bar<br/> mode="indeterminate"&gt;<br/>&lt;/mat-progress-bar&gt;</code>
+        </p>
+      </div>
+    </div>
+    <mat-tab-group class="preview-tabs mat-elevation-z2" fxFlex="auto" fxFlex.gt-md="70%">
+      <mat-tab label="PREVIEW">
+        <div class="preview" fxLayout="row" fxLayoutAlign="center center">
+          <mat-card fxFlex="80%">
+            <mat-card-content>
+
+              <section fxLayout="row" fxLayoutAlign="start center">
+                <div class="margin">Color:</div>
+                <mat-radio-group [(ngModel)]="color">
+                  <mat-radio-button class="margin" value="primary">
+                    Primary
+                  </mat-radio-button>
+                  <mat-radio-button class="margin" value="accent">
+                    Accent
+                  </mat-radio-button>
+                  <mat-radio-button class="margin" value="warn">
+                    Warn
+                  </mat-radio-button>
+                </mat-radio-group>
+              </section>
+
+              <section fxLayout="row" fxLayoutAlign="start center">
+                <div class="margin">Mode:</div>
+                <mat-radio-group [(ngModel)]="mode">
+                  <mat-radio-button class="margin" value="determinate">
+                    Determinate
+                  </mat-radio-button>
+                  <mat-radio-button class="margin" value="indeterminate">
+                    Indeterminate
+                  </mat-radio-button>
+                  <mat-radio-button class="margin" value="buffer">
+                    Buffer
+                  </mat-radio-button>
+                  <mat-radio-button class="margin" value="query">
+                    Query
+                  </mat-radio-button>
+                </mat-radio-group>
+              </section>
+
+              <section fxLayout="row" fxLayoutAlign="start center" *ngIf="mode == 'determinate' || mode == 'buffer'">
+                <div class="margin">Progress:</div>
+                <mat-slider class="margin" [(ngModel)]="progressValue"></mat-slider>
+              </section>
+              <section fxLayout="row" fxLayoutAlign="start center" *ngIf="mode == 'buffer'">
+                <div class="margin">Buffer:</div>
+                <mat-slider class="margin" [(ngModel)]="bufferValue"></mat-slider>
+              </section>
+
+              <section class="margin" fxLayout="row" fxLayoutAlign="start center">
+                <mat-progress-bar
+                  class="margin"
+                  [color]="color"
+                  [mode]="mode"
+                  [value]="progressValue"
+                  [bufferValue]="bufferValue">
+                </mat-progress-bar>
+              </section>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="HTML">
+        <code [innerHTML]="progressbarHTML" vrHighlight class="html"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="divider reverse"></div>
+
+  <div class="section" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch"
+       fxLayoutAlign.gt-md="start start" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+    <div fxLayout="column" fxFlex.gt-md>
+      <div class="section-title">Progress Spinner</div>
+      <div class="section-tag">&lt;mat-progress-spinner&gt;</div>
+      <p>An alternative progress indicator to allow for a blocking loader.</p>
+      <div class="section-info">Example:</div>
+      <p><code vrHighlight class="html">&lt;mat-progress-spinner<br/> mode="indeterminate"&gt;<br/>&lt;/mat-progress-spinner&gt;</code>
+      </p>
+    </div>
+    <mat-tab-group class="preview-tabs mat-elevation-z2" fxFlex="auto" fxFlex.gt-md="70%">
+      <mat-tab label="PREVIEW">
+        <div class="preview" fxLayout="row" fxLayoutAlign="center center">
+          <mat-card fxFlex="80%">
+            <mat-card-content fxLayout="column">
+              <section fxLayout="row" fxLayoutAlign="start center">
+                <label class="margin">Color:</label>
+                <mat-radio-group [(ngModel)]="spinnerColor">
+                  <mat-radio-button class="margin" value="primary">
+                    Primary
+                  </mat-radio-button>
+                  <mat-radio-button class="margin" value="accent">
+                    Accent
+                  </mat-radio-button>
+                  <mat-radio-button class="margin" value="warn">
+                    Warn
+                  </mat-radio-button>
+                </mat-radio-group>
+              </section>
+
+              <section fxLayout="row" fxLayoutAlign="start center">
+                <label class="margin">Mode:</label>
+                <mat-radio-group [(ngModel)]="spinnerMode">
+                  <mat-radio-button class="margin" value="determinate">
+                    Determinate
+                  </mat-radio-button>
+                  <mat-radio-button class="margin" value="indeterminate">
+                    Indeterminate
+                  </mat-radio-button>
+                </mat-radio-group>
+              </section>
+
+              <section fxLayout="row" fxLayoutAlign="start center" *ngIf="spinnerMode == 'determinate'">
+                <label class="margin">Progress:</label>
+                <mat-slider class="margin" [(ngModel)]="spinnerValue"></mat-slider>
+              </section>
+
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <mat-progress-spinner
+                  class="margin"
+                  [color]="spinnerColor"
+                  [mode]="spinnerMode"
+                  [value]="spinnerValue">
+                </mat-progress-spinner>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="HTML">
+        <code [innerHTML]="progressSpinnerHTML" vrHighlight class="html"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

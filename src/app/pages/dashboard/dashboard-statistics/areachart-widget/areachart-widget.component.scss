@@ -1,0 +1,31 @@
+@import "../../../../../styles/_var.scss";
+
+.areachart-widget {
+
+  .change {
+    @include responsiveMarginHalf(left);
+    margin-bottom: -4px;
+    font-weight: bold;
+
+    .percent {
+      font-size: 14px;
+    }
+
+    .change-icon {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+      line-height: 18px;
+      font-weight: bold;
+      margin-left: 2px;
+    }
+
+    &.increase {
+      color: mat-color($mat-light-green, 600);
+    }
+
+    &.decrease {
+      color: mat-color($mat-red, 500);
+    }
+  }
+}

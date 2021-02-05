@@ -1,0 +1,218 @@
+<div class="buttons group card alternative no-border mat-elevation-z2" fxLayout="column" fxLayoutGap="24px">
+  <div class="group-title">Material Buttons</div>
+  <div class="divider reverse"></div>
+  <div class="section" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+    <div fxFlex.gt-md>
+      <div fxLayout="column">
+        <div class="section-title">Flat Buttons</div>
+        <div class="section-tag">&lt;mat-button&gt;</div>
+        <p>Flat buttons are printed on material. They do not lift, but fill with color on press.</p>
+        <div class="section-info">Example:</div>
+        <code vrHighlight class="html">&lt;button mat-button&gt;<br/>  Button<br/>&lt;/button&gt;</code>
+      </div>
+    </div>
+    <mat-tab-group class="preview-tabs mat-elevation-z2" fxFlex="auto" fxFlex.gt-md="70%">
+      <mat-tab label="PREVIEW">
+        <div class="preview" fxLayout="row" fxLayoutAlign="center center">
+          <mat-card fxFlex="90%" fxFlex.gt-sm="80%">
+            <mat-card-content fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-around center"
+                             fxLayoutWrap="wrap">
+              <button mat-button>Button</button>
+              <button mat-button color="primary">Primary</button>
+              <button mat-button color="accent">Accent</button>
+              <button mat-button color="warn">Warn</button>
+              <button mat-button disabled>Disabled</button>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="HTML">
+        <code [innerHTML]="flatButtonsHTML" vrHighlight class="html"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="divider reverse"></div>
+
+  <div class="section" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+    <div fxFlex.gt-md>
+      <div class="section-title">Raised Buttons</div>
+      <div class="section-tag">&lt;mat-raised-button&gt;</div>
+      <p>Raised buttons add dimension to mostly flat layouts. They emphasize functions on busy or wide spaces.</p>
+      <div class="section-info">Example:</div>
+      <code vrHighlight class="html">&lt;button mat-raised-button&gt;<br/> Button<br/>&lt;/button&gt;</code>
+    </div>
+    <mat-tab-group class="preview-tabs mat-elevation-z2" fxFlex="auto" fxFlex.gt-md="70%">
+      <mat-tab label="PREVIEW">
+        <div class="preview" fxLayout="row" fxLayoutAlign="center center">
+          <mat-card fxFlex="90%" fxFlex.gt-sm="80%">
+            <mat-card-content fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-around center"
+                             fxLayoutWrap="wrap">
+              <button mat-raised-button>Button</button>
+              <button mat-raised-button color="primary">Primary</button>
+              <button mat-raised-button color="accent">Accent</button>
+              <button mat-raised-button color="warn">Warn</button>
+              <button mat-raised-button disabled>Disabled</button>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="HTML">
+        <code [innerHTML]="raisedButtonsHTML" vrHighlight class="html"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="divider reverse"></div>
+
+  <div class="section" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+    <div fxFlex.gt-md>
+      <div class="section-title">Floating Action Buttons (FAB)</div>
+      <div class="section-tag">&lt;mat-fab&gt;</div>
+      <p>Floating action buttons are used for a promoted action. They are distinguished by a circled icon floating
+        above the UI and have motion behaviors that include morphing, launching, and a transferring anchor
+        point.</p>
+      <div class="section-info">mat-fab Example:</div>
+      <code vrHighlight class="html">&lt;button mat-fab&gt;<br/> &lt;mat-icon&gt;grade&lt;/mat-icon&gt;<br/>&lt;/button&gt;</code>
+      <div class="section-info">mat-mini-fab Example:</div>
+      <code vrHighlight class="html">&lt;button mat-mini-fab&gt;<br/> &lt;mat-icon&gt;person&lt;/mat-icon&gt;<br/>&lt;/button&gt;</code>
+    </div>
+    <mat-tab-group class="preview-tabs mat-elevation-z2" fxFlex="auto" fxFlex.gt-md="70%">
+      <mat-tab label="PREVIEW">
+        <div class="preview" fxLayout="row" fxLayoutAlign="center center">
+          <div fxFlex="90%" fxFlex.gt-sm="80%" fxLayout="column">
+            <mat-card>
+              <mat-card-content fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-around center"
+                               fxLayoutWrap="wrap">
+                <button mat-fab color="primary">
+                  <mat-icon>grade</mat-icon>
+                </button>
+                <button mat-fab color="accent">
+                  <mat-icon>favorite</mat-icon>
+                </button>
+                <button mat-fab color="warn">
+                  <mat-icon>build</mat-icon>
+                </button>
+                <button mat-fab disabled>
+                  <mat-icon>lock</mat-icon>
+                </button>
+              </mat-card-content>
+            </mat-card>
+            <mat-card>
+              <mat-card-content fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-around center"
+                               fxLayoutWrap="wrap">
+                <button mat-mini-fab color="primary">
+                  <mat-icon>favorite</mat-icon>
+                </button>
+                <button mat-mini-fab color="accent">
+                  <mat-icon>thumb_up</mat-icon>
+                </button>
+                <button mat-mini-fab color="warn">
+                  <mat-icon>build</mat-icon>
+                </button>
+                <button mat-mini-fab disabled>
+                  <mat-icon>lock</mat-icon>
+                </button>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="HTML">
+        <code [innerHTML]="fabHTML" vrHighlight class="html"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="divider reverse"></div>
+
+  <div class="section" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+    <div fxFlex.gt-md>
+      <div class="section-title">Button Toggle</div>
+      <div class="section-tag">&lt;mat-button-toggle&gt;</div>
+      <p>Toggle buttons may be used to group related options. Arrange layout and spacing to convey that certain
+        toggle buttons are part of a group.</p>
+      <div class="section-info">Example:</div>
+      <code vrHighlight class="html">&lt;mat-button-toggle&gt;<br/> &lt;mat-icon&gt;grade&lt;/mat-icon&gt;<br/>&lt;/mat-button-toggle&gt;</code>
+    </div>
+    <mat-tab-group class="preview-tabs mat-elevation-z2" fxFlex="auto" fxFlex.gt-md="70%">
+      <mat-tab label="PREVIEW">
+        <div class="preview" fxLayout="row" fxLayoutAlign="center center">
+          <div fxFlex="90%" fxFlex.gt-sm="80%">
+            <mat-card>
+              <mat-card-content fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-around center"
+                               fxLayoutWrap="wrap">
+                <mat-button-toggle-group [name]="'alignment'">
+                  <mat-button-toggle value="left">
+                    <mat-icon>format_align_left</mat-icon>
+                  </mat-button-toggle>
+                  <mat-button-toggle value="center">
+                    <mat-icon>format_align_center</mat-icon>
+                  </mat-button-toggle>
+                  <mat-button-toggle value="right">
+                    <mat-icon>format_align_right</mat-icon>
+                  </mat-button-toggle>
+                  <mat-button-toggle value="justify">
+                    <mat-icon>format_align_justify</mat-icon>
+                  </mat-button-toggle>
+                </mat-button-toggle-group>
+                <mat-button-toggle-group multiple>
+                  <mat-button-toggle>Flour</mat-button-toggle>
+                  <mat-button-toggle>Eggs</mat-button-toggle>
+                  <mat-button-toggle>Sugar</mat-button-toggle>
+                  <mat-button-toggle>Milk</mat-button-toggle>
+                </mat-button-toggle-group>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="HTML">
+        <code [innerHTML]="buttonToggleHTML" vrHighlight class="html"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="divider reverse"></div>
+
+  <div class="section" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+    <div fxFlex.gt-md>
+      <div class="section-title">Icon Buttons</div>
+      <div class="section-tag">&lt;mat-icon-button&gt;</div>
+      <p>A circular material button that only contains an icon and displays an ink reaction on press.</p>
+      <div class="section-info">Example:</div>
+      <code vrHighlight class="html">&lt;button mat-icon-button&gt;<br/>  &lt;mat-icon&gt;grade&lt;/mat-icon&gt;<br/>&lt;/button&gt;</code>
+    </div>
+    <mat-tab-group class="preview-tabs mat-elevation-z2" fxFlex="auto" fxFlex.gt-md="70%">
+      <mat-tab label="PREVIEW">
+        <div class="preview" fxLayout="row" fxLayoutAlign="center center">
+          <div fxFlex="90%" fxFlex.gt-sm="80%">
+            <mat-card>
+              <mat-card-content fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-around center"
+                               fxLayoutWrap="wrap">
+                <button mat-icon-button>
+                  <mat-icon>menu</mat-icon>
+                </button>
+                <button mat-icon-button color="primary">
+                  <mat-icon>grade</mat-icon>
+                </button>
+                <button mat-icon-button color="accent">
+                  <mat-icon>favorite</mat-icon>
+                </button>
+                <button mat-icon-button color="warn">
+                  <mat-icon>build</mat-icon>
+                </button>
+                <button mat-icon-button>
+                  <mat-icon>lock</mat-icon>
+                </button>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </mat-tab>
+      <mat-tab label="HTML">
+        <code [innerHTML]="iconButtonHTML" vrHighlight class="html"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

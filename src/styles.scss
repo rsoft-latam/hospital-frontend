@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~normalize.css/normalize.css";
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "~font-awesome/scss/font-awesome.scss";
+
+@import "~highlight.js/styles/androidstudio.css";
+
+@import "styles/var";
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+
+@import "styles/misc";
+@import "styles/card";
+@import "styles/boxed";
+@import "styles/tabs";
+@import "styles/badges";
+@import "styles/helpers";
+@import "styles/tables";
+@import "styles/tour";
+@import "styles/elevation";
+@import "styles/components/sidenav";
+@import "styles/components/quickpanel";
+@import "styles/components/toolbar";
+@import "styles/components/dashboard";
+@import "styles/pages/profile";
+@import "styles/pages/form-wizard";
+@import "styles/pages/chat";
+@import "styles/layouts/layout-alpha";
+@import "styles/layouts/layout-beta";
+@import "styles/layouts/layout-gamma";
+@import "styles/pages/components";

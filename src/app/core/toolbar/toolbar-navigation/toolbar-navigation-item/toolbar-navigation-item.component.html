@@ -1,0 +1,20 @@
+<div class="navigation-item-container" *ngIf="item.hasSubItems()" routerLinkActive="dropdown-item-active">
+  <a class="navigation-item" fxLayout="row" fxLayoutAlign="start center">
+    <mat-icon class="icon">{{ item.icon }}</mat-icon>
+    <span class="name">{{ item.name }}</span>
+  </a>
+
+  <div class="dropdown" *ngIf="item.hasSubItems()">
+    <elastic-toolbar-navigation-dropdown-item
+      class="dropdown-item-container" *ngFor="let subItem of item.subItems" [item]="subItem" [currentlyOpen]="currentlyOpen"></elastic-toolbar-navigation-dropdown-item>
+  </div>
+</div>
+
+<div class="navigation-item-container" *ngIf="!item.hasSubItems()">
+  <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="item.routerLinkActiveOptions"
+     class="navigation-item" fxLayout="row" fxLayoutAlign="start center" matRipple>
+    <mat-icon class="icon">{{ item.icon }}</mat-icon>
+    <span class="name">{{ item.name }}</span>
+  </a>
+</div>
+

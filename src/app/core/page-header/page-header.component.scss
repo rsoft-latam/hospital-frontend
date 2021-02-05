@@ -1,0 +1,43 @@
+@import "../../../styles/_var.scss";
+
+.page-header {
+  height: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: inset 0px -10px 20px rgba(0, 0, 0, 0.5);
+
+  &.reverse-padding {
+    @include responsivePadding(top, true);
+    @include responsivePadding(right, true);
+    @include responsivePadding(left, true);
+  }
+
+  &.reverse-padding-top {
+    @include responsivePadding(top, true);
+  }
+
+  &.reverse-padding-right {
+    @include responsivePadding(right, true);
+  }
+
+  &.reverse-padding-bottom {
+    @include responsivePadding(bottom, true);
+  }
+
+  &.reverse-padding-left {
+    @include responsivePadding(left, true);
+  }
+
+  &.primary {
+    //background: mat-color($color-primary);
+  }
+
+  &.accent {
+    background: mat-color($color-accent);
+  }
+
+  &.warn {
+    background: mat-color($color-warn);
+  }
+}

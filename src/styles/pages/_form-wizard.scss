@@ -1,0 +1,38 @@
+.form-wizard-page {
+
+  .form-wizard {
+
+    > .mat-tab-header {
+      background: white;
+      padding: 0 24px;
+      border-bottom: none;
+      z-index: 10;
+      @include mat-elevation(2);
+
+      @include lt-sm {
+        padding: 0;
+      }
+
+      .mat-tab-labels {
+        justify-content: center;
+
+        .mat-tab-label {
+          font-weight: 400;
+          color: #737373;
+          opacity: 1;
+          height: 64px;
+          padding: 0 32px;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+          line-height: normal;
+
+          &.mat-tab-label-active {
+            font-weight: 500;
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<div class="inbox-compose">
+  <div mat-dialog-content fxLayout="row" fxLayoutAlign="space-between center">
+    <span>New Email</span>
+    <button matDialogClose mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div class="content" mat-dialog-content fxLayout="column">
+    <div fxLayout="row" fxLayoutGap="24px">
+      <mat-form-field class="input-container" fxFlex>
+        <input matInput placeholder="To">
+      </mat-form-field>
+      <mat-form-field class="input-container" fxFlex>
+        <input matInput placeholder="From" disabled value="david.smith@demomail.com">
+      </mat-form-field>
+    </div>
+
+    <mat-form-field class="input-container">
+      <input matInput placeholder="Title">
+    </mat-form-field>
+
+    <p class="editor">
+
+    </p>
+
+  </div>
+  <div mat-dialog-actions fxLayout="row">
+    <button matDialogClose mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+    <span fxFlex><!-- fill space --></span>
+    <button mat-icon-button>
+      <mat-icon>attachment</mat-icon>
+    </button>
+    <button (click)="send()" class="send" fxFlexOffset="8px" mat-raised-button color="primary">
+      Send <mat-icon>send</mat-icon>
+    </button>
+  </div>
+
+</div>

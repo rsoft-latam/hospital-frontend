@@ -1,0 +1,52 @@
+<div class="sales-widget card border no-padding-content space">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="name" fxLayout="row">
+      <div>Sales Summary</div>
+    </div>
+
+    <div class="actions" fxLayout="row">
+      <button type="button" mat-icon-button [matMenuTriggerFor]="cardMenuRef">
+        <mat-icon class="icon">more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="data" fxLayout="column"
+         fxLayout.gt-md="row" fxLayoutAlign="center" fxLayoutAlign.gt-md="space-between"
+         fxLayoutGap="16px" fxLayoutGap.gt-md="24px" fxLayoutWrap="wrap">
+      <div class="group" fxLayout="column" fxFlexAlign="center">
+        <div class="property">Total Sales</div>
+        <div class="value primary" [vrCountUp]="{ prefix: '$' }" [startVal]="0" [endVal]="17532">$17,532</div>
+      </div>
+      <div class="group" fxLayout="column" fxFlexAlign="center">
+        <div class="property">Revenue</div>
+        <div class="value accent" [vrCountUp]="{ prefix: '$' }" [startVal]="0" [endVal]="8432">$8,432</div>
+      </div>
+      <div class="group" fxLayout="column" fxFlexAlign="center">
+        <div class="property">Expenses</div>
+        <div class="value warn" [vrCountUp]="{ prefix: '$' }" [startVal]="0" [endVal]="4236">$4,236</div>
+      </div>
+    </div>
+
+    <div class="chart">
+      <canvas width="100" height="40" #canvas></canvas>
+    </div>
+  </div>
+
+</div>
+
+<mat-menu #cardMenuRef="matMenu">
+  <button mat-menu-item>
+    <mat-icon>refresh</mat-icon>
+    <span>Refresh</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Remove Widget</span>
+  </button>
+</mat-menu>

@@ -1,0 +1,23 @@
+<div class="chart-container" fxLayout="row">
+  <div class="chart" fxFlex="150px">
+    <canvas width="150" height="150" #canvas></canvas>
+  </div>
+  <div class="legend" fxLayout="column" fxFlex>
+    <div class="total-value" vrCountUp [startVal]="0" [endVal]="total"></div>
+    <div class="total-label">Total Sales</div>
+
+    <elastic-scrollbar class="legend-items">
+      <div fxLayout="row" fxLayoutAlign="space-between stretch">
+        <div class="legend-item" *ngFor="let value of data; let i = index" fxLayout="row">
+          <div class="item-color" [style.background-color]="backgroundColor[i]"></div>
+          <div fxLayout="column">
+            <div class="item-value" vrCountUp [startVal]="0" [endVal]="value"></div>
+            <div class="item-label">{{ labels[i] }}</div>
+            <div class="item-percent">{{ getPercentageValue(value) }}</div>
+          </div>
+        </div>
+      </div>
+    </elastic-scrollbar>
+    <div class="fade-out-overlay"></div>
+  </div>
+</div>

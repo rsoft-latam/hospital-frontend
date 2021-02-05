@@ -1,0 +1,23 @@
+<div class="horizontal-navigation" fxHide fxShow.gt-sm>
+  <div class="container">
+    <div class="menu" fxLayout="row">
+      <div *ngFor="let item of sidenavItems$ | async; let index = index;">
+        <elastic-toolbar-navigation-item *ngIf="index < showMoreButtonAfterIndex"
+          [item]="item" [currentlyOpen]="currentlyOpen$ | async"></elastic-toolbar-navigation-item>
+
+        <div class="more-button-container" fxLayout="row" fxLayoutAlign="start center" *ngIf="index == showMoreButtonAfterIndex">
+          <button mat-icon-button class="more-button" [matMenuTriggerFor]="moreMenu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-menu #moreMenu="matMenu" [overlapTrigger]="false">
+  <div class="layout gamma" (click)="$event.stopPropagation()" *ngFor="let item of sidenavItems$ | async; let index = index;">
+    <elastic-toolbar-navigation-dropdown-item *ngIf="index >= showMoreButtonAfterIndex" class="dropdown-item-container"
+                                         [item]="item" [currentlyOpen]="currentlyOpen$ | async"></elastic-toolbar-navigation-dropdown-item>
+  </div>
+</mat-menu>

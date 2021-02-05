@@ -1,0 +1,57 @@
+@import "../../../../../styles/_var.scss";
+
+.card {
+
+  .content {
+
+    .status {
+      @include responsivePadding(bottom);
+
+      .text {
+        font-size: 24px;
+        color: #000;
+      }
+    }
+
+    .meetings {
+
+      .category {
+        @include responsivePadding(top);
+        @include responsivePadding(bottom);
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+
+        .heading {
+          color: #787878;
+          font-size: 13px;
+          font-weight: 500;
+        }
+
+        .meeting {
+          color: #000;
+          height: 56px;
+          position: relative;
+
+          .status-circle {
+            @include responsiveMarginHalf(right)
+          }
+
+          .extra {
+            color: #8B8B8B;
+            font-size: 13px;
+            margin-top: 2px;
+          }
+
+          .actions {
+            button + button {
+              margin-left: 8px;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}

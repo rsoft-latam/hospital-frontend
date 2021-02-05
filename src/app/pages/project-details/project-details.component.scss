@@ -1,0 +1,122 @@
+@import "../../../styles/_var.scss";
+
+:host {
+  display: block;
+}
+
+.project-details {
+  @include responsivePadding();
+
+  .splash {
+    background: white;
+    border-radius: 2px;
+    overflow: hidden;
+    @include mat-elevation(4);
+
+    .left {
+      @include responsivePaddingHalf();
+
+      .options {
+        color: white;
+      }
+
+      .codename {
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 40px;
+      }
+    }
+
+    .right {
+      @include responsivePadding();
+
+      .splash-title {
+        font-size: 18px;
+        font-weight: 500;
+
+        @include responsiveMargin(bottom);
+      }
+
+      .details {
+        @include responsiveMarginHalf(left);
+        @include responsiveMarginHalf(right);
+
+        .detail {
+
+          &:first-child {
+            padding-left: 0;
+          }
+
+          .name {
+            margin-bottom: 12px;
+            font-weight: 500;
+          }
+
+          .value {
+            color: $color__text-dark;
+          }
+        }
+
+        .mat-chip {
+          margin-bottom: 4px;
+        }
+
+        .member {
+          img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 6px;
+          }
+        }
+      }
+
+      .divider {
+        @include responsiveMargin(top);
+        @include responsiveMargin(bottom);
+      }
+
+      .right-bottom {
+        .description-title {
+          font-weight: 500;
+        }
+
+        .description {
+          color: $color__text-dark;
+
+          @include responsiveMarginHalf(top);
+          @include responsiveMarginHalf(left);
+          @include responsiveMarginHalf(right);
+        }
+      }
+    }
+  }
+
+  .progress-cards {
+
+    .progress-card {
+      background: white;
+      @include responsivePadding();
+
+      @include mat-elevation(4);
+
+      .progress-details {
+
+        .value {
+          font-size: 30px;
+        }
+
+        .description {
+          color: $color__text-dark;
+        }
+
+        .arrow {
+          color: $color__text-dark;
+          @include responsivePaddingHalf(right, true);
+          @include responsivePaddingHalf(bottom, true);
+        }
+      }
+    }
+  }
+}

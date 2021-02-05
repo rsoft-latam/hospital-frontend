@@ -1,0 +1,89 @@
+@import "../../../styles/_var.scss";
+
+.elastic-list {
+  margin-bottom: $padding__page;
+
+  @include mat-elevation(2);
+
+  .list-header {
+    background: $theme-card;
+    padding-left: $padding__page;
+    padding-right: $padding__page;
+    border-bottom: 1px solid $theme-divider;
+    height: 60px;
+
+    .list-name {
+      font-size: 18px;
+      color: $theme-text;
+      padding-right: $padding__page;
+      border-right: 1px solid $theme-divider;
+
+      @include mat-typography-level-to-styles($config, title);
+    }
+
+    .filter-input {
+      padding-left: $padding__page;
+      @include mat-typography-level-to-styles($config, input);
+
+      .filter-input-icon {
+        width: 1.2em;
+        color: $theme-secondary-text;
+        vertical-align: bottom;
+        height: 22px;
+        font-size: 22px;
+      }
+    }
+
+    .column-filter {
+      margin-left: $padding__page;
+      color: $theme-secondary-text;
+    }
+
+    .create {
+      margin-left: $padding__page;
+    }
+  }
+
+  .mat-header-row {
+    background: $theme-app-bar;
+
+    .mat-header-cell .mat-sort-header-button {
+      text-transform: uppercase;
+    }
+  }
+
+  .mat-row {
+
+    &:hover {
+      background: $theme-background-hover;
+    }
+  }
+
+  .mat-cell.image-cell, .mat-header-cell.image-cell {
+    flex: 0;
+    min-width: 35px + $padding__page;
+
+    img {
+      border-radius: 50%;
+      height: 35px;
+      width: 35px;
+      margin-right: $padding__page;
+      vertical-align: middle;
+    }
+  }
+
+  .mat-cell.actions-cell, .mat-header-cell.actions-cell {
+    flex: 0;
+    min-width: 40px;
+    overflow: visible;
+
+    button {
+      color: $theme-icon;
+    }
+  }
+
+  .paginator {
+    display: block;
+    background: $theme-app-bar;
+  }
+}

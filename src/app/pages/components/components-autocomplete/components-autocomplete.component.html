@@ -1,0 +1,38 @@
+<div class="autocomplete group card alternative no-border mat-elevation-z2" fxLayout="column" fxLayoutGap="24px">
+  <div class="group-title">Material Autocomplete</div>
+  <div class="divider reverse"></div>
+  <div class="section" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+    <div fxFlex.gt-md>
+      <div fxLayout="column">
+        <div class="section-title">Autocomplete</div>
+        <div class="section-tag">&lt;mat-autocomplete&gt;</div>
+        <p>MdAutocomplete can be used to allow for quick selection of predictable entities.</p>
+      </div>
+    </div>
+    <mat-tab-group class="preview-tabs mat-elevation-z2" fxFlex="auto" fxFlex.gt-md="70%">
+      <mat-tab label="PREVIEW">
+        <div class="preview" fxLayout="row" fxLayoutAlign="center center">
+          <mat-card fxFlex="90%" fxFlex.gt-sm="80%">
+            <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+              <form #autoForm="ngForm">
+                <mat-form-field>
+                  <input matInput placeholder="State" [matAutocomplete]="reactiveAuto" [formControl]="stateCtrl">
+                </mat-form-field>
+
+                <mat-autocomplete #reactiveAuto="matAutocomplete" [displayWith]="displayFn">
+                  <mat-option *ngFor="let state of reactiveStates | async" [value]="state">
+                    <span>{{ state.name }}</span>
+                    <span class="demo-secondary-text"> ({{state.code}}) </span>
+                  </mat-option>
+                </mat-autocomplete>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="HTML">
+        <code [innerHTML]="autocompleteHTML" vrHighlight class="html"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+@import "../../../../../styles/_var.scss";
+
+.project-widget {
+
+  .divider {
+    @include responsiveMarginHalf(top);
+    @include responsiveMarginHalf(bottom);
+  }
+
+  .content {
+    padding-left: 0;
+    padding-right: 0;
+    @include responsivePaddingHalf(top);
+    @include responsivePaddingHalf(bottom);
+  }
+
+  .category {
+
+
+    .heading {
+      color: #787878;
+      font-size: 13px;
+      font-weight: 500;
+      margin: 8px 0 4px;
+      @include responsivePadding(left);
+      @include responsivePadding(right);
+      @include responsivePaddingHalf(top);
+    }
+
+    .project {
+      position: relative;
+      @include responsivePaddingHalf(top);
+      @include responsivePaddingHalf(bottom);
+      @include responsivePadding(left);
+      @include responsivePadding(right);
+      outline: none;
+      cursor: pointer;
+
+      &:hover {
+        background: $background-color;
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .users {
+        margin-top: 10px;
+
+        .user {
+          img {
+            border-radius: 50%;
+          }
+
+          & + .user {
+            margin-left: 4px;
+          }
+        }
+      }
+
+      .time {
+        font-size: 14px;
+        font-weight: 500;
+        color: #8B8B8B;
+      }
+
+      .status-circle {
+        margin-left: 12px;
+      }
+    }
+  }
+}

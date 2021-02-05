@@ -1,0 +1,15 @@
+<div class="card state-widget" [style.background]="backgroundColor" [style.color]="textColor">
+  <div fxLayout="row" fxLayoutAlign="space-between">
+    <div fxLayout="column" fxLayoutAlign="end">
+      <div class="value" [vrCountUp]="{ prefix: valuePrefix }" [startVal]="0" [endVal]="value">{{ value }}</div>
+      <div class="property">{{ property }}</div>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="space-between">
+      <mat-icon class="icon" fxFlexAlign="end">{{ icon }}</mat-icon>
+      <div class="change" fxLayout="row" fxLayoutAlign="end center" fxFlexAlign="end">
+        <div class="percent" [vrCountUp]="{ suffix: '%' }" [startVal]="0" [endVal]="changePercent">{{ changePercent }}</div>
+        <mat-icon class="change-icon">{{ changeIcon }}</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

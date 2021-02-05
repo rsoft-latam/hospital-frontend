@@ -1,0 +1,64 @@
+.layout-container {
+  height: 100%;
+
+  ::ng-deep & > .mat-drawer-content {
+    box-shadow: 0 6px 6px -3px rgba(0,0,0,.2), 0 10px 14px 1px rgba(0,0,0,.14), 0 4px 18px 3px rgba(0,0,0,.12);
+    z-index: 5;
+  }
+}
+
+.options-toggle {
+  position: absolute;
+  top: 200px;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  opacity: .7;
+  background: rgb(40, 50, 60);
+  color: white;
+  cursor: pointer;
+  z-index: 99999;
+}
+
+.layout {
+   height: 100%;
+ }
+
+.toolbar-container {
+  height: 100%;
+  background: #F4F4F4;
+  overflow-x: hidden;
+}
+
+.layout > ::ng-deep .mat-drawer-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  > .mat-drawer-content {
+    display: flex;
+    flex-direction: column ;
+    flex: 1;
+
+    > .toolbar-container {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+  }
+}
+
+.content-container {
+  overflow: auto;
+  position: relative;
+}
+
+.layout-container {
+  > ::ng-deep .mat-drawer-backdrop {
+    z-index: 999999 !important;
+  }
+
+  .settings-sidenav {
+    z-index: 999999 !important;
+  }
+}

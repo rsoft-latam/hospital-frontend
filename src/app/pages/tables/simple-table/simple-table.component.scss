@@ -1,0 +1,17 @@
+@import "../../../../styles/_var.scss";
+
+.simple-table {
+  @include responsivePadding();
+}
+
+.avatar-cell {
+  text-align: center;
+  width: 40px;
+  padding-left: 24px;
+  padding-right: 8px;
+}
+
+.sticky {
+  position: relative;
+  margin-top: 60px + 16px; // Height of the table header + 16px padding
+}

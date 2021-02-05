@@ -1,0 +1,50 @@
+@for $i from 0 through 24 {
+  .card-elevation-z#{$i} {
+    .card {
+      @if $i != 0 {
+        @include mat-elevation($i);
+        border: none;
+      }
+    }
+
+    .dashboard .dashboard-tabs > .mat-tab-header {
+      @if $i > 22 {
+        @include mat-elevation(24);
+      } @else {
+        @include mat-elevation($i + 2);
+      }
+    }
+
+    .horizontal-navigation {
+      @if $i > 22 {
+        @include mat-elevation(24);
+      } @else {
+        @include mat-elevation($i + 2);
+      }
+    }
+
+    .layout.alpha .toolbar {
+      @if $i > 22 {
+        @include mat-elevation(24);
+      } @else {
+        @include mat-elevation($i + 2);
+      }
+    }
+
+    .layout.beta .toolbar {
+      @if $i > 18 {
+        @include mat-elevation(24);
+      } @else {
+        @include mat-elevation($i + 6);
+      }
+    }
+
+    .sidenav-container {
+      @if $i > 18 {
+        @include mat-elevation(24);
+      } @else {
+        @include mat-elevation($i + 6);
+      }
+    }
+  }
+}

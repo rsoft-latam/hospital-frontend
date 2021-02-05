@@ -1,0 +1,299 @@
+<div class="form-wizard-page">
+  <elastic-page-header [height]="'163px'" background="url(/assets/img/demo/headers/pattern-2.png)" [reverse]="true"></elastic-page-header>
+  <div class="container always">
+
+    <elastic-breadcrumbs [currentPage]="'Form Wizard'" [names]="['Forms']" [header]="'primary'"></elastic-breadcrumbs>
+
+    <div class="card alternative">
+      <mat-tab-group class="form-wizard" [(selectedIndex)]="selectedIndex">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+              <span class="badge primary">1</span>
+              <span>Shopping Cart</span>
+            </div>
+          </ng-template>
+          <div class="shopping-cart">
+            <div class="cart" fxLayout="column" fxLayoutGap="24px">
+              <table class="table">
+                <thead>
+                <tr>
+                  <td>Item</td>
+                  <td>Description</td>
+                  <td>Quantity</td>
+                  <td>Price</td>
+                  <td>Subtotal</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td><img src="//placehold.it/80x80"></td>
+                  <td>
+                    <div fxLayout="column">
+                      <div>Baseball cap</div>
+                      <div><span class="semi-bold">Color:</span> Vintage Blue</div>
+                      <div><span class="semi-bold">Variation:</span> Stripes</div>
+                      <div><span class="semi-bold">Product ID:</span> #4421</div>
+                    </div>
+                  </td>
+                  <td>2</td>
+                  <td>$19.99</td>
+                  <td>$39.98</td>
+                </tr>
+                <tr>
+                  <td><img src="//placehold.it/80x80"></td>
+                  <td>
+                    <div fxLayout="column">
+                      <div>T-Shirt</div>
+                      <div><span class="semi-bold">Color:</span> Yellow</div>
+                      <div><span class="semi-bold">Variation:</span> V-Neck</div>
+                      <div><span class="semi-bold">Product ID:</span> #23374</div>
+                    </div>
+                  </td>
+                  <td>1</td>
+                  <td>$9.99</td>
+                  <td>$9.99</td>
+                </tr>
+                <tr>
+                  <td><img src="//placehold.it/80x80"></td>
+                  <td>
+                    <div fxLayout="column">
+                      <div>Pullover</div>
+                      <div><span class="semi-bold">Color:</span> Black</div>
+                      <div><span class="semi-bold">Variation:</span> Winter Edition</div>
+                      <div><span class="semi-bold">Product ID:</span> #2213</div>
+                    </div>
+                  </td>
+                  <td>3</td>
+                  <td>$29.99</td>
+                  <td>$89.97</td>
+                </tr>
+                </tbody>
+              </table>
+
+              <div fxLayout="row" fxLayoutAlign="end">
+                <div fxLayout="column" fxLayoutAlign="start end" fxLayoutGap="4px">
+                  <div>Item Subtotal: &nbsp;</div>
+                  <div>Shipping: &nbsp;</div>
+                  <div>Total Value: &nbsp;</div>
+                </div>
+                <div fxLayout="column" fxLayoutGap="4px">
+                  <div>$139.94</div>
+                  <div>$4.99</div>
+                  <div class="total">$144.93</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+              <span class="badge primary">2</span>
+              <span>Shipping Address</span>
+            </div>
+          </ng-template>
+          <div class="shipping-address">
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+              <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+                <input matInput placeholder="First Name">
+              </mat-form-field>
+              <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+              <input matInput placeholder="Last Name">
+            </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+              <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+                <input matInput placeholder="Email Address">
+              </mat-form-field>
+              <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+                <input matInput placeholder="Confirm Email Address">
+              </mat-form-field>
+            </div>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+              <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+                <input matInput placeholder="Address">
+              </mat-form-field>
+              <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+                <input matInput placeholder="City">
+              </mat-form-field>
+              <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+                <input matInput placeholder="Zipcode">
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+              <span class="badge primary">3</span>
+              <span>Payment Details</span>
+            </div>
+          </ng-template>
+          <div class="payment-details" fxLayout="column">
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+              <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+                <input matInput placeholder="First Name - Card Holder">
+              </mat-form-field>
+              <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+                <input matInput placeholder="Last Name - Card Holder">
+              </mat-form-field>
+            </div>
+
+            <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+              <input matInput placeholder="Credit Card Number">
+            </mat-form-field>
+
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start baseline" fxLayoutGap.gt-sm="24px">
+              <mat-form-field fxFlex="100%" fxFlex.gt-sm>
+                <input matInput placeholder="CVC Number">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-select placeholder="Expiration Month">
+                  <mat-option value="01">January</mat-option>
+                  <mat-option value="02">February</mat-option>
+                  <mat-option value="03">March</mat-option>
+                  <mat-option value="04">April</mat-option>
+                  <mat-option value="05">May</mat-option>
+                  <mat-option value="06">June</mat-option>
+                  <mat-option value="07">July</mat-option>
+                  <mat-option value="08">August</mat-option>
+                  <mat-option value="09">September</mat-option>
+                  <mat-option value="10">October</mat-option>
+                  <mat-option value="11">November</mat-option>
+                  <mat-option value="12">December</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-select placeholder="Expiration Year">
+                  <mat-option value="2017">2017</mat-option>
+                  <mat-option value="2018">2018</mat-option>
+                  <mat-option value="2019">2019</mat-option>
+                  <mat-option value="2020">2020</mat-option>
+                  <mat-option value="2021">2021</mat-option>
+                  <mat-option value="2022">2022</mat-option>
+                  <mat-option value="2023">2023</mat-option>
+                  <mat-option value="2024">2024</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px">
+              <span class="badge primary">4</span>
+              <span>Confirmation</span>
+            </div>
+          </ng-template>
+          <div class="confirmation" fxLayout="column">
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+              <div fxLayout="column" fxFlex="100%" fxFlex.gt-sm>
+                <h3>Personal Details</h3>
+                <div>Nancy A. Hawkins</div>
+                <div>NancyAHawkins@cuvox.de</div>
+              </div>
+              <div fxLayout="column" fxFlex="100%" fxFlex.gt-sm>
+                <h3>Payment Details</h3>
+                <div>Visa Card xxx9999</div>
+              </div>
+            </div>
+            <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
+              <div fxLayout="column" fxFlex="100%" fxFlex.gt-sm>
+                <h3>Shipping Address</h3>
+                <div>Nancy A. Hawkins</div>
+                <div>3283 Cook Hill Road</div>
+                <div>Branford, CT 06405</div>
+              </div>
+              <div fxLayout="column" fxFlex="100%" fxFlex.gt-sm>
+                <h3>Billing Address</h3>
+                <div>Nancy A. Hawkins</div>
+                <div>3283 Cook Hill Road</div>
+                <div>Branford, CT 06405</div>
+              </div>
+            </div>
+            <div class="cart" fxLayout="column" fxLayoutGap="24px">
+              <table class="table">
+                <thead>
+                <tr>
+                  <td>Item</td>
+                  <td>Description</td>
+                  <td>Quantity</td>
+                  <td>Price</td>
+                  <td>Subtotal</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td><img src="//placehold.it/80x80"></td>
+                  <td>
+                    <div fxLayout="column">
+                      <div>Baseball cap</div>
+                      <div><span class="semi-bold">Color:</span> Vintage Blue</div>
+                      <div><span class="semi-bold">Variation:</span> Stripes</div>
+                      <div><span class="semi-bold">Product ID:</span> #4421</div>
+                    </div>
+                  </td>
+                  <td>2</td>
+                  <td>$19.99</td>
+                  <td>$39.98</td>
+                </tr>
+                <tr>
+                  <td><img src="//placehold.it/80x80"></td>
+                  <td>
+                    <div fxLayout="column">
+                      <div>T-Shirt</div>
+                      <div><span class="semi-bold">Color:</span> Yellow</div>
+                      <div><span class="semi-bold">Variation:</span> V-Neck</div>
+                      <div><span class="semi-bold">Product ID:</span> #23374</div>
+                    </div>
+                  </td>
+                  <td>1</td>
+                  <td>$9.99</td>
+                  <td>$9.99</td>
+                </tr>
+                <tr>
+                  <td><img src="//placehold.it/80x80"></td>
+                  <td>
+                    <div fxLayout="column">
+                      <div>Pullover</div>
+                      <div><span class="semi-bold">Color:</span> Black</div>
+                      <div><span class="semi-bold">Variation:</span> Winter Edition</div>
+                      <div><span class="semi-bold">Product ID:</span> #2213</div>
+                    </div>
+                  </td>
+                  <td>3</td>
+                  <td>$29.99</td>
+                  <td>$89.97</td>
+                </tr>
+                </tbody>
+              </table>
+
+              <div fxLayout="row" fxLayoutAlign="end">
+                <div fxLayout="column" fxLayoutAlign="start end" fxLayoutGap="4px">
+                  <div>Item Subtotal: &nbsp;</div>
+                  <div>Shipping: &nbsp;</div>
+                  <div>Total Value: &nbsp;</div>
+                </div>
+                <div fxLayout="column" fxLayoutGap="4px">
+                  <div>$139.94</div>
+                  <div>$4.99</div>
+                  <div class="total">$144.93</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+
+      <div class="tab-navigation" fxLayout="row" fxLayoutAlign="space-between">
+        <button type="button" mat-raised-button color="primary" (click)="previousPage()" [disabled]="selectedIndex == 0">PREVIOUS</button>
+        <button type="button" mat-raised-button color="primary" (click)="nextPage()" *ngIf="selectedIndex !== lastIndex">NEXT</button>
+        <button type="button" mat-raised-button color="accent" *ngIf="selectedIndex == lastIndex">CONFIRM ORDER</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+.toolbar {
+  height: $height__toolbar;
+  position: relative;
+  padding: 0 0 0 $padding-left__toolbar;
+
+  .menu-toggle {
+    margin-left: -40px;
+
+    md-icon {
+      transform: translate3d(-6px, 0, 0);
+      transition: transform 200ms cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    &:hover {
+      md-icon {
+        transform: translate3d(2px, 0, 0);
+      }
+    }
+  }
+
+  .logo-contrast {
+    width: $width__sidenav-collapsed - $width__sidenav-collapsed-collapsed;
+  }
+
+  .logo {
+    height: $height__logo;
+    width: auto;
+  }
+
+  .icon-button {
+    height: 100%;
+    padding: 0;
+    min-width: 60px;
+  }
+
+  .quickpanel-button {
+    height: 100%;
+    padding: 0;
+    min-width: 70px;
+
+    .icon {
+      // Color is defined in _toolbar.scss
+    }
+
+    &.open {
+      background: rgba(0, 0, 0, 0.05);
+    }
+  }
+}

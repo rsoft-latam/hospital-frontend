@@ -1,0 +1,108 @@
+@import "../../../styles/_var.scss";
+
+.breadcrumbs {
+  @include responsivePadding(bottom);
+
+  .title {
+    font-size: 20px;
+    color: mat-color($color-primary);
+    margin-bottom: 6px;
+  }
+
+  a.crumb, a.link {
+    color: mat-color($color-primary);
+    text-decoration: none;
+    transition: opacity .2s ease-in-out;
+    font-size: 15px;
+  }
+
+  .chevron {
+    font-size: 20px;
+    line-height: 20px;
+    height: 20px;
+    width: 20px;
+    margin-bottom: -2px;
+  }
+
+  div.crumb {
+    color: $color__text-dark;
+    font-size: 15px;
+  }
+
+  &.padding-top {
+    padding-top: $padding__page;
+
+    @include lt-sm {
+      padding-top: $padding__page__small;
+    }
+  }
+
+  &.primary {
+    .title {
+      color: mat-color($color-primary, default-contrast);
+    }
+
+    a.crumb, a.link {
+      color: mat-color($color-primary, default-contrast);
+      opacity: .6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .chevron {
+      opacity: .6;
+    }
+
+    div.crumb {
+      color: mat-color($color-primary, default-contrast);
+    }
+  }
+
+  &.accent {
+    .title {
+      color: mat-color($color-accent, default-contrast);
+    }
+
+    a.crumb, a.link {
+      color: mat-color($color-accent, default-contrast);
+      opacity: .6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .chevron {
+      opacity: .6;
+    }
+
+    div.crumb {
+      color: mat-color($color-accent, default-contrast);
+    }
+  }
+
+  &.warn {
+    .title {
+      color: mat-color($color-warn, default-contrast);
+    }
+
+    a.crumb, a.link {
+      color: mat-color($color-warn, default-contrast);
+      opacity: .6;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    .chevron {
+      opacity: .6;
+    }
+
+    div.crumb {
+      color: mat-color($color-warn, default-contrast);
+    }
+  }
+}

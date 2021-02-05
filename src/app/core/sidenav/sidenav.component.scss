@@ -1,0 +1,65 @@
+@import "../../../styles/_var.scss";
+
+.sidenav {
+  height: 100%;
+  width: $width__sidenav;
+  transition: width .1s;
+
+  .header {
+    height: $height__toolbar;
+    padding: 0 $padding-right__sidenav-item 0 $padding-left__sidenav-item;
+
+    .logo {
+      height: $height__logo;
+      width: auto;
+    }
+
+    .toggle {
+      width: 34px;
+      height: 34px;
+      line-height: 34px;
+      color: #BBBBBB;
+
+      mat-icon {
+        width: 12px;
+        height: 12px;
+        line-height: 12px;
+        font-size: 12px;
+      }
+
+      &:hover {
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .menu {
+
+    .heading {
+      height: 32px;
+      padding: 0 $padding-right__sidenav-item 0 $padding-left__sidenav-item;
+      margin-top: 8px;
+
+      .name {
+        font-family: 'Montserrat', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 12px;
+      }
+
+      .toggle {
+
+        mat-icon {
+          width: 12px;
+          height: 12px;
+          line-height: 12px;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .sidenav-item-holder:last-child {
+      margin-bottom: 8px;
+    }
+  }
+}

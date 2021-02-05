@@ -1,0 +1,105 @@
+<div class="project-widget">
+  <div class="card border space">
+    <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="name">My Projects</div>
+
+      <div class="actions" fxLayout="row">
+        <button type="button" mat-icon-button [matMenuTriggerFor]="cardMenuRef">
+          <mat-icon class="icon">more_vert</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="content" fxLayout="column">
+      <div class="projects">
+        <div class="category">
+          <div [routerLink]="['/pages/projects']" matRipple class="project" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="column">
+              <div class="name">New Dashboard</div>
+              <div class="users" fxLayout="row">
+                <div class="user" *ngFor="let user of [1,2,3,4,5]">
+                  <img src="//placehold.it/30x30">
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div class="time">2 min ago</div>
+              <div class="status-circle accent"></div>
+            </div>
+          </div>
+
+          <div [routerLink]="['/pages/projects']" matRipple class="project" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="column">
+              <div class="name">Secret side project</div>
+              <div class="users" fxLayout="row">
+                <div class="user" *ngFor="let user of [1,2]">
+                  <img src="//placehold.it/30x30">
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div class="time">1 week ago</div>
+              <div class="status-circle warn"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider" *ngIf="!smallView"></div>
+
+        <div class="category" *ngIf="!smallView">
+
+          <div class="heading">Initiatives</div>
+
+          <div [routerLink]="['/pages/projects']" matRipple class="project" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="column">
+              <div class="name">CXX Implementation</div>
+              <div class="users" fxLayout="row">
+                <div class="user" *ngFor="let user of [1,2,3]">
+                  <img src="//placehold.it/30x30">
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div class="time">2 min ago</div>
+              <div class="status-circle accent"></div>
+            </div>
+          </div>
+
+          <div [routerLink]="['/pages/projects']" matRipple class="project" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="column">
+              <div class="name">Quality AS3</div>
+              <div class="users" fxLayout="row">
+                <div class="user" *ngFor="let user of [1,2]">
+                  <img src="//placehold.it/30x30">
+                </div>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div class="time">1 week ago</div>
+              <div class="status-circle donut orange"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer" fxLayout="row" fxLayoutAlign="end center">
+      <button type="button" mat-button color="primary">NEW PROJECT</button>
+    </div>
+  </div>
+</div>
+
+<mat-menu #cardMenuRef="matMenu">
+  <button mat-menu-item>
+    <mat-icon>refresh</mat-icon>
+    <span>Refresh</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Remove Widget</span>
+  </button>
+</mat-menu>

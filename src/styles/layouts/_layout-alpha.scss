@@ -1,0 +1,214 @@
+.layout.alpha {
+
+  /*
+  Toolbar
+   */
+
+  .toolbar {
+    color: $layout-alpha__color__toolbar;
+    background: $layout-alpha__background__toolbar;
+
+    .search-bar {
+
+      .search-wrapper {
+
+        input.search-input {
+          background: rgba(48, 52, 65, 0.05);
+
+          &:hover {
+            background: rgba(48, 52, 65, 0.1);
+          }
+        }
+
+        &.focus {
+          input.search-input {
+            background: rgba(48, 52, 65, 0.1);
+          }
+        }
+      }
+    }
+
+    .icon-button .icon {
+      color: $layout-alpha__color__toolbar;
+    }
+  }
+
+  /*
+  Sidenav
+   */
+
+  .sidenav {
+    background: $layout-alpha__background__sidenav;
+
+    .header {
+      background: $layout-alpha__background__sidenav-header;
+    }
+
+    .menu {
+
+      .heading {
+        color: $layout-alpha__color__sidenav-heading;
+      }
+    }
+
+  }
+
+  .sidenav-item {
+    color: $layout-alpha__color__sidenav-item;
+
+    &:hover {
+      color: #FFFFFF;
+    }
+
+    &.active {
+      color: #FFFFFF;
+    }
+
+    .icon, .letter-icon {
+      background: $layout-alpha__background__sidenav-item__icon;
+    }
+  }
+
+  .sidenav-item-container {
+    > .sidenav-item {
+      &:hover {
+        background: $layout-alpha__background-color__sidenav-item__hover;
+      }
+
+      &.active {
+        background: $layout-alpha__background-color__sidenav-item__active;
+      }
+    }
+
+    > .sub-menu { // Level 1 aka 1st Dropdown
+      background: $layout-alpha__background-color__sidenav-item__level1;
+
+      .sidenav-item-container {
+        > .sidenav-item {
+          padding-left: $padding__sidenav-item__level1;
+
+          &:hover {
+            background: $layout-alpha__background-color__sidenav-item__level1__hover;
+          }
+
+          &.active {
+            background: $layout-alpha__background-color__sidenav-item__level1__active;
+          }
+        }
+
+        > .sub-menu { // Level 2
+          background: $layout-alpha__background-color__sidenav-item__level2;
+
+          .sidenav-item-container {
+            > .sidenav-item {
+              padding-left: $padding__sidenav-item__level2;
+
+              &:hover {
+                background: $layout-alpha__background-color__sidenav-item__level2__hover;
+              }
+
+              &.active {
+                background: $layout-alpha__background-color__sidenav-item__level2__active;
+              }
+            }
+
+            > .sub-menu { // Level 3
+              background: $layout-alpha__background-color__sidenav-item__level3;
+
+              .sidenav-item-container {
+                > .sidenav-item {
+                  padding-left: $padding__sidenav-item__level3;
+
+                  &:hover {
+                    background: $layout-alpha__background-color__sidenav-item__level3__hover;
+                  }
+
+                  &.active {
+                    background: $layout-alpha__background-color__sidenav-item__level3__active;
+                  }
+                }
+
+                > .sub-menu { // Level 4
+                  background: $layout-alpha__background-color__sidenav-item__level4;
+
+                  .sidenav-item-container {
+                    > .sidenav-item {
+                      padding-left: $padding__sidenav-item__level4;
+
+                      &:hover {
+                        background: $layout-alpha__background-color__sidenav-item__level4__hover;
+                      }
+
+                      &.active {
+                        background: $layout-alpha__background-color__sidenav-item__level4__active;
+                      }
+                    }
+
+                    > .sub-menu { // Level 5
+                      background: $layout-alpha__background-color__sidenav-item__level5;
+
+                      .sidenav-item-container {
+                        > .sidenav-item {
+                          padding-left: $padding__sidenav-item__level5;
+
+                          &:hover {
+                            background: $layout-alpha__background-color__sidenav-item__level5__hover;
+                          }
+
+                          &.active {
+                            background: $layout-alpha__background-color__sidenav-item__level5__active;
+                          }
+                        }
+
+                        .sub-menu { // Infinite Levels after
+                          background: $layout-alpha__background-color__sidenav-item__level6;
+
+                          .sidenav-item-container > .sidenav-item {
+                            padding-left: $padding__sidenav-item__level6;
+
+                            &:hover {
+                              background: $layout-alpha__background-color__sidenav-item__level6__hover;
+                            }
+
+                            &.active {
+                              background: $layout-alpha__background-color__sidenav-item__level6__active;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sidenav-item-container .sub-menu {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+
+    &:before, &:after {
+      content: " ";
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      z-index: 3;
+    }
+
+    &:before {
+      background: linear-gradient(180deg, rgba(0,0,0,.3) 0, transparent);
+      top: 0;
+    }
+
+    &:after {
+      background: linear-gradient(-180deg, rgba(0,0,0,.3) 0, transparent);
+      bottom: 0;
+    }
+  }
+}

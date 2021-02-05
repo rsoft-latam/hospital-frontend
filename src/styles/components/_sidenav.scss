@@ -1,0 +1,97 @@
+.sidenav-container {
+  @include mat-elevation(4);
+}
+
+.mat-drawer-side {
+  border-right: 0;
+
+  &.sidenav-collapsed {
+    transform: translate3d(-#{$width__sidenav-collapsed - $width__sidenav-collapsed-collapsed}, 0, 0) !important;
+    transition: transform 400ms cubic-bezier(.25,.8,.25,1) !important;
+
+    .sidenav {
+      width: $width__sidenav-collapsed;
+    }
+
+    & + .mat-drawer-content, & + .cdk-visually-hidden + .mat-drawer-content {
+      margin-left: $width__sidenav-collapsed-collapsed !important;
+    }
+
+
+    .header .actions, .header .logo {
+      transform: translate3d(-50px, 0, 0);
+      transition: transform .4s cubic-bezier(.25,.8,.25,1) 25ms;
+    }
+
+    .menu {
+
+      .heading {
+        .name {
+          transform: translate3d(-50px, 0, 0);
+          transition: transform .4s cubic-bezier(.25,.8,.25,1) 40ms;
+        }
+
+        .toggle {
+          transform: translate3d(-50px, 0, 0);
+          transition: transform .4s cubic-bezier(.25,.8,.25,1) 40ms;
+        }
+      }
+
+      .sidenav-item {
+        .name {
+          transform: translate3d(-50px, 0, 0);
+          transition: transform .4s cubic-bezier(.25,.8,.25,1) 40ms;
+        }
+
+        .icon, .letter-icon {
+          transform: translate3d(8px, 0, 0);
+          transition: transform .4s cubic-bezier(.25,.8,.25,1);
+        }
+      }
+
+      .sub-menu {
+        .dropdown-indicator {
+          transform: translate3d(-10px, 0, 0);
+          transition: transform .4s cubic-bezier(.25,.8,.25,1);
+        }
+      }
+    }
+
+    &.open {
+      transform: translate3d(0, 0, 0) !important;
+
+      .header .actions, .header .logo {
+        transform: translate3d(0, 0, 0);
+      }
+
+      .menu {
+
+        .heading {
+          .name {
+            transform: translate3d(0, 0, 0);
+          }
+
+          .toggle {
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        .sidenav-item {
+          .name {
+            transform: translate3d(0, 0, 0);
+          }
+
+          .icon, .letter-icon {
+            transform: translate3d(0, 0, 0);
+          }
+        }
+
+        .sub-menu {
+          .dropdown-indicator {
+            transform: translate3d(0, 0, 0);
+          }
+        }
+      }
+    }
+  }
+}

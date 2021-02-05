@@ -1,0 +1,47 @@
+@import "../../../../../styles/_var.scss";
+
+.card {
+
+  .content {
+    padding: 0;
+
+    .task-container {
+      border-bottom: 1px solid #E0E0E0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .task {
+      @include responsivePadding(left);
+      @include responsivePadding(right);
+      min-height: 54px;
+
+      .checkbox {
+        @include responsiveMargin(right);
+      }
+
+      &:hover {
+        background: #F5F5F5;
+      }
+
+      &.done {
+
+        background: #F5F5F5;
+
+        .name {
+          text-decoration: line-through;
+        }
+      }
+
+      .archive {
+        color: $color__text-dark;
+      }
+    }
+  }
+
+  .footer {
+
+  }
+}

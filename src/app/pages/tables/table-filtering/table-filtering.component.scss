@@ -1,0 +1,15 @@
+@import "../../../../styles/_var.scss";
+
+.table-filtering {
+
+  @include responsivePadding();
+
+  .header {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    padding: 8px 24px 0;
+    font-size: 20px;
+    background: #EEE;
+  }
+}

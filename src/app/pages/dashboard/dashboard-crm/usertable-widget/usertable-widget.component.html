@@ -1,0 +1,84 @@
+<!--suppress UnnecessaryLabelJS -->
+<div class="usertable-widget">
+
+  <div class="card border space no-padding-content">
+    <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="name">My Clients</div>
+
+      <div class="actions" fxLayout="row">
+        <button type="button" mat-icon-button [matMenuTriggerFor]="cardMenuRef">
+          <mat-icon class="icon">more_vert</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="content" fxLayout="column">
+
+      <mat-table #table [dataSource]="dataSource" matSort>
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+
+        <!-- ID Column -->
+        <ng-container cdkColumnDef="userId">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> ID</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+            <mat-checkbox></mat-checkbox>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container cdkColumnDef="progress">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Progress</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+            <mat-progress-spinner class="progress-spinner"
+                                 mode="determinate"
+                                 [value]="row.progress"
+                                 [strokeWidth]="4" [diameter]="24"></mat-progress-spinner>
+            {{row.progress}}%
+          </mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container cdkColumnDef="userName">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Name</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.name}}</mat-cell>
+        </ng-container>
+
+        <!-- Color Column -->
+        <ng-container cdkColumnDef="lastAction">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header> Last Action</mat-header-cell>
+          <mat-cell *cdkCellDef="let row">
+            <mat-icon class="last-action-device">{{ row.lastActionDevice }}</mat-icon>
+            {{row.lastAction.fromNow()}}
+          </mat-cell>
+        </ng-container>
+      </mat-table>
+
+      <mat-paginator #paginator
+                    [length]="exampleDatabase.data.length"
+                    [pageIndex]="0"
+                    [pageSize]="5"
+                    [pageSizeOptions]="[5, 10, 25, 100]">
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+
+<mat-menu #cardMenuRef="matMenu">
+  <button mat-menu-item>
+    <mat-icon>refresh</mat-icon>
+    <span>Refresh</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Remove Widget</span>
+  </button>
+</mat-menu>

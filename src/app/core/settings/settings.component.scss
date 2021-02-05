@@ -1,0 +1,25 @@
+@import "../../../styles/_var.scss";
+
+.settings {
+  @include responsivePadding();
+
+  .title {
+    font-size: 20px;
+    margin-top: 24px;
+    margin-bottom: 12px;
+
+    &.no-margin-top {
+      margin-top: 0;
+    }
+  }
+
+  .layout-radio-group {
+
+    .layout-option-image {
+      width: 150px;
+      height: 100px;
+    }
+  }
+}
+
+

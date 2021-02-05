@@ -1,0 +1,491 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+//$theme-primary: mat-palette($mat-teal);
+//$bz-color-accent:  mat-palette($mat-green);
+//$theme-accent:  mat-palette($mat-light-blue, 500, 200, 700);
+
+$theme-primary: mat-palette($mat-blue-grey, 700, 500, 900);
+
+$theme-accent:  mat-palette($mat-blue);
+
+$theme-warn:    mat-palette($mat-red);
+
+// The warn palette is optional (defaults to red).
+//$theme-warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+$color-primary: map-get($theme, primary);
+$color-accent: map-get($theme, accent);
+$color-warn: map-get($theme, warn);
+
+$config: mat-typography-config(
+  $font-family: 'Roboto, "Helvetica Neue", sans-serif',
+  $display-4: mat-typography-level(112px, 112px, 300),
+  $display-3: mat-typography-level(56px, 56px, 400),
+  $display-2: mat-typography-level(45px, 48px, 400),
+  $display-1: mat-typography-level(34px, 40px, 400),
+  $headline: mat-typography-level(24px, 32px, 400),
+  $title: mat-typography-level(20px, 32px, 500),
+  $subheading-2: mat-typography-level(16px, 28px, 400),
+  $subheading-1: mat-typography-level(15px, 24px, 400),
+  $body-2: mat-typography-level(14px, 24px, 500),
+  $body-1: mat-typography-level(14px, 20px, 400),
+  $caption: mat-typography-level(12px, 20px, 400),
+  $button: mat-typography-level(14px, 14px, 500),
+    // Line-height must be unit-less fraction of the font-size.
+  $input: mat-typography-level(16px, 1.125, 400)
+);
+
+.mat-form-field {
+  @include mat-typography-level-to-styles($config, input);
+}
+
+/**
+  Core
+ */
+
+$theme-foreground-map: map-get($theme, foreground);
+$theme-background-map: map-get($theme, background);
+$theme-primary-map: map-get($theme, primary);
+$theme-accent-map: map-get($theme, accent);
+$theme-warn-map: map-get($theme, warn);
+
+$theme-text: mat-color($theme-foreground-map, text);
+$theme-hint-text: mat-color($theme-foreground-map, hint-text);
+$theme-secondary-text: mat-color($theme-foreground-map, secondary-text);
+$theme-divider: mat-color($theme-foreground-map, divider);
+$theme-icon: mat-color($theme-foreground-map, icon);
+
+$theme-background: mat-color($theme-background-map, background);
+$theme-app-bar: mat-color($theme-background-map, app-bar);
+$theme-background-hover: mat-color($theme-background-map, hover);
+
+$theme-card: mat-color($theme-background-map, card);
+
+/*
+  Logo
+ */
+
+$height__logo: 25px;
+
+/*
+  Colors
+ */
+
+$color__primary: #4CAF50;
+$color__accent: #E91E63;
+$color__warn: #f44336;
+
+$color__primary-contrast: #FFF;
+$color__accent-contrast: #FFF;
+$color__warn-contrast: #FFF;
+
+$color__text-darkest: rgba(0, 0, 0, .87);
+$color__text-darker: #333;
+$color__text-dark: #666;
+$color__text-light: #999;
+
+$background-color: #FAFAFA;
+
+/*
+  Toolbar
+ */
+
+$height__toolbar: 64px;
+$padding-left__toolbar: 24px;
+
+$layout-alpha__background__toolbar: white;
+$layout-alpha__color__toolbar: $color__text-darker;
+
+$layout-beta__background__toolbar: mat-color($color-primary, 900);
+$layout-beta__color__toolbar: mat-contrast($color-primary, 900);
+
+$layout-gamma__background__toolbar: mat-color($color-primary, 900);
+$layout-gamma__color__toolbar: mat-contrast($color-primary, 900);
+
+/*
+  Sidenav
+ */
+
+$width__sidenav: 270px;
+$width__sidenav-collapsed-collapsed: 70px;
+$width__sidenav-collapsed: 270px;
+
+$padding-left__sidenav-item: 36px;
+$padding-right__sidenav-item: 24px;
+
+$layout-alpha__background__sidenav: #303441;
+$layout-alpha__background__sidenav_header: #2b303c;
+
+$layout-beta__background__sidenav: white;
+
+
+/*
+  Sidenav: Layout Alpha
+ */
+
+$layout-alpha__color__sidenav-item: rgba(255, 255, 255, 0.5);
+$layout-alpha__color__sidenav-heading: rgba(255, 255, 255, 0.3);
+$layout-alpha__background__sidenav-item__icon: rgba(255, 255, 255, 0.05);
+
+$layout-alpha__background-color__sidenav-item: $layout-alpha__background__sidenav;
+$layout-alpha__background-color__sidenav-item__hover: darken($layout-alpha__background-color__sidenav-item, 2);
+$layout-alpha__background-color__sidenav-item__active: $layout-alpha__background-color__sidenav-item__hover;
+
+$layout-alpha__background-color__sidenav-item__level1: darken($layout-alpha__background-color__sidenav-item, 2.5);
+$layout-alpha__background-color__sidenav-item__level1__hover: darken($layout-alpha__background-color__sidenav-item__level1, 1.5);
+$layout-alpha__background-color__sidenav-item__level1__active: $layout-alpha__background-color__sidenav-item__level1__hover;
+
+$layout-alpha__background-color__sidenav-item__level2: darken($layout-alpha__background-color__sidenav-item__level1, 2.5);
+$layout-alpha__background-color__sidenav-item__level2__hover: darken($layout-alpha__background-color__sidenav-item__level2, 1.5);
+$layout-alpha__background-color__sidenav-item__level2__active: $layout-alpha__background-color__sidenav-item__level2__hover;
+
+$layout-alpha__background-color__sidenav-item__level3: darken($layout-alpha__background-color__sidenav-item__level2, 2.5);
+$layout-alpha__background-color__sidenav-item__level3__hover: darken($layout-alpha__background-color__sidenav-item__level3, 1.5);
+$layout-alpha__background-color__sidenav-item__level3__active: $layout-alpha__background-color__sidenav-item__level3__hover;
+
+$layout-alpha__background-color__sidenav-item__level4: darken($layout-alpha__background-color__sidenav-item__level3, 2.5);
+$layout-alpha__background-color__sidenav-item__level4__hover: darken($layout-alpha__background-color__sidenav-item__level4, 1.5);
+$layout-alpha__background-color__sidenav-item__level4__active: $layout-alpha__background-color__sidenav-item__level4__hover;
+
+$layout-alpha__background-color__sidenav-item__level5: darken($layout-alpha__background-color__sidenav-item__level4, 2.5);
+$layout-alpha__background-color__sidenav-item__level5__hover: darken($layout-alpha__background-color__sidenav-item__level5, 1.5);
+$layout-alpha__background-color__sidenav-item__level5__active: $layout-alpha__background-color__sidenav-item__level5__hover;
+
+$layout-alpha__background-color__sidenav-item__level6: darken($layout-alpha__background-color__sidenav-item__level5, 2.5);
+$layout-alpha__background-color__sidenav-item__level6__hover: darken($layout-alpha__background-color__sidenav-item__level6, 1.5);
+$layout-alpha__background-color__sidenav-item__level6__active: $layout-alpha__background-color__sidenav-item__level6__hover;
+
+/*
+  Sidenav: Layout Beta
+ */
+
+$layout-beta__color__sidenav-item: #555;
+$layout-beta__color__sidenav-heading: rgba(0, 0, 0, 0.3);
+$layout-beta__background__sidenav-item__icon: rgba(0, 0, 0, 0.05);
+
+$layout-beta__background-color__sidenav-item: $layout-beta__background__sidenav;
+$layout-beta__background-color__sidenav-item__hover: darken($layout-beta__background-color__sidenav-item, 2);
+$layout-beta__background-color__sidenav-item__active: $layout-beta__background-color__sidenav-item__hover;
+
+$layout-beta__background-color__sidenav-item__level1: darken($layout-beta__background-color__sidenav-item, 2.5);
+$layout-beta__background-color__sidenav-item__level1__hover: darken($layout-beta__background-color__sidenav-item__level1, 1.5);
+$layout-beta__background-color__sidenav-item__level1__active: $layout-beta__background-color__sidenav-item__level1__hover;
+
+$layout-beta__background-color__sidenav-item__level2: darken($layout-beta__background-color__sidenav-item__level1, 2.5);
+$layout-beta__background-color__sidenav-item__level2__hover: darken($layout-beta__background-color__sidenav-item__level2, 1.5);
+$layout-beta__background-color__sidenav-item__level2__active: $layout-beta__background-color__sidenav-item__level2__hover;
+
+$layout-beta__background-color__sidenav-item__level3: darken($layout-beta__background-color__sidenav-item__level2, 2.5);
+$layout-beta__background-color__sidenav-item__level3__hover: darken($layout-beta__background-color__sidenav-item__level3, 1.5);
+$layout-beta__background-color__sidenav-item__level3__active: $layout-beta__background-color__sidenav-item__level3__hover;
+
+$layout-beta__background-color__sidenav-item__level4: darken($layout-beta__background-color__sidenav-item__level3, 2.5);
+$layout-beta__background-color__sidenav-item__level4__hover: darken($layout-beta__background-color__sidenav-item__level4, 1.5);
+$layout-beta__background-color__sidenav-item__level4__active: $layout-beta__background-color__sidenav-item__level4__hover;
+
+$layout-beta__background-color__sidenav-item__level5: darken($layout-beta__background-color__sidenav-item__level4, 2.5);
+$layout-beta__background-color__sidenav-item__level5__hover: darken($layout-beta__background-color__sidenav-item__level5, 1.5);
+$layout-beta__background-color__sidenav-item__level5__active: $layout-beta__background-color__sidenav-item__level5__hover;
+
+$layout-beta__background-color__sidenav-item__level6: darken($layout-beta__background-color__sidenav-item__level5, 2.5);
+$layout-beta__background-color__sidenav-item__level6__hover: darken($layout-beta__background-color__sidenav-item__level6, 1.5);
+$layout-beta__background-color__sidenav-item__level6__active: $layout-beta__background-color__sidenav-item__level6__hover;
+
+/*
+  Sidenav-Item: Padding
+ */
+
+$padding__sidenav-item__level1: $padding-left__sidenav-item + 10px;
+$padding__sidenav-item__level2: $padding-left__sidenav-item + 20px;
+$padding__sidenav-item__level3: $padding-left__sidenav-item + 30px;
+$padding__sidenav-item__level4: $padding-left__sidenav-item + 40px;
+$padding__sidenav-item__level5: $padding-left__sidenav-item + 50px;
+$padding__sidenav-item__level6: $padding-left__sidenav-item + 50px;
+
+/*
+  Horizontal Navigation
+ */
+
+$padding-left__dropdown-item: 24px;
+$padding-right__dropdown-item: 18px;
+$padding-top-bottom__dropdown-item: 10px;
+$padding__dropdown-item: $padding-top-bottom__dropdown-item $padding-right__dropdown-item $padding-top-bottom__dropdown-item $padding-left__dropdown-item;
+$background__dropdown-item__hover: #f5f5f5;
+$background__dropdown-item__icon: rgba(0, 0, 0, 0.05);
+$color__navigation-item: $color__text-darker;
+
+/*
+  Sidenav-Item: Padding
+ */
+
+$padding__dropdown-item__level1: $padding-left__dropdown-item + 10px;
+$padding__dropdown-item__level2: $padding-left__dropdown-item + 20px;
+$padding__dropdown-item__level3: $padding-left__dropdown-item + 30px;
+$padding__dropdown-item__level4: $padding-left__dropdown-item + 40px;
+$padding__dropdown-item__level5: $padding-left__dropdown-item + 50px;
+$padding__dropdown-item__level6: $padding-left__dropdown-item + 50px;
+
+$color__border: #E0E0E0;
+
+@mixin cardBorder() {
+  border: 1px solid $color__border;
+}
+
+$media-gt-md: 'screen and (max-width: 1279px)';
+@mixin gt-md {
+  @media #{$media-gt-md} {
+    @content;
+  }
+}
+
+$media-md: 'screen and (min-width: 960px) and (max-width: 1279px)';
+@mixin md {
+  @media #{$media-md} {
+    @content;
+  }
+}
+
+$media-lt-sm: 'screen and (max-width: 959px)';
+@mixin lt-sm {
+  @media #{$media-lt-sm} {
+    @content;
+  }
+}
+
+$padding__page: 24px;
+$padding__page__small: 16px;
+
+@mixin responsivePadding($dir: all, $reverse: false) {
+  @if $reverse == false {
+    @if $dir == 'all' {
+      padding: $padding__page;
+
+      @include gt-md {
+        padding: $padding__page__small;
+      }
+    } @else if $dir == 'top' {
+      padding-top: $padding__page;
+
+      @include gt-md {
+        padding-top: $padding__page__small;
+      }
+    } @else if $dir == 'right' {
+      padding-right: $padding__page;
+
+      @include gt-md {
+        padding-right: $padding__page__small;
+      }
+    } @else if $dir == 'bottom' {
+      padding-bottom: $padding__page;
+
+      @include gt-md {
+        padding-bottom: $padding__page__small;
+      }
+    } @else if $dir == 'left' {
+      padding-left: $padding__page;
+
+      @include gt-md {
+        padding-left: $padding__page__small;
+      }
+    }
+  } @else if $reverse == true {
+    @if $dir == 'all' {
+      margin: -$padding__page;
+
+      @include gt-md {
+        margin: -$padding__page__small;
+      }
+    } @else if $dir == 'top' {
+      margin-top: -$padding__page;
+
+      @include gt-md {
+        margin-top: -$padding__page__small;
+      }
+    } @else if $dir == 'right' {
+      margin-right: -$padding__page;
+
+      @include gt-md {
+        margin-right: -$padding__page__small;
+      }
+    } @else if $dir == 'bottom' {
+      margin-bottom: -$padding__page;
+
+      @include gt-md {
+        margin-bottom: -$padding__page__small;
+      }
+    } @else if $dir == 'left' {
+      margin-left: -$padding__page;
+
+      @include gt-md {
+        margin-left: -$padding__page__small;
+      }
+    }
+  }
+}
+
+$padding__page__half: $padding__page / 2;
+$padding__page__small__half: $padding__page__small / 2;
+
+@mixin responsivePaddingHalf($dir: all, $reverse: false) {
+  @if $reverse == false {
+    @if $dir == 'all' {
+      padding: $padding__page__half;
+
+      @include gt-md {
+        padding: $padding__page__small__half;
+      }
+    } @else if $dir == 'top' {
+      padding-top: $padding__page__half;
+
+      @include gt-md {
+        padding-top: $padding__page__small__half;
+      }
+    } @else if $dir == 'right' {
+      padding-right: $padding__page__half;
+
+      @include gt-md {
+        padding-right: $padding__page__small__half;
+      }
+    } @else if $dir == 'bottom' {
+      padding-bottom: $padding__page__half;
+
+      @include gt-md {
+        padding-bottom: $padding__page__small__half;
+      }
+    } @else if $dir == 'left' {
+      padding-left: $padding__page__half;
+
+      @include gt-md {
+        padding-left: $padding__page__small__half;
+      }
+    }
+  } @else if $reverse == true {
+    @if $dir == 'all' {
+      margin: -$padding__page__half;
+
+      @include gt-md {
+        margin: -$padding__page__small__half;
+      }
+    } @else if $dir == 'top' {
+      margin-top: -$padding__page__half;
+
+      @include gt-md {
+        margin-top: -$padding__page__small__half;
+      }
+    } @else if $dir == 'right' {
+      margin-right: -$padding__page__half;
+
+      @include gt-md {
+        margin-right: -$padding__page__small__half;
+      }
+    } @else if $dir == 'bottom' {
+      margin-bottom: -$padding__page__half;
+
+      @include gt-md {
+        margin-bottom: -$padding__page__small__half;
+      }
+    } @else if $dir == 'left' {
+      margin-left: -$padding__page__half;
+
+      @include gt-md {
+        margin-left: -$padding__page__small__half;
+      }
+    }
+  }
+}
+
+
+@mixin responsiveMargin($dir: all) {
+  @if $dir == 'all' {
+    margin: $padding__page;
+
+    @include gt-md {
+      margin: $padding__page__small;
+    }
+  } @else if $dir == 'top' {
+    margin-top: $padding__page;
+
+    @include gt-md {
+      margin-top: $padding__page__small;
+    }
+  } @else if $dir == 'right' {
+    margin-right: $padding__page;
+
+    @include gt-md {
+      margin-right: $padding__page__small;
+    }
+  } @else if $dir == 'bottom' {
+    margin-bottom: $padding__page;
+
+    @include gt-md {
+      margin-bottom: $padding__page__small;
+    }
+  } @else if $dir == 'left' {
+    margin-left: $padding__page;
+
+    @include gt-md {
+      margin-left: $padding__page__small;
+    }
+  }
+}
+
+$margin__page__half: $padding__page / 2;
+$margin__page__small__half: $padding__page__small / 2;
+
+@mixin responsiveMarginHalf($dir: all) {
+  @if $dir == 'all' {
+    margin: $margin__page__half;
+
+    @include gt-md {
+      margin: $margin__page__small__half;
+    }
+  } @else if $dir == 'top' {
+    margin-top: $margin__page__half;
+
+    @include gt-md {
+      margin-top: $margin__page__small__half;
+    }
+  } @else if $dir == 'right' {
+    margin-right: $margin__page__half;
+
+    @include gt-md {
+      margin-right: $margin__page__small__half;
+    }
+  } @else if $dir == 'bottom' {
+    margin-bottom: $margin__page__half;
+
+    @include gt-md {
+      margin-bottom: $margin__page__small__half;
+    }
+  } @else if $dir == 'left' {
+    margin-left: $margin__page__half;
+
+    @include gt-md {
+      margin-left: $margin__page__small__half;
+    }
+  }
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}

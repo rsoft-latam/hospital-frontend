@@ -1,0 +1,20 @@
+<a [routerLink]="item.route" routerLinkActive="active"
+   class="dropdown-item" *ngIf="!item.hasSubItems()"
+   fxLayout="row" fxLayoutAlign="space-between center" matRipple>
+  <span class="name">{{ item.name }}</span>
+  <span fxFlex></span>
+  <div class="letter-icon">{{ item.generateLetterIcon() }}</div>
+</a>
+
+<a class="dropdown-item" *ngIf="item.hasSubItems()" (click)="toggleDropdown(item)"
+   fxLayout="row" fxLayoutAlign="space-between center" matRipple>
+  <span class="name">{{ item.name }}</span>
+  <span fxFlex></span>
+  <mat-icon *ngIf="item.hasSubItems()" class="dropdown-indicator" [class.rotate]="isOpen(item)">expand_more</mat-icon>
+  <div class="letter-icon">{{ item.generateLetterIcon() }}</div>
+</a>
+
+<div class="sub-menu" [style.height]="getSubMenuHeight()">
+  <elastic-toolbar-navigation-dropdown-item
+    class="dropdown-item-container" *ngFor="let subItem of item.subItems" [item]="subItem" [currentlyOpen]="currentlyOpen"></elastic-toolbar-navigation-dropdown-item>
+</div>

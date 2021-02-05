@@ -1,0 +1,74 @@
+<div class="profile">
+
+  <elastic-page-header [height]="'416px'" background="url(/assets/img/demo/headers/pattern-1.png)" [reverse]="true"></elastic-page-header>
+
+  <div class="container">
+
+    <elastic-breadcrumbs [currentPage]="'Profile'" [header]="'primary'"></elastic-breadcrumbs>
+
+    <div class="splash mat-elevation-z4" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="start center" fxLayoutAlign.gt-sm="space-between">
+
+      <div class="left" fxLayout="row">
+
+        <img fxFlex="150px" class="picture" src="assets/img/demo/avatars/noavatar.png">
+
+        <div fxLayout="column" fxLayoutAlign="space-between">
+          <div>
+            <div class="name">Jason Chapman</div>
+            <div class="description">Angular 2, NodeJS & CSS3 Expert - Web Developer</div>
+            <div class="contact" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="6px">
+              <mat-icon class="icon">mail</mat-icon>
+              <span>jason@company.com</span>
+            </div>
+          </div>
+
+          <div class="actions" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="12px">
+            <button class="primary-button" type="button" mat-raised-button color="primary">
+              Contact
+            </button>
+            <button class="secondary-button" type="button" mat-button color="primary">
+              Resume
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="right" fxLayout="column" fxLayoutAlign="space-between">
+        <div class="info" fxLayout="row">
+          <div class="names">
+            <div class="name">Availability:</div>
+            <div class="name">Address:</div>
+            <div class="name">Telephone:</div>
+          </div>
+          <div class="values">
+            <div class="value">Full-time (40h/week)</div>
+            <div class="value">1540 Broadway, New York, NY 10036, USA</div>
+            <div class="value">+1-202-555-0184</div>
+          </div>
+        </div>
+
+        <div class="social" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="32px">
+          <i class="fa fa-github"></i>
+          <i class="fa fa-twitter"></i>
+          <i class="fa fa-facebook"></i>
+          <i class="fa fa-linkedin"></i>
+          <i class="fa fa-dribbble"></i>
+          <i class="fa fa-stack-overflow"></i>
+        </div>
+      </div>
+
+    </div>
+
+    <mat-tab-group class="profile-tabs clean-tabs mat-elevation-z4">
+      <mat-tab label="OVERVIEW">
+        <elastic-profile-overview></elastic-profile-overview>
+      </mat-tab>
+      <mat-tab label="TIMELINE" [disabled]="true">
+      </mat-tab>
+      <mat-tab label="STATISTICS" [disabled]="true">
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+</div>

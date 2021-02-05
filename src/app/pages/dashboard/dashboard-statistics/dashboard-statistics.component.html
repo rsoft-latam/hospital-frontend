@@ -1,0 +1,106 @@
+<div class="dashboard-statistics">
+
+  <elastic-page-header *ngIf="!hideHeader" [height]="'170px'" background="url(/assets/img/demo/headers/pattern-3.png)"
+                  [reverse]="true"></elastic-page-header>
+
+  <div class="container">
+
+    <elastic-breadcrumbs *ngIf="!hideHeader" currentPage="Dashboard - Statistics" header="primary"></elastic-breadcrumbs>
+
+    <div fxLayout="column"
+         [fxLayoutGap]="layoutGap['lt-md']" [fxLayoutGap.gt-md]="layoutGap['gt-md']">
+
+      <div fxLayout="row" fxLayout.lt-md="column"
+           fxLayoutAlign="start start" fxLayout.lt-md="start stretch"
+           [fxLayoutGap]="layoutGap['gt-md']" [fxLayoutGap.lt-md]="layoutGap['lt-md']"
+           [fxFlex]="flexWidth['lt-sm']">
+
+        <div fxLayout="row"
+             fxLayoutAlign="start start" fxLayoutAlign.lt-md="start stretch"
+             [fxLayoutGap]="layoutGap['gt-md']" [fxLayoutGap.lt-md]="layoutGap['lt-md']"
+             [fxFlex]="flexWidth['gt-md']" [fxFlex.lt-md]="flexWidth['lt-sm']" [fxFlex.gt-sm]="flexWidth['gt-sm']" [fxFlex.gt-md]="flexWidth['gt-md']">
+          <div class="widget" fxFlex="auto" fxFlex.gt-xs>
+            <elastic-state-widget property="New Users" value="8847" icon="group_add"
+                             changePercent="77" changeIcon="trending_up"
+                             backgroundColor="linear-gradient(60deg, #8C99E0, #6572B8)" textColor="white"></elastic-state-widget>
+          </div>
+
+          <div class="widget" fxFlex="auto" fxFlex.gt-xs>
+            <elastic-state-widget property="Visits" value="158438" icon="pageview"
+                             changePercent="31" changeIcon="trending_up"
+                             backgroundColor="linear-gradient(60deg, #4DD0E2, #4CA8BA)" textColor="white"></elastic-state-widget>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayout.lt-sm="column"
+             fxLayoutAlign="start start" fxLayoutAlign.lt-md="start stretch"
+             [fxLayoutGap]="layoutGap['gt-md']" [fxLayoutGap.lt-md]="layoutGap['lt-md']"
+             [fxFlex]="flexWidth['gt-md']" [fxFlex.lt-md]="flexWidth['lt-sm']" [fxFlex.gt-sm]="flexWidth['gt-sm']" [fxFlex.gt-md]="flexWidth['gt-md']">
+          <div class="widget" fxFlex="auto" fxFlex.gt-xs>
+            <elastic-state-widget property="Total Clicks" value="45323" icon="link"
+                             changePercent="-12" changeIcon="trending_down"
+                             backgroundColor="linear-gradient(60deg, #81C683, #62A864)" textColor="white"></elastic-state-widget>
+          </div>
+
+          <div class="widget" fxFlex="auto" fxFlex.gt-xs>
+            <elastic-state-widget property="Total Sales" value="14538" icon="monetization_on" valuePrefix="$"
+                             changePercent="55" changeIcon="trending_up"
+                             backgroundColor="linear-gradient(60deg, #EAC459, #DCAC3F)" textColor="white"></elastic-state-widget>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxLayout.lt-md="column"
+           fxLayoutAlign="start start" fxLayout.lt-md="start stretch"
+           [fxLayoutGap]="layoutGap['gt-md']" [fxLayoutGap.lt-md]="layoutGap['lt-md']">
+
+        <div fxLayout="column"
+             [fxLayoutGap]="layoutGap['gt-md']" [fxLayoutGap.lt-md]="layoutGap['lt-md']"
+             [fxFlex]="flexWidth['gt-md']" [fxFlex.lt-md]="flexWidth['lt-sm']" [fxFlex.gt-sm]="flexWidth['gt-sm']" [fxFlex.gt-md]="flexWidth['gt-md']">
+
+          <div fxLayout="column" [fxLayout.gt-lg]="layoutColumnOnBoxed"
+               [fxLayoutGap]="layoutGap['gt-md']" [fxLayoutGap.lt-md]="layoutGap['lt-md']"
+               [fxFlex]="flexWidth['gt-md']" [fxFlex.lt-md]="flexWidth['lt-sm']" [fxFlex.gt-sm]="flexWidth['gt-sm']" [fxFlex.gt-md]="flexWidth['gt-md']">
+            <div class="widget" [fxFlex.gt-md]="flexWidth['gt-md']">
+              <elastic-barchart-widget></elastic-barchart-widget>
+            </div>
+            <div class="widget" [fxFlex.gt-md]="flexWidth['gt-md']">
+              <elastic-sales-widget></elastic-sales-widget>
+            </div>
+          </div>
+          <div class="widget">
+            <elastic-recentsales-widget></elastic-recentsales-widget>
+          </div>
+          <div class="widget">
+            <elastic-market-widget></elastic-market-widget>
+          </div>
+        </div>
+
+        <div fxLayout="column"
+             [fxLayoutGap]="layoutGap['gt-md']" [fxLayoutGap.lt-md]="layoutGap['lt-md']"
+             [fxFlex]="flexWidth['gt-md']" [fxFlex.lt-md]="flexWidth['lt-sm']" [fxFlex.gt-sm]="flexWidth['gt-sm']" [fxFlex.gt-md]="flexWidth['gt-md']">
+
+
+          <div fxLayout="column" [fxLayout.gt-lg]="layoutColumnOnBoxed"
+               [fxLayoutGap]="layoutGap['gt-md']" [fxLayoutGap.lt-md]="layoutGap['lt-md']"
+               [fxFlex]="flexWidth['gt-md']" [fxFlex.lt-md]="flexWidth['lt-sm']" [fxFlex.gt-sm]="flexWidth['gt-sm']" [fxFlex.gt-md]="flexWidth['gt-md']">
+
+            <div class="widget" [fxFlex.gt-md]="flexWidth['gt-md']">
+              <elastic-areachart-widget></elastic-areachart-widget>
+            </div>
+            <div class="widget" [fxFlex.gt-md]="flexWidth['gt-md']">
+              <elastic-project-widget [smallView]="true"></elastic-project-widget>
+            </div>
+          </div>
+
+          <div class="widget">
+            <elastic-advanced-pie-chart-widget></elastic-advanced-pie-chart-widget>
+          </div>
+          <div class="widget">
+            <elastic-maps-widget></elastic-maps-widget>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

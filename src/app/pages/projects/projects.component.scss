@@ -1,0 +1,133 @@
+@import "../../../styles/_var.scss";
+
+.projects {
+
+  @include responsivePadding();
+
+  .actions {
+    .filter ::ng-deep {
+      .mat-select-trigger, .mat-select-value, .mat-select-arrow {
+        color: white;
+      }
+
+      .mat-select-underline {
+        background-color: white;
+      }
+    }
+  }
+
+  .projects-container {
+    @include responsivePadding(top, true);
+    @include responsivePadding(right, true);
+  }
+
+  .project {
+    background: white;
+    @include responsiveMargin(top);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+
+    &:last-child {
+      @include responsiveMargin(right);
+    }
+
+    .header {
+      @include aspect-ratio(21, 9);
+
+      > .content {
+        color: white;
+        padding: 8px 18px 24px 24px;
+
+        .top-row {
+          font-size: 12px;
+        }
+
+        .codename {
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .details {
+      padding: 20px 24px;
+
+      .name {
+
+      }
+
+      .members {
+        margin-top: 16px;
+
+        .member {
+          img {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+          }
+
+          & + .member {
+            margin-left: 6px;
+          }
+        }
+      }
+
+      .divider {
+        margin: 20px auto 16px;
+      }
+
+      .status {
+        font-weight: bold;
+        font-size: 14px;
+        text-align: center;
+
+        &.ongoing {
+          color: mat-color($mat-green, 500);
+        }
+
+        &.finished {
+          color: mat-color($mat-orange, 500);
+        }
+
+        &.draft {
+          color: mat-color($mat-blue-grey, 500);
+        }
+      }
+    }
+
+    &:hover {
+      .overlay {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, .7);
+      opacity: 0;
+      visibility: hidden;
+      transition: all .25s;
+
+      .overlay-content {
+        padding: 20px 24px 24px;
+        height: 100%;
+
+        .overlay-actions {
+          .mat-icon-button {
+            background: white;
+            color: $color__text-dark;
+            box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+          }
+        }
+      }
+    }
+  }
+}

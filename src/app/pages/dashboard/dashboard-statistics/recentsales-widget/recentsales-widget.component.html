@@ -1,0 +1,53 @@
+<div class="recentsales-widget card no-padding-content border space">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="name" fxLayout="row">
+      <div>Recent Sales</div>
+    </div>
+
+    <div class="actions" fxLayout="row">
+      <button type="button" mat-icon-button [matMenuTriggerFor]="cardMenuRef">
+        <mat-icon class="icon">more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <table class="table table-hover table-condensed table-bordered">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Product</th>
+        <th>Value</th>
+        <th>Time ago</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let sale of sales">
+        <td class="avatar-cell"><img class="avatar" [src]="sale.image"></td>
+        <td>{{ sale.itemName }}</td>
+        <td>${{ sale.value }}</td>
+        <td>{{ sale.timeAgo }}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="chart">
+      <canvas width="150" height="30" #canvas></canvas>
+    </div>
+  </div>
+
+</div>
+
+<mat-menu #cardMenuRef="matMenu">
+  <button mat-menu-item>
+    <mat-icon>refresh</mat-icon>
+    <span>Refresh</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Remove Widget</span>
+  </button>
+</mat-menu>

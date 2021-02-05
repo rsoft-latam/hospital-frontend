@@ -1,0 +1,35 @@
+<div class="card border space">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="title" fxLayout="column">
+      <div class="name">Sales by country</div>
+      <div class="extra">Top 3 countries sold 34% more items this month</div>
+    </div>
+
+    <div class="actions" fxLayout="row">
+      <button type="button" mat-icon-button>
+        <mat-icon class="icon">refresh</mat-icon>
+      </button>
+      <button type="button" mat-icon-button [matMenuTriggerFor]="cardMenuRef">
+        <mat-icon class="icon">more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="content">
+    <elastic-advanced-pie-chart></elastic-advanced-pie-chart>
+  </div>
+</div>
+
+<mat-menu #cardMenuRef="matMenu">
+  <button mat-menu-item>
+    <mat-icon>refresh</mat-icon>
+    <span>Refresh</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Remove Widget</span>
+  </button>
+</mat-menu>

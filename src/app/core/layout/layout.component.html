@@ -1,0 +1,87 @@
+<mat-sidenav-container class="layout-container" [ngClass]="cardElevation$ | async">
+
+  <mat-sidenav class="settings-sidenav"
+              (openedStart)="openSettings()" (closedStart)="closeSettings()"
+              [opened]="settingsOpen$ | async" mode="over" position="end" #options>
+    <elastic-settings></elastic-settings>
+  </mat-sidenav>
+
+  <div class="layout" fxLayout="column"
+       [class.alpha]="layout === 'alpha'"
+       [class.beta]="layout === 'beta'"
+       [class.gamma]="layout === 'gamma'"
+       [class.boxed]="layoutBoxed$ | async">
+
+    <!-- Layout Beta -->
+    <elastic-toolbar-beta *ngIf="layout === 'beta'"
+                     [quickpanelOpen]="quickpanelOpen$ | async"
+                     (toggledSidenav)="toggleSidenav()" (toggledQuickpanel)="toggleQuickpanel()"></elastic-toolbar-beta>
+    <!-- /Layout: Beta -->
+
+    <!-- Layout Gamma -->
+    <elastic-toolbar-gamma *ngIf="layout === 'gamma'"
+                      [quickpanelOpen]="quickpanelOpen$ | async"
+                      (toggledSidenav)="toggleSidenav()" (toggledQuickpanel)="toggleQuickpanel()"></elastic-toolbar-gamma>
+    <!-- /Layout: Gamma -->
+
+    <elastic-toolbar-navigation *ngIf="layout === 'gamma'"></elastic-toolbar-navigation>
+
+    <mat-sidenav-container fxFlex>
+
+      <mat-sidenav class="quickpanel-container"
+                  (openedStart)="openQuickpanel()" (closedStart)="closeQuickpanel()"
+                  [opened]="quickpanelOpen$ | async" [position]="quickpanelAlign" [mode]="quickpanelMode">
+        <elastic-quickpanel></elastic-quickpanel>
+      </mat-sidenav>
+
+      <mat-sidenav class="sidenav-container"
+                  (openedStart)="openSidenav()" (closedStart)="closeSidenav()"
+                  [opened]="sidenavOpen$ | async" [position]="sidenavAlign$ | async"
+                  [mode]="sidenavMode$ | async" [disableClose]="sidenavDisableClose$ | async"
+                  [vrSidenavCollapse]="sidenavCollapsed$ | async">
+
+        <elastic-sidenav [layout]="layout" [collapsed]="sidenavCollapsed$ | async"
+                    (toggledSidenavCollapse)="toggleSidenavCollapse()"></elastic-sidenav>
+
+      </mat-sidenav>
+
+      <div class="toolbar-container" fxLayout="column">
+        <!-- Layout Alpha -->
+        <elastic-toolbar-alpha *ngIf="layout === 'alpha'"
+                          [sidenavCollapsed]="sidenavCollapsed$ | async" [quickpanelOpen]="quickpanelOpen$ | async"
+                          (toggledSidenav)="toggleSidenav()" (toggledQuickpanel)="toggleQuickpanel()">
+        </elastic-toolbar-alpha>
+        <!-- /Layout Alpha -->
+
+        <div class="content-container" fxFlex>
+          <router-outlet></router-outlet>
+        </div>
+
+        <div class="buy-now-toolbar mat-elevation-z4" *ngIf="buyNowToolbarVisible">
+          <div class="rainbow" fxLayout="row">
+            <div fxLayout="row" fxLayoutAlign="center center" fxFlex>
+              <div class="name" fxHide fxShow.gt-sm>elastic ui - Angular 7 Material Design + Redux/ngrx Admin Template - Save 1000s of hours designing and coding with this template</div>
+              <a href="https://themeforest.net/item/elastic-ui-angular-4-material-design-reduxngrx-admin-template/20513764?ref=visurel" class="action" mat-raised-button color="primary">
+                <mat-icon class="icon">shopping_basket</mat-icon>
+                GET IT HERE
+              </a>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center">
+              <button type="button" mat-icon-button (click)="buyNowToolbarVisible = false">
+                <mat-icon class="close">close</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav-container>
+
+  </div>
+
+  <div id="settings" class="options-toggle mat-elevation-z4" matRipple (click)="toggleSettings()"
+       fxLayout="row" fxLayoutAlign="center center">
+    <mat-icon>settings</mat-icon>
+  </div>
+
+</mat-sidenav-container>
+

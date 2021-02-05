@@ -1,0 +1,46 @@
+@import "../../../../../../styles/_var.scss";
+
+.dropdown-item {
+  display: block;
+  padding: $padding__dropdown-item;
+  cursor: pointer;
+  position: relative;
+  color: $color__text-darkest;
+  text-decoration: none;
+  transition: color .1s;
+
+  &:hover, &:focus, &.active {
+    background: $background__dropdown-item__hover;
+    color: mat-color($color-primary);
+  }
+
+  .dropdown-indicator {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 16px;
+    margin-right: 6px;
+    transform: rotate(-90deg);
+    transition: transform .25s cubic-bezier(.25,.8,.25,1);
+
+    &.rotate {
+      transform: rotate(0);
+    }
+  }
+
+  .letter-icon {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 5px;
+    background: $background__dropdown-item__icon;
+  }
+}
+
+.sub-menu {
+  overflow: hidden;
+  transition: height .4s cubic-bezier(.35, 0, .25, 1);
+}

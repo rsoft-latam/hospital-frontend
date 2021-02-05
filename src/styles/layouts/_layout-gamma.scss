@@ -1,0 +1,424 @@
+.layout.gamma {
+
+  /*
+  Toolbar
+   */
+
+  .toolbar {
+    color: $layout-gamma__color__toolbar;
+    background: $layout-gamma__background__toolbar;
+
+    .menu {
+      margin-left: -52px;
+
+      md-icon {
+        transform: translate3d(0, 0, 0);
+
+        &:hover {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+    }
+
+    .logo {
+      display: block;
+    }
+
+    .search {
+      color: white;
+
+      .mat-input-placeholder {
+        color: white;
+      }
+
+      .mat-input-underline {
+        border-color: white;
+
+        .mat-input-ripple {
+          background-color: white;
+        }
+      }
+    }
+
+    .icon-button .icon {
+      color: $layout-gamma__color__toolbar;
+    }
+  }
+
+  &.boxed {
+
+    .toolbar {
+      padding: 0;
+    }
+
+    .horizontal-navigation {
+      .menu {
+        @include responsivePadding(left);
+        @include responsivePadding(right);
+
+        @include responsivePadding(left, true);
+      }
+    }
+
+    @media screen and (min-width: 1280px + $padding__page) {
+      .horizontal-navigation {
+        .menu {
+          margin-left: -42px;
+        }
+      }
+    }
+
+    @media screen and (min-width: 1280px) and (max-width: 1279px + $padding__page) {
+
+      .horizontal-navigation {
+        .menu {
+          margin-left: -16px;
+        }
+      }
+    }
+
+    @media screen and (max-width: 1280px + $padding__page) {
+      .toolbar {
+        @include responsivePadding(left);
+      }
+    }
+
+    @media screen and (max-width: 959px + $padding__page) {
+
+      .horizontal-navigation {
+        .menu {
+          margin-left: -16px;
+        }
+      }
+    }
+
+    @include lt-sm {
+      .toolbar {
+        @include responsivePadding(left);
+      }
+    }
+
+    @include md {
+      .horizontal-navigation {
+        .menu {
+          margin-left: -18px;
+        }
+      }
+    }
+  }
+
+  /*
+  Sidenav
+ */
+
+  .dropdown-item {
+    color: $layout-beta__color__sidenav-item;
+
+    &:hover {
+      color: #000;
+    }
+
+    &.active {
+      color: #000;
+    }
+
+    .icon, .letter-icon {
+      background: $layout-beta__background__sidenav-item__icon;
+    }
+  }
+
+  .dropdown-item-container {
+
+    > .dropdown-item {
+      &:hover {
+        background: $layout-beta__background-color__sidenav-item__hover;
+      }
+
+      &.active {
+        background: $layout-beta__background-color__sidenav-item__active;
+      }
+    }
+
+    > .sub-menu { // Level 1 aka 1st Dropdown
+      background: $layout-beta__background-color__sidenav-item__level1;
+
+      > .dropdown-item-container {
+
+        > .dropdown-item {
+          padding-left: $padding__dropdown-item__level1;
+
+          &:hover {
+            background: $layout-beta__background-color__sidenav-item__level1__hover;
+          }
+
+          &.active {
+            background: $layout-beta__background-color__sidenav-item__level1__active;
+          }
+        }
+
+        > .sub-menu { // Level 2
+          background: $layout-beta__background-color__sidenav-item__level2;
+
+          > .dropdown-item-container {
+
+            > .dropdown-item {
+              padding-left: $padding__dropdown-item__level2;
+
+              &:hover {
+                background: $layout-beta__background-color__sidenav-item__level2__hover;
+              }
+
+              &.active {
+                background: $layout-beta__background-color__sidenav-item__level2__active;
+              }
+            }
+
+            > .sub-menu { // Level 3
+              background: $layout-beta__background-color__sidenav-item__level3;
+
+              > .dropdown-item-container {
+
+                > .dropdown-item {
+                  padding-left: $padding__dropdown-item__level3;
+
+                  &:hover {
+                    background: $layout-beta__background-color__sidenav-item__level3__hover;
+                  }
+
+                  &.active {
+                    background: $layout-beta__background-color__sidenav-item__level3__active;
+                  }
+                }
+
+                > .sub-menu { // Level 4
+                  background: $layout-beta__background-color__sidenav-item__level4;
+
+                  > .dropdown-item-container {
+
+                    > .dropdown-item {
+                      padding-left: $padding__dropdown-item__level4;
+
+                      &:hover {
+                        background: $layout-beta__background-color__sidenav-item__level4__hover;
+                      }
+
+                      &.active {
+                        background: $layout-beta__background-color__sidenav-item__level4__active;
+                      }
+                    }
+
+                    > .sub-menu { // Level 5
+                      background: $layout-beta__background-color__sidenav-item__level5;
+
+                      > .dropdown-item-container {
+
+                        > .dropdown-item {
+                          padding-left: $padding__dropdown-item__level5;
+
+                          &:hover {
+                            background: $layout-beta__background-color__sidenav-item__level5__hover;
+                          }
+
+                          &.active {
+                            background: $layout-beta__background-color__sidenav-item__level5__active;
+                          }
+                        }
+
+                        .sub-menu { // Infinite Levels after
+                          background: $layout-beta__background-color__sidenav-item__level6;
+
+                          .dropdown-item-container > .dropdown-item {
+                            padding-left: $padding__dropdown-item__level6;
+
+                            &:hover {
+                              background: $layout-beta__background-color__sidenav-item__level6__hover;
+                            }
+
+                            &.active {
+                              background: $layout-beta__background-color__sidenav-item__level6__active;
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .dropdown-item-container .sub-menu {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  /*
+  Sidenav
+   */
+
+  .sidenav {
+    background: $layout-beta__background__sidenav;
+
+    .menu {
+
+      .heading {
+        color: $layout-beta__color__sidenav-heading;
+      }
+    }
+
+  }
+
+  .sidenav-item {
+    color: $layout-beta__color__sidenav-item;
+
+    &:hover {
+      color: #000;
+    }
+
+    &.active {
+      color: #000;
+    }
+
+    .icon, .letter-icon {
+      background: $layout-beta__background__sidenav-item__icon;
+    }
+  }
+
+  .sidenav-item-container {
+    > .sidenav-item {
+      &:hover {
+        background: $layout-beta__background-color__sidenav-item__hover;
+      }
+
+      &.active {
+        background: $layout-beta__background-color__sidenav-item__active;
+      }
+    }
+
+    > .sub-menu { // Level 1 aka 1st Dropdown
+      background: $layout-beta__background-color__sidenav-item__level1;
+
+      .sidenav-item-container > .sidenav-item {
+        padding-left: $padding__sidenav-item__level1;
+
+        &:hover {
+          background: $layout-beta__background-color__sidenav-item__level1__hover;
+        }
+
+        &.active {
+          background: $layout-beta__background-color__sidenav-item__level1__active;
+        }
+      }
+
+      > .sub-menu { // Level 2
+        background: $layout-beta__background-color__sidenav-item__level2;
+
+        .sidenav-item-container > .sidenav-item {
+          padding-left: $padding__sidenav-item__level2;
+
+          &:hover {
+            background: $layout-beta__background-color__sidenav-item__level2__hover;
+          }
+
+          &.active {
+            background: $layout-beta__background-color__sidenav-item__level2__active;
+          }
+        }
+
+        > .sub-menu { // Level 3
+          background: $layout-beta__background-color__sidenav-item__level3;
+
+          .sidenav-item-container > .sidenav-item {
+            padding-left: $padding__sidenav-item__level3;
+
+            &:hover {
+              background: $layout-beta__background-color__sidenav-item__level3__hover;
+            }
+
+            &.active {
+              background: $layout-beta__background-color__sidenav-item__level3__active;
+            }
+          }
+
+          > .sub-menu { // Level 4
+            background: $layout-beta__background-color__sidenav-item__level4;
+
+            .sidenav-item-container > .sidenav-item {
+              padding-left: $padding__sidenav-item__level4;
+
+              &:hover {
+                background: $layout-beta__background-color__sidenav-item__level4__hover;
+              }
+
+              &.active {
+                background: $layout-beta__background-color__sidenav-item__level4__active;
+              }
+            }
+
+            > .sub-menu { // Level 5
+              background: $layout-beta__background-color__sidenav-item__level5;
+
+              .sidenav-item-container > .sidenav-item {
+                padding-left: $padding__sidenav-item__level5;
+
+                &:hover {
+                  background: $layout-beta__background-color__sidenav-item__level5__hover;
+                }
+
+                &.active {
+                  background: $layout-beta__background-color__sidenav-item__level5__active;
+                }
+              }
+
+              .sub-menu { // Infinite Levels after
+                background: $layout-beta__background-color__sidenav-item__level6;
+
+                .sidenav-item-container > .sidenav-item {
+                  padding-left: $padding__sidenav-item__level6;
+
+                  &:hover {
+                    background: $layout-beta__background-color__sidenav-item__level6__hover;
+                  }
+
+                  &.active {
+                    background: $layout-beta__background-color__sidenav-item__level6__active;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sidenav-item-container .sub-menu {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+
+    &:before, &:after {
+      content: " ";
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      z-index: 3;
+    }
+
+    &:before {
+      background: linear-gradient(180deg, rgba(0,0,0,.1) 0, transparent);
+      top: 0;
+    }
+
+    &:after {
+      background: linear-gradient(-180deg, rgba(0,0,0,.1) 0, transparent);
+      bottom: 0;
+    }
+  }
+}

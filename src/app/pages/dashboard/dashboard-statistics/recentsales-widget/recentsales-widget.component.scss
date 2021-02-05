@@ -1,0 +1,23 @@
+@import "../../../../../styles/_var.scss";
+
+.recentsales-widget {
+
+  .avatar-cell {
+    text-align: center;
+    width: 40px;
+    padding-left: 24px;
+    padding-right: 8px;
+  }
+
+  .table {
+    > thead > tr > th {
+      background: #F7F7F7;
+      border-bottom-width: 1px;
+    }
+
+  }
+
+  .chart {
+    @include responsivePadding(top);
+  }
+}

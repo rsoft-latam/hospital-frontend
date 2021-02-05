@@ -1,0 +1,82 @@
+<div class="card border space">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="name">My Meetings</div>
+
+    <div class="actions" fxLayout="row">
+      <button type="button" mat-icon-button [matMenuTriggerFor]="cardMenuRef">
+        <mat-icon class="icon">more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="content" fxLayout="column">
+    <div class="status" fxLayout="column">
+      <div class="text">2 meetings coming up today</div>
+    </div>
+
+    <div class="divider reverse"></div>
+
+    <div class="meetings" fxLayout="column">
+      <div class="category">
+        <div class="heading">Going</div>
+        <div class="meeting" fxLayout="row" fxLayoutAlign="start center">
+          <div class="status-circle accent"></div>
+          <div fxLayout="column">
+            <div class="name">UI Redesign</div>
+            <div class="extra">in 30 min (4 of 4 going)</div>
+          </div>
+          <span fxFlex></span>
+          <div fxLayout="row" fxLayoutGap="8px">
+            <button type="button" mat-button color="primary">Add Notes</button>
+            <button type="button" mat-raised-button color="primary">Done</button>
+          </div>
+        </div>
+        <div class="meeting" fxLayout="row" fxLayoutAlign="start center">
+          <div class="status-circle donut orange"></div>
+          <div fxLayout="column">
+            <div class="name">Business plan</div>
+            <div class="extra">15:00 (6 of 10 going)</div>
+          </div>
+          <span fxFlex></span>
+          <div fxLayout="row" fxLayoutGap="8px">
+            <button type="button" mat-button color="primary">Add Notes</button>
+            <button type="button" mat-raised-button color="primary">Done</button>
+          </div>
+        </div>
+      </div>
+      <div class="divider reverse"></div>
+      <div class="category">
+        <div class="heading">Invited</div>
+        <div class="meeting" fxLayout="row" fxLayoutAlign="space-between center">
+          <div fxLayout="column">
+            <div class="name">Weekly talk with Jonah</div>
+            <div class="extra">17:30</div>
+          </div>
+          <div class="actions" fxLayout="row">
+            <button type="button" mat-raised-button color="primary">Accept</button>
+            <button type="button" mat-button color="warn">Decline</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer" fxLayout="row" fxLayoutAlign="end center">
+    <button type="button" mat-button color="primary">NEW MEETING</button>
+  </div>
+</div>
+
+<mat-menu #cardMenuRef="matMenu">
+  <button mat-menu-item>
+    <mat-icon>refresh</mat-icon>
+    <span>Refresh</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Remove Widget</span>
+  </button>
+</mat-menu>

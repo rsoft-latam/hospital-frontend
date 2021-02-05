@@ -1,0 +1,53 @@
+@import "../../../../styles/_var.scss";
+
+.sidenav-item {
+  position: relative;
+  padding: 0 $padding-right__sidenav-item 0 $padding-left__sidenav-item;
+  text-decoration: none;
+  height: 48px;
+  color: $layout-alpha__color__sidenav-item;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color .1s;
+
+  .icon {
+    height: 38px;
+    width: 38px;
+    line-height: 38px;
+    font-size: 18px;
+    border-radius: 50%;
+    text-align: center;
+  }
+
+  .letter-icon {
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    font-size: 12px;
+    text-align: center;
+    border-radius: 50%;
+    margin-right: 5px;
+  }
+
+  .dropdown-indicator {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 16px;
+    margin-right: 6px;
+    transform: rotate(-90deg);
+    transition: transform .25s cubic-bezier(.25,.8,.25,1);
+
+    &.rotate {
+      transform: rotate(0);
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.sub-menu {
+  transition: height .4s cubic-bezier(.35, 0, .25, 1);
+}

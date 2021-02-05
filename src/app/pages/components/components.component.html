@@ -1,0 +1,66 @@
+<div class="page components">
+
+  <elastic-page-header [height]="'176px'" background="url(/assets/img/demo/headers/pattern-3.png)" [reverse]="true"></elastic-page-header>
+
+  <div class="container">
+
+    <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="24px">
+      <div class="sticky-menu" fxFlex #sticky fxHide fxShow.gt-sm>
+        <mat-list class="list">
+          <h3 matSubheader>Components</h3>
+          <mat-list-item class="list-item" (click)="scrollTo(autocomplete)" matRipple>
+            <h4 matLine>Autocomplete</h4>
+          </mat-list-item>
+          <mat-list-item class="list-item" (click)="scrollTo(button)" matRipple>
+            <h4 matLine>Button</h4>
+          </mat-list-item>
+          <mat-list-item class="list-item" (click)="scrollTo(card)" matRipple>
+            <h4 matLine>Card</h4>
+          </mat-list-item>
+          <mat-list-item class="list-item" (click)="scrollTo(dialog)" matRipple>
+            <h4 matLine>Dialog</h4>
+          </mat-list-item>
+          <mat-list-item class="list-item" (click)="scrollTo(gridlist)" matRipple>
+            <h4 matLine>Grid List</h4>
+          </mat-list-item>
+          <mat-list-item class="list-item" (click)="scrollTo(list)" matRipple>
+            <h4 matLine>List</h4>
+          </mat-list-item>
+          <mat-list-item class="list-item" (click)="scrollTo(menu)" matRipple>
+            <h4 matLine>Menu</h4>
+          </mat-list-item>
+          <mat-list-item class="list-item" (click)="scrollTo(progress)" matRipple>
+            <h4 matLine>Progress</h4>
+          </mat-list-item>
+          <mat-list-item class="list-item" (click)="scrollTo(slider)" matRipple>
+            <h4 matLine>Slider</h4>
+          </mat-list-item>
+          <mat-list-item class="list-item" (click)="scrollTo(snackbar)" matRipple>
+            <h4 matLine>Snack Bar</h4>
+          </mat-list-item>
+          <mat-list-item class="list-item" (click)="scrollTo(tooltip)" matRipple>
+            <h4 matLine>Tooltip</h4>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div fxLayout="column" fxFlex="100%" fxFlex.gt-sm="85%">
+        <elastic-breadcrumbs [currentPage]="'Components'" [header]="'primary'"></elastic-breadcrumbs>
+
+        <div fxLayout="column" fxLayoutGap="24px">
+          <div #autocomplete><elastic-components-autocomplete></elastic-components-autocomplete></div>
+          <div #button><elastic-components-button></elastic-components-button></div>
+          <div #card><elastic-components-card></elastic-components-card></div>
+          <div #dialog><elastic-components-dialog></elastic-components-dialog></div>
+          <div #gridlist><elastic-components-gridlist></elastic-components-gridlist></div>
+          <div #list><elastic-components-list></elastic-components-list></div>
+          <div #menu><elastic-components-menu></elastic-components-menu></div>
+          <div #progress><elastic-components-progress></elastic-components-progress></div>
+          <div #slider><elastic-components-slider></elastic-components-slider></div>
+          <div #snackbar><elastic-components-snackbar></elastic-components-snackbar></div>
+          <div #tooltip><elastic-components-tooltip></elastic-components-tooltip></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

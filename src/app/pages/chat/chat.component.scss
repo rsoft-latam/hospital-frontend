@@ -1,0 +1,16 @@
+@import "../../../styles/_var.scss";
+
+.page-chat {
+  ::ng-deep .mat-drawer-content {
+    margin-left: 300px !important;
+
+    @include lt-sm {
+      margin-left: 0 !important;
+    }
+  }
+
+  ::ng-deep .mat-drawer {
+    width: 300px !important;
+  }
+
+}

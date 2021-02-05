@@ -1,0 +1,52 @@
+<div class="card border space">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="name">My Tasks</div>
+
+    <div class="actions" fxLayout="row">
+      <button type="button" mat-icon-button [matMenuTriggerFor]="cardMenuRef">
+        <mat-icon class="icon">more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="content" fxLayout="column">
+    <div class="task-container" fxLayout="column" *ngFor="let task of tasks" [@listFade]="true">
+      <div class="task"
+           fxLayout="row" fxLayoutAlign="space-between center"
+           [class.done]="task.done" >
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <mat-checkbox class="checkbox" [(ngModel)]="task.done" color="primary"></mat-checkbox>
+          <div class="name">{{ task.name }}</div>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="end center">
+          <button class="archive" *ngIf="task.done" (click)="archive(task)" type="button" mat-icon-button>
+            <mat-icon>archive</mat-icon>
+          </button>
+          <div class="date">{{ task.date }}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer" fxLayout="row" fxLayoutAlign="end center">
+    <button type="button" mat-button color="primary">VIEW ALL TASKS</button>
+    <button type="button" mat-button color="primary">ADD TASK</button>
+  </div>
+</div>
+
+<mat-menu #cardMenuRef="matMenu">
+  <button mat-menu-item>
+    <mat-icon>refresh</mat-icon>
+    <span>Refresh</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Remove Widget</span>
+  </button>
+</mat-menu>

@@ -1,0 +1,58 @@
+<!--suppress ALL -->
+<div class="datatable">
+
+  <elastic-page-header [height]="'146px'" background="url(/assets/img/demo/headers/pattern-3.png)"
+                  [reverse]="true"></elastic-page-header>
+
+  <div class="container">
+
+    <elastic-breadcrumbs [currentPage]="'Datatable'" [names]="['Tables']" [header]="'primary'"></elastic-breadcrumbs>
+
+    <div class="example-container mat-elevation-z8">
+      <div class="example-loading-shade"
+           *ngIf="dataSource.isLoadingResults || dataSource.isRateLimitReached">
+        <mat-spinner *ngIf="dataSource.isLoadingResults"></mat-spinner>
+        <div class="example-rate-limit-reached" *ngIf="dataSource.isRateLimitReached">
+          GitHub's API rate limit has been reached. It will be reset in one minute.
+        </div>
+      </div>
+
+      <mat-table #table [dataSource]="dataSource" class="example-table"
+                matSort matSortActive="created" matSortDisableClear matSortDirection="asc">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Number Column -->
+        <ng-container cdkColumnDef="number">
+          <mat-header-cell *cdkHeaderCellDef> Number </mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.number}} </mat-cell>
+        </ng-container>
+
+        <!-- Title Column -->
+        <ng-container cdkColumnDef="title">
+          <mat-header-cell *cdkHeaderCellDef> Title </mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.title}} </mat-cell>
+        </ng-container>
+
+        <!-- State Column -->
+        <ng-container cdkColumnDef="state">
+          <mat-header-cell *cdkHeaderCellDef> State </mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.state}} </mat-cell>
+        </ng-container>
+
+        <!-- Created Column -->
+        <ng-container cdkColumnDef="created">
+          <mat-header-cell *cdkHeaderCellDef mat-sort-header disableClear="true"> Created </mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.created.calendar()}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator [length]="dataSource.resultsLength"
+                    [pageSize]="10">
+      </mat-paginator>
+    </div>
+  </div>
+</div>

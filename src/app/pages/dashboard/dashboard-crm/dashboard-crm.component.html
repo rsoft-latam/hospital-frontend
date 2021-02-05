@@ -1,0 +1,44 @@
+<div class="dashboard-crm">
+
+  <elastic-page-header *ngIf="!hideHeader" [height]="'170px'" background="url(/assets/img/demo/headers/pattern-3.png)"
+                  [reverse]="true"></elastic-page-header>
+
+  <div class="container">
+
+    <elastic-breadcrumbs *ngIf="!hideHeader" currentPage="Dashboard - CRM" header="primary"></elastic-breadcrumbs>
+
+
+    <div fxLayout="column" fxLayout.gt-sm="row"
+         fxLayoutAlign.gt-sm="start start"
+         [fxLayoutGap]="layoutGap['lt-md']" [fxLayoutGap.gt-md]="layoutGap['gt-md']">
+      <div fxLayout="column"
+           [fxLayoutGap]="layoutGap['lt-md']" [fxLayoutGap.gt-md]="layoutGap['gt-md']"
+           [fxFlex]="flexWidth['lt-sm']" [fxFlex.gt-sm]="flexWidth['gt-sm']" [fxFlex.gt-md]="flexWidth['gt-md']">
+        <div class="widget">
+          <elastic-tasks-widget></elastic-tasks-widget>
+        </div>
+        <div class="widget">
+          <elastic-usertable-widget></elastic-usertable-widget>
+        </div>
+        <div class="widget">
+          <elastic-message-widget></elastic-message-widget>
+        </div>
+      </div>
+
+      <div fxLayout="column"
+           [fxLayoutGap]="layoutGap['lt-md']" [fxLayoutGap.gt-md]="layoutGap['gt-md']"
+           [fxFlex]="flexWidth['lt-sm']" [fxFlex.gt-sm]="flexWidth['gt-sm']" [fxFlex.gt-md]="flexWidth['gt-md']">
+        <div class="widget">
+          <elastic-meeting-widget></elastic-meeting-widget>
+        </div>
+        <div class="widget">
+          <elastic-project-widget></elastic-project-widget>
+        </div>
+        <div class="widget">
+          <elastic-market-widget></elastic-market-widget>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

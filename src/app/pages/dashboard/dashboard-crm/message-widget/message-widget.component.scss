@@ -1,0 +1,49 @@
+@import "../../../../../styles/_var.scss";
+
+.card {
+  .content {
+    padding: 0;
+    @include responsivePaddingHalf(top);
+    @include responsivePaddingHalf(bottom);
+
+    .list {
+
+      .list-item {
+        cursor: pointer;
+        position: relative;
+
+        @include responsivePadding(left);
+        @include responsivePadding(right);
+        @include responsivePaddingHalf(top);
+        @include responsivePaddingHalf(bottom);
+
+        .list-image {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+        }
+
+        .list-content {
+          @include responsivePaddingHalf(left);
+          max-width: calc(100% - 40px);
+
+          .list-message {
+            color: $color__text-dark;
+            font-size: 14px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            margin-top: 4px;
+
+            .status-circle {
+              vertical-align: middle;
+              margin-right: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+

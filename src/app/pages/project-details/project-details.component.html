@@ -1,0 +1,132 @@
+<div class="project-details">
+
+  <elastic-page-header [height]="'180px'" background="url(/assets/img/demo/headers/pattern-3.png)"
+                  [reverse]="true"></elastic-page-header>
+
+  <div class="container">
+
+    <elastic-breadcrumbs [currentPage]="'Project Details'" [names]="['Projects']" [header]="'primary'"></elastic-breadcrumbs>
+
+    <div fxLayout="column" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+      <div class="splash"
+           fxLayout="column" fxLayout.gt-sm="row">
+
+        <div class="left" [style.background]="project.background"
+             fxLayout="column"
+             fxFlex.gt-xs="200px" fxFlex.gt-sm="300px">
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <button class="options" type="button" mat-icon-button>
+              <mat-icon>more_horiz</mat-icon>
+            </button>
+          </div>
+          <div class="codename"
+               fxLayout="row" fxLayoutAlign="center center" fxFlex>
+            <div>{{ project.codename }}</div>
+          </div>
+        </div>
+
+        <div class="right" fxFlex="auto" fxFlex.gt-sm
+             fxLayout="column" fxLayoutAlign.gt-sm="space-between">
+          <div class="splash-title">Project Information</div>
+
+          <div class="details"
+               fxLayout="column" fxLayout.gt-sm="row"
+               fxLayoutAlign.gt-sm="space-between" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+            <div class="detail">
+              <div class="name">Project Name</div>
+              <div class="value">{{ project.name }}</div>
+            </div>
+
+            <div class="detail">
+              <div class="name">Due Date</div>
+              <div class="value">{{ project.date.format('LL') }}</div>
+            </div>
+
+            <div class="detail">
+              <div class="name">Labels</div>
+              <div class="value">
+                <mat-chip-list>
+                  <mat-chip *ngFor="let label of project.labels">{{ label }}</mat-chip>
+                </mat-chip-list>
+              </div>
+            </div>
+
+            <div class="detail">
+              <div class="name">Members</div>
+              <div class="value" fxLayout="row">
+                <div class="member" *ngFor="let member of [1,2,3]">
+                  <img matTooltip="Lina Miller" [src]="'assets/img/demo/avatars/' + member + '.png'">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider reverse"></div>
+
+          <div class="right-bottom">
+            <div class="description-title">Project Description</div>
+            <div class="description">
+              <p>
+                Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+              </p>
+              <p>
+                Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="progress-cards"
+           fxLayout="column" fxLayout.gt-sm="row"
+           fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+        <div class="progress-card"
+             fxLayout="row" fxFlex="auto" fxFlex.gt-sm>
+          <div class="circle" fxFlex="auto" fxFlex.gt-sm>
+            <mat-progress-spinner mode="determinate" value="78"></mat-progress-spinner>
+          </div>
+          <div class="progress-details" fxLayout="column">
+            <div class="value" fxFlexAlign="end">6 Days</div>
+            <div class="description" fxFlexAlign="end">Remaining until deadline</div>
+            <div fxLayout="row" fxLayoutAlign="end" fxFlex="auto" fxFlexAlign="end">
+              <button class="arrow" type="button" mat-icon-button fxFlexAlign="end">
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-card" fxLayout="row" fxFlex="auto" fxFlex.gt-sm>
+          <div class="circle" fxFlex="auto" fxFlex.gt-sm>
+            <mat-progress-spinner color="accent" mode="determinate" value="71"></mat-progress-spinner>
+          </div>
+          <div class="progress-details" fxLayout="column">
+            <div class="value" fxFlexAlign="end">97 Issues</div>
+            <div class="description" fxFlexAlign="end">Remaining till audit</div>
+            <div fxLayout="row" fxLayoutAlign="end" fxFlex="auto" fxFlexAlign="end">
+              <button class="arrow" type="button" mat-icon-button fxFlexAlign="end">
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-card" fxLayout="row" fxFlex="auto" fxFlex.gt-sm>
+          <div class="circle" fxFlex="auto" fxFlex.gt-sm>
+            <mat-progress-spinner color="warn" mode="determinate" value="89"></mat-progress-spinner>
+          </div>
+          <div class="progress-details" fxLayout="column">
+            <div class="value" fxFlexAlign="end">2 Tasks</div>
+            <div class="description" fxFlexAlign="end">Left until next milestone</div>
+            <div fxLayout="row" fxLayoutAlign="end" fxFlex="auto" fxFlexAlign="end">
+              <button class="arrow" type="button" mat-icon-button fxFlexAlign="end">
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

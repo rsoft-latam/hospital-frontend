@@ -1,0 +1,27 @@
+@import "../../../styles/_var.scss";
+
+:host {
+  display: block;
+  background: #fff url('/assets/img/demo/backgrounds/pattern-1.jpg') no-repeat center center;
+  background-size: cover;
+  min-height: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  position: absolute;
+}
+
+h1 {
+  color: white;
+  text-shadow: 0 0 10px black;
+}
+
+.container {
+  @include responsivePadding();
+  margin: 0 auto;
+}
+
+.editor-container {
+  background: white;
+  height: 300px;
+  overflow: hidden;
+}

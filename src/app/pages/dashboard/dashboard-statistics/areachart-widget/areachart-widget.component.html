@@ -1,0 +1,37 @@
+<div class="areachart-widget card border space">
+  <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="name" fxLayout="row">
+      <div>Revenue this year</div>
+      <div class="change decrease" fxLayout="row" fxLayoutAlign="start center">
+        <div class="percent">-5%</div>
+        <mat-icon class="change-icon">trending_down</mat-icon>
+      </div>
+    </div>
+
+    <div class="actions" fxLayout="row">
+      <button type="button" mat-icon-button [matMenuTriggerFor]="cardMenuRef">
+        <mat-icon class="icon">more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="content">
+    <canvas width="150" height="90" #canvas></canvas>
+  </div>
+
+</div>
+
+<mat-menu #cardMenuRef="matMenu">
+  <button mat-menu-item>
+    <mat-icon>refresh</mat-icon>
+    <span>Refresh</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Remove Widget</span>
+  </button>
+</mat-menu>

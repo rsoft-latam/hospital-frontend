@@ -1,0 +1,13 @@
+.quickpanel-container, .sidenav-container {
+  overflow-y: hidden !important;
+}
+
+.quickpanel .mat-tab-body-wrapper {
+  height: 100%;
+}
+
+.quickpanel .mat-tab-labels {
+  .mat-tab-label {
+    flex: 1;
+  }
+}

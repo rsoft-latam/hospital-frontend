@@ -1,0 +1,508 @@
+<div class="form-elements">
+
+  <elastic-page-header [height]="'180px'" background="url(/assets/img/demo/headers/mac-1.png)" [reverse]="true"></elastic-page-header>
+
+  <div class="container">
+
+    <elastic-breadcrumbs [currentPage]="'Form Elements'" [names]="['Forms']" [header]="'primary'"></elastic-breadcrumbs>
+
+    <div fxLayout="column" fxLayoutGap="24px">
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start" fxLayoutGap="24px">
+        <div class="basic-forms card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Basic Forms</div>
+              <div class="sub-title">Simple Material Form Input Elements</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showBasicFormSource = !showBasicFormSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showBasicFormSource">
+              <code class="html" vrHighlight [innerHTML]="basicFormSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <mat-form-field>
+                <input matInput placeholder="Company" type="text" required>
+              </mat-form-field>
+
+              <div fxLayout.gt-sm="row" fxLayoutGap.gt-sm="16px">
+                <mat-form-field fxFlex>
+                  <input matInput placeholder="First Name" type="text">
+                </mat-form-field>
+
+                <mat-form-field fxFlex>
+                  <input matInput placeholder="Last Name" type="text" required>
+                </mat-form-field>
+              </div>
+
+              <mat-form-field>
+                <input matInput placeholder="Password" type="password" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput #lengthHint maxlength="10" placeholder="Hint Label and Max Length" type="text" required>
+                <mat-hint align="start">Try to type in more than 10 letters</mat-hint>
+                <mat-hint align="end">{{ lengthHint.value.length }}/10</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Disabled" disabled>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="advanced-forms card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Advanced Forms</div>
+              <div class="sub-title">Form Input Variations</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showAdvancedFormSource = !showAdvancedFormSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showAdvancedFormSource">
+              <code class="html" vrHighlight [innerHTML]="advancedFormSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="16px">
+                <mat-form-field color="primary" fxFlex.gt-sm>
+                  <input matInput placeholder="Primary Color" type="text">
+                </mat-form-field>
+
+                <mat-form-field color="accent" fxFlex.gt-sm>
+                  <input matInput placeholder="Accent Color" type="text">
+                </mat-form-field>
+
+                <mat-form-field color="warn" fxFlex.gt-sm>
+                  <input matInput placeholder="Warn Color" type="text">
+                </mat-form-field>
+              </div>
+
+              <mat-form-field>
+                <input matInput placeholder="Username" type="text" value="DavidSmith">
+                <mat-icon matSuffix>person</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field fxFlex.gt-sm>
+                <span matPrefix>+1 &nbsp;</span>
+                <input matInput placeholder="Mobile Phone" type="text" required>
+                <mat-icon matSuffix>smartphone</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field floatPlaceholder="never">
+                <input matInput placeholder="No Floating Placeholder" type="text" required>
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput [matDatepicker]="datepickerRef" placeholder="Date">
+                <mat-datepicker-toggle matSuffix [for]="datepickerRef"></mat-datepicker-toggle>
+                <mat-hint>Click on the icon to the right for a Datepicker</mat-hint>
+              </mat-form-field>
+              <mat-datepicker #datepickerRef></mat-datepicker>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start" fxLayoutGap="24px">
+        <div class="form-theming card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Form Theming</div>
+              <div class="sub-title">Style Components using the Theme API</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showFormThemingSource = !showFormThemingSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showFormThemingSource">
+              <code class="html" vrHighlight [innerHTML]="formThemingSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <p class="description">By using the Theme API all Form Elements can be styled simply with either the primary, accent or warn color. Focus the inputs below to see the colors.</p>
+
+              <mat-form-field color="primary">
+                <input matInput placeholder="Primary Color">
+              </mat-form-field>
+
+              <mat-form-field color="accent">
+                <input matInput placeholder="Accent Color">
+              </mat-form-field>
+
+              <mat-form-field color="warn">
+                <input matInput placeholder="Warn Color">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-prefix-suffix card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Form Prefix/Suffix</div>
+              <div class="sub-title">Prefix and Suffix text or icons</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showFormPrefixSuffixSource = !showFormPrefixSuffixSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showFormPrefixSuffixSource">
+              <code class="html" vrHighlight [innerHTML]="formPrefixSuffixSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <p class="description">Add a Prefix and Suffix to an input field, from text to icons or symbols, anything and any element can be set as prefix or suffix.</p>
+
+              <mat-form-field>
+                <span matPrefix>+1 &nbsp;</span>
+                <input matInput placeholder="Input with prefix text">
+              </mat-form-field>
+
+              <mat-form-field>
+                <input matInput placeholder="Input with suffix icon">
+                <mat-icon matSuffix>menu</mat-icon>
+              </mat-form-field>
+
+              <mat-form-field>
+                <span matPrefix>http:// &nbsp;</span>
+                <input matInput placeholder="Input with prefix text and suffix icon">
+                <mat-icon matSuffix>camera</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-hint-label card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Form Hint Label</div>
+              <div class="sub-title">Hints for explanations or extra info</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showFormHintLabelSource = !showFormHintLabelSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showFormHintLabelSource">
+              <code class="html" vrHighlight [innerHTML]="formHintLabelSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <p class="description">When you need to display additional information to the user you can use Hint Labels to display information appropriately.</p>
+
+              <mat-form-field>
+                <input matInput placeholder="Email Address">
+                <mat-hint>e.g. david@example.com</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field floatPlaceholder="never">
+                <input matInput #hintLabelInputRef placeholder="Domain Name">
+                <mat-hint align="end">http://{{ hintLabelInputRef.value || "company" }}.example.com</mat-hint>
+              </mat-form-field>
+
+              <mat-form-field floatPlaceholder="never">
+                <input matInput #hintLabelInputLengthRef maxlength="10" placeholder="Dynamic Hint Label">
+                <mat-hint align="start">Try to type in more than 10 letters</mat-hint>
+                <mat-hint align="end">{{ hintLabelInputLengthRef.value.length }}/10</mat-hint>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start" fxLayoutGap="24px">
+        <div class="form-checkbox card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Form Checkbox</div>
+              <div class="sub-title">Select and deselect simply</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showFormCheckboxSource = !showFormCheckboxSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showFormCheckboxSource">
+              <code class="html" vrHighlight [innerHTML]="formCheckboxSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <p class="description">Allow for simple selecting and deselecting of options.</p>
+
+              <div fxLayout="column" fxLayoutGap="8px">
+                <mat-checkbox [checked]="true">Stay signed in</mat-checkbox>
+                <mat-checkbox [indeterminate]="true">Indeterminate</mat-checkbox>
+                <mat-checkbox [checked]="false" align="end">Align end</mat-checkbox>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="form-checkbox-theming card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Form Checkbox Theming</div>
+              <div class="sub-title">Style Components using the Theme API</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showFormCheckboxThemingSource = !showFormCheckboxThemingSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showFormCheckboxThemingSource">
+              <code class="html" vrHighlight [innerHTML]="formCheckboxThemingSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <p class="description">Style checkbox elements with the Theme API.</p>
+
+              <div fxLayout="column" fxLayoutGap="8px">
+                <mat-checkbox [checked]="true" color="primary">Primary Color</mat-checkbox>
+                <mat-checkbox [checked]="true" color="accent">Accent Color</mat-checkbox>
+                <mat-checkbox [checked]="true" color="warn">Warn Color</mat-checkbox>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start stretch" fxLayoutGap="24px">
+        <div class="form-select card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Form Select</div>
+              <div class="sub-title">Select between multiple options</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showFormSelectSource = !showFormSelectSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showFormSelectSource">
+              <code class="html" vrHighlight [innerHTML]="formSelectSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <p class="description">A intuitive select component that displays the current position you are at and has smooth animations.</p>
+
+              <div style="margin-top: 16px;">
+                <mat-form-field>
+                  <mat-select placeholder="Favorite fruit">
+                    <mat-option value="Apples">Apples</mat-option>
+                    <mat-option value="Peaches">Peaches</mat-option>
+                    <mat-option value="Bananas">Bananas</mat-option>
+                    <mat-option value="Mango">Mango</mat-option>
+                    <mat-option value="Apples">Cucumber</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <br/>
+                <br/>
+
+                <mat-form-field [color]="selectModel">
+                  <mat-select placeholder="Colors" [(ngModel)]="selectModel">
+                    <mat-option value="primary">Primary Color</mat-option>
+                    <mat-option value="accent">Accent Color</mat-option>
+                    <mat-option value="warn">Warn Color</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-datepicker card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Form Datepicker</div>
+              <div class="sub-title">Easily select a date for inputs</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showFormDatepickerSource = !showFormDatepickerSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showFormDatepickerSource">
+              <code class="html" vrHighlight [innerHTML]="formDatepickerSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <p class="description">A Material styled Datepicker that allows for easy selection of any date with any format.</p>
+
+              <div style="margin-top: 16px;">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="formDatepickerRef" placeholder="Select your date">
+                  <mat-datepicker-toggle matSuffix [for]="formDatepickerRef"></mat-datepicker-toggle>
+                  <mat-hint>Click on the icon to the right for the Datepicker</mat-hint>
+                </mat-form-field>
+                <mat-datepicker #formDatepickerRef></mat-datepicker>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-slider card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Form Slider</div>
+              <div class="sub-title">Choose a value from a range</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showFormSliderSource = !showFormSliderSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showFormSliderSource">
+              <code class="html" vrHighlight [innerHTML]="formSliderSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <p class="description">An alternative component to the range input with better usability and drag & drop + keyboard support.</p>
+
+              <div fxLayout="column">
+                <mat-slider [min]="0" [max]="100" [step]="1" [thumbLabel]="true" [tickInterval]="10" value="36"></mat-slider>
+
+                <div fxLayout="row">
+                  <mat-slider fxFlex [min]="0" [max]="10" [step]="1" value="6" color="primary"></mat-slider>
+                  <mat-slider fxFlex fxHide fxShow.gt-lg [min]="0" [max]="10" [step]="1" value="8" color="accent"></mat-slider>
+                  <mat-slider fxFlex [min]="0" [max]="10" [step]="1" value="7" color="warn"></mat-slider>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="start start" fxLayoutGap="24px">
+        <div class="form-radio card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Form Radio Button</div>
+              <div class="sub-title">Let users decide between options</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showFormRadioSource = !showFormRadioSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showFormRadioSource">
+              <code class="html" vrHighlight [innerHTML]="formRadioSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <p class="description">When you need a user to decide between multiple options and have him only choose one, you can use a radio button.</p>
+
+              <div style="margin-top: 12px;" fxLayout="column" fxLayoutGap="16px">
+                <mat-radio-group fxLayout="row" fxLayoutGap="16px">
+                  <mat-radio-button value="Apples" [checked]="true">Apples</mat-radio-button>
+                  <mat-radio-button value="Peaches">Peaches</mat-radio-button>
+                </mat-radio-group>
+                <mat-radio-group fxLayout="row" fxLayoutGap="16px" color="accent">
+                  <mat-radio-button value="primary" [checked]="true" color="primary">Primary Color</mat-radio-button>
+                  <mat-radio-button value="accent" color="accent">Accent Color</mat-radio-button>
+                  <mat-radio-button value="warn" color="warn">Warn Color</mat-radio-button>
+                </mat-radio-group>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-slide-toggle card alternative" fxFlex="100%" fxFlex.gt-sm>
+          <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+            <div>
+              <div class="title">Form Slide Toggle</div>
+              <div class="sub-title">Slide between two values</div>
+            </div>
+            <div class="actions" fxLayout="row">
+              <button type="button" mat-icon-button
+                      matTooltip="Show Code" (click)="showFormSlideToggleSource = !showFormSlideToggleSource">
+                <mat-icon>code</mat-icon>
+              </button>
+            </div>
+          </div>
+
+          <div class="content" fxLayout="column">
+            <div class="source" *ngIf="showFormSlideToggleSource">
+              <code class="html" vrHighlight [innerHTML]="formSlideToggleSource"></code>
+            </div>
+
+            <div class="result" fxLayout="column">
+              <p class="description">Allow the user to slide toggle an option or a value. You can either click or you can drag & drop the slide to change its state.</p>
+
+              <div fxLayout="row" fxLayoutAlign="space-between">
+                <div fxLayout="column" fxLayoutGap="8px">
+                  <mat-slide-toggle [checked]="false">Slide Me</mat-slide-toggle>
+                  <mat-slide-toggle [checked]="false">Drag & Drop</mat-slide-toggle>
+                  <mat-slide-toggle [checked]="true">I Agree</mat-slide-toggle>
+                </div>
+                <div fxLayout="column" fxLayoutAlign="start end" fxLayoutGap="8px">
+                  <mat-slide-toggle [checked]="true" color="primary" labelPosition="before">Primary Color</mat-slide-toggle>
+                  <mat-slide-toggle [checked]="true" color="accent" labelPosition="before">Accent Color</mat-slide-toggle>
+                  <mat-slide-toggle [checked]="true" color="warn" labelPosition="before">Warn Color</mat-slide-toggle>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

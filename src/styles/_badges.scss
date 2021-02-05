@@ -1,0 +1,20 @@
+.badge {
+  padding: 3px 8px;
+  border-radius: 12px;
+  line-height: normal;
+
+  &.primary {
+    background: mat-color($color-primary);
+    color: mat-color($color-primary, default-contrast);
+  }
+
+  &.accent {
+    background: mat-color($color-accent);
+    color: mat-color($color-accent, default-contrast);
+  }
+
+  &.warn {
+    background: mat-color($color-warn);
+    color: mat-color($color-warn, default-contrast);
+  }
+}

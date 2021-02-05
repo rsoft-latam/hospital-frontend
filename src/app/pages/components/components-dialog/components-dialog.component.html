@@ -1,0 +1,28 @@
+<div class="dialog group card alternative no-border mat-elevation-z2" fxLayout="column" fxLayoutGap="24px">
+  <div class="group-title">Material Dialog</div>
+  <div class="divider reverse"></div>
+  <div class="section" fxLayout="column" fxLayout.gt-md="row" fxLayoutAlign="start stretch" fxLayoutAlign.gt-md="start start" fxLayoutGap="16px" fxLayoutGap.gt-md="24px">
+    <div fxFlex.gt-md>
+      <div fxLayout="column">
+        <div class="section-title">Dialog</div>
+        <div class="section-tag">&lt;md-dialog&gt;</div>
+        <p>MdDialogs can be used to open modal dialogs with Material Design styling and animations.</p>
+      </div>
+    </div>
+    <mat-tab-group class="preview-tabs mat-elevation-z2" fxFlex="auto" fxFlex.gt-md="70%">
+      <mat-tab label="PREVIEW">
+        <div class="preview" fxLayout="row" fxLayoutAlign="center center">
+          <mat-card fxFlex="80%" fxFlex.sm="90%">
+            <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+              <button mat-raised-button type="button" (click)="openDialog()" color="primary">Open Dialog</button>
+              <p *ngIf="result">You chose: {{ result }}</p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </mat-tab>
+      <mat-tab label="HTML">
+        <code [innerHTML]="dialogHTML" vrHighlight class="html"></code>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

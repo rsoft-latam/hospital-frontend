@@ -1,0 +1,42 @@
+<div class="user-button-container" #userButton (vrClickOutside)="onClickOutside()">
+  <button class="user-button" mat-button (click)="toggleDropdown()" [class.open]="isOpen">
+    <span fxLayout="row" fxLayoutAlign="start center">
+      <span class="avatar-container" fxLayout="row" fxLayoutAlign="start center">
+        <img class="avatar" src="assets/img/demo/avatars/noavatar.png">
+        <i class="status primary"></i>
+      </span>
+      <span class="name" fxHide fxShow.gt-sm>David Smith</span>
+      <mat-icon class="icon" fxHide fxShow.gt-sm>keyboard_arrow_down</mat-icon>
+    </span>
+  </button>
+
+  <div class="dropdown mat-elevation-z1" [class.open]="isOpen">
+    <div class="content">
+      <div class="list">
+        <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple [routerLink]="['/pages/profile']">
+          <mat-icon class="icon">account_circle</mat-icon>
+          <span class="title">Profile</span>
+        </div>
+        <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple [routerLink]="['/pages/profile']">
+          <mat-icon class="icon">settings</mat-icon>
+          <span class="title">Settings</span>
+        </div>
+        <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">person</mat-icon>
+          <span class="title">Online</span>
+
+          <div class="second-level-dropdown"></div>
+        </div>
+        <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple>
+          <mat-icon class="icon">help</mat-icon>
+          <span class="title">Help</span>
+        </div>
+        <div class="divider"></div>
+        <div class="item" fxLayout="row" fxLayoutAlign="start center" matRipple [routerLink]="['/auth/login']">
+          <mat-icon class="icon">exit_to_app</mat-icon>
+          <span class="title">Logout</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

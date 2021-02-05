@@ -1,0 +1,32 @@
+.quickpanel {
+  width: 330px;
+  min-width: 330px;
+  max-width: 100vw;
+  height: 100%;
+}
+
+.overflow-container {
+  height: 100%;
+  overflow-x: hidden;
+  position: absolute;
+  width: 100%;
+}
+
+.overview {
+  padding: 24px;
+}
+
+p {
+  color: #444;
+  margin: 0 0 12px;
+}
+
+.h1 {
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+h4 {
+  color: #212121;
+}

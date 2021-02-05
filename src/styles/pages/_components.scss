@@ -1,0 +1,65 @@
+.page.components {
+
+  @include responsivePadding();
+
+  .preview {
+    background: #F2F2F2;
+
+    button {
+      //margin: 12px;
+    }
+
+    md-card {
+      margin: 24px 0;
+    }
+
+    md-card + md-card {
+      margin: 0 0 24px;
+    }
+
+    md-card > md-card-content > * {
+      margin: 10px 5px;
+    }
+  }
+
+  .sticky-menu {
+    position: relative;
+    margin-top: 180px;
+
+    .list {
+
+      .list-item {
+        cursor: pointer;
+        position: relative;
+      }
+    }
+  }
+
+  .group {
+
+    .group-title {
+      font-size: 26px;
+    }
+  }
+
+  .section {
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .section-tag {
+      font-weight: bold;
+    }
+
+    .section-info {
+      font-weight: bold;
+    }
+  }
+
+  .demo-list {
+    margin: 24px;
+    background: white;
+  }
+}

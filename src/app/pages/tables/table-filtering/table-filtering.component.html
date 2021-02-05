@@ -1,0 +1,51 @@
+<div class="table-filtering">
+
+  <elastic-page-header [height]="'188px'" background="url(/assets/img/demo/headers/pattern-3.png)"
+                  [reverse]="true"></elastic-page-header>
+
+  <div class="container">
+
+    <elastic-breadcrumbs [currentPage]="'Table Filtering'" [names]="['Tables']" [header]="'primary'"></elastic-breadcrumbs>
+
+    <div class="mat-elevation-z8">
+      <div class="header">
+        <mat-form-field fxFlex floatPlaceholder="never">
+          <input matInput #filter placeholder="Filter users">
+        </mat-form-field>
+      </div>
+
+      <mat-table #table [dataSource]="dataSource">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- ID Column -->
+        <ng-container cdkColumnDef="userId">
+          <mat-header-cell *cdkHeaderCellDef> ID</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.id}}</mat-cell>
+        </ng-container>
+
+        <!-- Progress Column -->
+        <ng-container cdkColumnDef="progress">
+          <mat-header-cell *cdkHeaderCellDef> Progress</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.progress}}%</mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container cdkColumnDef="userName">
+          <mat-header-cell *cdkHeaderCellDef> Name</mat-header-cell>
+          <mat-cell *cdkCellDef="let row"> {{row.name}}</mat-cell>
+        </ng-container>
+
+        <!-- Color Column -->
+        <ng-container cdkColumnDef="color">
+          <mat-header-cell *cdkHeaderCellDef> Color</mat-header-cell>
+          <mat-cell *cdkCellDef="let row" [style.color]="row.color"> {{row.color}}</mat-cell>
+        </ng-container>
+
+        <mat-header-row *cdkHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *cdkRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+  </div>
+</div>
