@@ -3,11 +3,12 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // RXJS
 import {BehaviorSubject, Subscription} from 'rxjs';
-import {filter, shareReplay, tap} from 'rxjs/operators';
+import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
 import * as hospitalActions from '../store/specialty.actions';
+import {DoctorService} from '../../doctor/store/services/doctor.service';
 
 @Component({
   selector: 'specialty-form',
@@ -29,9 +30,13 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
   sidenavFormTypeSubs: Subscription;
   sidenavFormType: string;
 
+  doctors = [];
+  isLoadingDoctor = new BehaviorSubject<boolean>(false);
+
   constructor(private formBuilder: FormBuilder,
               private store: Store<State>,
-              private actions: ActionsSubject) {
+              private actions: ActionsSubject,
+              private doctorService: DoctorService) {
 
   }
 
@@ -41,7 +46,9 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
     this.form = this.formBuilder.group({
       id: null,
       name: null,
-      creationDate: null
+      description: null,
+      icon: null,
+      doctor: null
     });
 
     // GET HOSPITAL SUCCESS
@@ -52,7 +59,9 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
         this.form.setValue({
           id: form.id,
           name: form.name,
-          creationDate: form.creationDate
+          description: form.description,
+          icon: form.icon,
+          doctor: form.doctor
         });
       })
     ).subscribe());
@@ -85,6 +94,20 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
         this.sidenavFormType = s;
       })).subscribe();
 
+    // HOSPITAL FIELD SUBS
+    this.form.get('doctor').valueChanges.pipe(
+      debounceTime(1000),
+      startWith(''),
+      tap(() => this.isLoadingDoctor.next(true)),
+      switchMap(value => this.doctorService.list({
+          name: value,
+          page: 0,
+          size: 50,
+          sort: null
+        }).pipe(finalize(() => this.isLoadingDoctor.next(false)))
+      )
+    ).subscribe(res => this.doctors = res.body);
+
   }
 
   ngOnDestroy(): void {
@@ -103,6 +126,10 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
 
   closeSidenav(): void {
     this.store.dispatch(new hospitalActions.CloseSidenav());
+  }
+
+  displayFn(data?: any): string | undefined {
+    return data ? data.firstName : undefined;
   }
 
 }

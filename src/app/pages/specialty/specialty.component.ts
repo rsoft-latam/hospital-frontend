@@ -83,7 +83,7 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
       {headerName: 'Id', field: 'id'},
       {headerName: 'Name', field: 'name'},
       {headerName: 'Description', field: 'description'},
-      {headerName: 'Doctor', field: 'doctor'},
+      {headerName: 'Doctor', field: 'doctor', valueGetter: p => p?.data?.doctor?.firstName + '-' + p?.data?.doctor?.lastName},
       {headerName: 'Icon', field: 'icon'},
       {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
     ];

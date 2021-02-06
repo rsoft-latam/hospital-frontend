@@ -22,10 +22,36 @@
 
           <mat-form-field>
             <input matInput
-                   placeholder="Creation Date"
+                   placeholder="Description"
                    type="text"
-                   [formControlName]="'creationDate'">
+                   [formControlName]="'description'">
           </mat-form-field>
+
+          <mat-form-field>
+            <input matInput
+                   placeholder="Icon"
+                   type="text"
+                   [formControlName]="'icon'">
+          </mat-form-field>
+
+          <mat-form-field style="width: 100%;">
+            <input matInput
+                   [matAutocomplete]="auto"
+                   [formControlName]="'doctor'"
+                   placeholder="Doctor">
+          </mat-form-field>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngIf="isLoadingDoctor | async">
+              <mat-spinner diameter="50"></mat-spinner>
+            </mat-option>
+            <div [hidden]="isLoadingDoctor | async">
+              <ng-container>
+                <mat-option *ngFor="let doctor of doctors" [value]="doctor">
+                  <span>{{doctor.firstName}}-{{doctor.lastName}}</span>
+                </mat-option>
+              </ng-container>
+            </div>
+          </mat-autocomplete>
 
         </div>
       </div>
