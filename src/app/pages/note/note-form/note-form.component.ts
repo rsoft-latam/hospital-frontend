@@ -7,14 +7,14 @@ import {filter, shareReplay, tap} from 'rxjs/operators';
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as hospitalActions from '../store/specialty.actions';
+import * as hospitalActions from '../store/note.actions';
 
 @Component({
-  selector: 'specialty-form',
-  templateUrl: './specialty-form.component.html'
+  selector: 'note-form',
+  templateUrl: './note-form.component.html'
 })
 
-export class SpecialtyFormComponent implements OnInit, OnDestroy {
+export class NoteFormComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
 

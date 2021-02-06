@@ -108,8 +108,8 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     // SUBS
-    this.sidenavOpen$ = this.store.select(s => s.appHospital.sidenavOpen);
-    this.filterOpen$ = this.store.select(s => s.appHospital.filterOpen);
+    this.sidenavOpen$ = this.store.select(s => s.appSpecialty.sidenavOpen);
+    this.filterOpen$ = this.store.select(s => s.appSpecialty.filterOpen);
 
     // SET FILTER SUBS
     this.actionSubs.push(this.actions.pipe(

@@ -110,8 +110,8 @@ export class PatientComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     // SUBS
-    this.sidenavOpen$ = this.store.select(s => s.appHospital.sidenavOpen);
-    this.filterOpen$ = this.store.select(s => s.appHospital.filterOpen);
+    this.sidenavOpen$ = this.store.select(s => s.appPatient.sidenavOpen);
+    this.filterOpen$ = this.store.select(s => s.appPatient.filterOpen);
 
     // SET FILTER SUBS
     this.actionSubs.push(this.actions.pipe(

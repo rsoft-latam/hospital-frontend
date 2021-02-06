@@ -1,33 +1,33 @@
 // NGRX
 import {Action} from '@ngrx/store';
 // OTHERS
-import {HospitalFilter} from './models/doctor-filter.model';
+import {HospitalFilter} from './models/note-filter.model';
 
 export enum HospitalActionTypes {
 
-  CloseSidenav = '[DOCTOR]CloseSidenav',
-  OpenSidenav = '[DOCTOR]OpenSidenav',
+  CloseSidenav = '[NOTE]CloseSidenav',
+  OpenSidenav = '[NOTE]OpenSidenav',
 
-  CloseFilter = '[DOCTOR]CloseFilter',
-  OpenFilter = '[DOCTOR]OpenFilter',
+  CloseFilter = '[NOTE]CloseFilter',
+  OpenFilter = '[NOTE]OpenFilter',
 
-  SetFilter = '[DOCTOR]SetFilter',
+  SetFilter = '[NOTE]SetFilter',
 
-  AddAction = '[DOCTOR]AddAction',
-  AddSuccess = '[DOCTOR]AddSuccess',
-  AddFailure = '[DOCTOR]AddFailure',
+  AddAction = '[NOTE]AddAction',
+  AddSuccess = '[NOTE]AddSuccess',
+  AddFailure = '[NOTE]AddFailure',
 
-  UpdateAction = '[DOCTOR]UpdateAction',
-  UpdateSuccess = '[DOCTOR]UpdateSuccess',
-  UpdateFailure = '[DOCTOR]UpdateFailure',
+  UpdateAction = '[NOTE]UpdateAction',
+  UpdateSuccess = '[NOTE]UpdateSuccess',
+  UpdateFailure = '[NOTE]UpdateFailure',
 
-  DeleteAction = '[DOCTOR]DeleteAction',
-  DeleteSuccess = '[DOCTOR]DeleteSuccess',
-  DeleteFailure = '[DOCTOR]DeleteFailure',
+  DeleteAction = '[NOTE]DeleteAction',
+  DeleteSuccess = '[NOTE]DeleteSuccess',
+  DeleteFailure = '[NOTE]DeleteFailure',
 
-  GetHospitalAction = '[DOCTOR]GetHospitalAction',
-  GetHospitalSuccess = '[DOCTOR]GetHospitalSuccess',
-  GetHospitalFailure = '[DOCTOR]GetHospitalFailure',
+  GetHospitalAction = '[NOTE]GetHospitalAction',
+  GetHospitalSuccess = '[NOTE]GetHospitalSuccess',
+  GetHospitalFailure = '[NOTE]GetHospitalFailure',
 
 }
 

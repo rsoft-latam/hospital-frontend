@@ -10,7 +10,7 @@ import {ActionsSubject, Store} from '@ngrx/store';
 import * as hospitalActions from '../store/patient.actions';
 
 @Component({
-  selector: 'hospital-form',
+  selector: 'patient-form',
   templateUrl: './patient-form.component.html'
 })
 

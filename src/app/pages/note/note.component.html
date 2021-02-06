@@ -4,7 +4,7 @@
                [position]="'end'"
                [opened]="sidenavOpen$ | async"
                style="min-width: 600px;">
-    <patient-form></patient-form>
+    <note-form></note-form>
   </mat-sidenav>
 
   <mat-sidenav-content style="height: 100%;">
@@ -15,7 +15,7 @@
 
       <div class="container" style="height: 85%;">
 
-        <elastic-breadcrumbs [currentPage]="'Patients'"
+        <elastic-breadcrumbs [currentPage]="'Notes'"
                              [header]="'primary'"></elastic-breadcrumbs>
 
         <div fxLayout="column" fxLayout.gt-md="row" style="height: 100%;">

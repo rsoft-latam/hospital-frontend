@@ -16,6 +16,7 @@ import * as fromAppDoctor from '../pages/doctor/store/doctor.reducer';
 import * as fromAppHospital from '../pages/hospital/store/hospital.reducer';
 import * as fromAppPatient from '../pages/patient/store/patient.reducer';
 import * as fromAppSpecialty from '../pages/specialty/store/specialty.reducer';
+import * as fromAppNote from '../pages/note/store/note.reducer';
 
 
 /**
@@ -31,6 +32,7 @@ export interface State {
   appHospital: fromAppHospital.HospitalState;
   appPatient: fromAppPatient.PatientState;
   appSpecialty: fromAppSpecialty.SpecialtyState;
+  appNote: fromAppNote.NoteState;
 }
 
 
@@ -49,7 +51,8 @@ export const reducers: ActionReducerMap<State> = {
   appDoctor: fromAppDoctor.reducer,
   appHospital: fromAppHospital.reducer,
   appPatient: fromAppPatient.reducer,
-  appSpecialty: fromAppSpecialty.reducer
+  appSpecialty: fromAppSpecialty.reducer,
+  appNote: fromAppNote.reducer
 };
 
 /**

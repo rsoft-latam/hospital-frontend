@@ -5,29 +5,29 @@ import {HospitalFilter} from './models/patient-filter.model';
 
 export enum HospitalActionTypes {
 
-  CloseSidenav = '[HOSPITAL]CloseSidenav',
-  OpenSidenav = '[HOSPITAL]OpenSidenav',
+  CloseSidenav = '[PATIENT]CloseSidenav',
+  OpenSidenav = '[PATIENT]OpenSidenav',
 
-  CloseFilter = '[HOSPITAL]CloseFilter',
-  OpenFilter = '[HOSPITAL]OpenFilter',
+  CloseFilter = '[PATIENT]CloseFilter',
+  OpenFilter = '[PATIENT]OpenFilter',
 
-  SetFilter = '[HOSPITAL]SetFilter',
+  SetFilter = '[PATIENT]SetFilter',
 
-  AddAction = '[HOSPITAL]AddAction',
-  AddSuccess = '[HOSPITAL]AddSuccess',
-  AddFailure = '[HOSPITAL]AddFailure',
+  AddAction = '[PATIENT]AddAction',
+  AddSuccess = '[PATIENT]AddSuccess',
+  AddFailure = '[PATIENT]AddFailure',
 
-  UpdateAction = '[HOSPITAL]UpdateAction',
-  UpdateSuccess = '[HOSPITAL]UpdateSuccess',
-  UpdateFailure = '[HOSPITAL]UpdateFailure',
+  UpdateAction = '[PATIENT]UpdateAction',
+  UpdateSuccess = '[PATIENT]UpdateSuccess',
+  UpdateFailure = '[PATIENT]UpdateFailure',
 
-  DeleteAction = '[HOSPITAL]DeleteAction',
-  DeleteSuccess = '[HOSPITAL]DeleteSuccess',
-  DeleteFailure = '[HOSPITAL]DeleteFailure',
+  DeleteAction = '[PATIENT]DeleteAction',
+  DeleteSuccess = '[PATIENT]DeleteSuccess',
+  DeleteFailure = '[PATIENT]DeleteFailure',
 
-  GetHospitalAction = '[AMAZON]GetHospitalAction',
-  GetHospitalSuccess = '[AMAZON]GetHospitalSuccess',
-  GetHospitalFailure = '[AMAZON]GetHospitalFailure',
+  GetHospitalAction = '[PATIENT]GetHospitalAction',
+  GetHospitalSuccess = '[PATIENT]GetHospitalSuccess',
+  GetHospitalFailure = '[PATIENT]GetHospitalFailure',
 
 }
 

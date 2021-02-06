@@ -8,10 +8,10 @@ import {filter, map, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 // NGRX
 import {State} from '../../reducers/index';
-import * as doctorActions from './store/doctor.actions';
+import * as hospitalActions from './store/note.actions';
 import {Action, ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
-import {DoctorService} from './store/services/doctor.service';
+import {NoteService} from './store/services/note.service';
 import {BrandService} from '../../shared/services/brand.service';
 import {SupplierService} from '../../shared/services/supplier.service';
 // COMPONENTS
@@ -20,7 +20,7 @@ import {AlertComponent} from '../../shared/modules/alert/alert.component';
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
 import {EditButtonComponent} from '../../shared/components/edit-button.component';
-import {HospitalFilter} from './store/models/doctor-filter.model';
+import {HospitalFilter} from './store/models/note-filter.model';
 
 const initFilter: HospitalFilter = {
   name: '',
@@ -30,13 +30,13 @@ const initFilter: HospitalFilter = {
 };
 
 @Component({
-  templateUrl: './doctor.component.html',
+  templateUrl: './note.component.html',
   animations: [...ROUTE_TRANSITION],
   host: {'[@routeTransition]': ''},
   encapsulation: ViewEncapsulation.None
 })
 
-export class DoctorComponent implements OnInit, OnDestroy {
+export class NoteComponent implements OnInit, OnDestroy {
 
   // AG-GRID CONFIG
   private gridApi;
@@ -69,7 +69,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
               private actions: ActionsSubject,
               private formBuilder: FormBuilder,
               private brandService: BrandService,
-              private mappingService: DoctorService,
+              private mappingService: NoteService,
               private supplierService: SupplierService,
               @Inject('config') private config: AppConfig) {
 
@@ -81,12 +81,8 @@ export class DoctorComponent implements OnInit, OnDestroy {
     // AG-GRID CONFIG
     this.columnDefs = [
       {headerName: 'Id', field: 'id'},
-      {headerName: 'Url Photo', field: 'urlPhoto'},
-      {headerName: 'First Name', field: 'firstName'},
-      {headerName: 'Last Name', field: 'lastName'},
-      {headerName: 'Address', field: 'address'},
-      {headerName: 'Birthday', field: 'birthday'},
-      {headerName: 'Hospital', field: 'hospital'},
+      {headerName: 'Name', field: 'name'},
+      {headerName: 'Creation Date', field: 'creationDate'},
       {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
     ];
 
@@ -110,12 +106,12 @@ export class DoctorComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     // SUBS
-    this.sidenavOpen$ = this.store.select(s => s.appDoctor.sidenavOpen);
-    this.filterOpen$ = this.store.select(s => s.appDoctor.filterOpen);
+    this.sidenavOpen$ = this.store.select(s => s.appNote.sidenavOpen);
+    this.filterOpen$ = this.store.select(s => s.appNote.filterOpen);
 
     // SET FILTER SUBS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === doctorActions.HospitalActionTypes.SetFilter),
+      filter(s => s.type === hospitalActions.HospitalActionTypes.SetFilter),
       map((s: any) => s.payload.filter),
       tap((filter: HospitalFilter) => {
         this.filter = Object.assign({}, filter);
@@ -127,13 +123,13 @@ export class DoctorComponent implements OnInit, OnDestroy {
     // ADD UPDATE DELETE HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === doctorActions.HospitalActionTypes.AddSuccess ||
-        s.type === doctorActions.HospitalActionTypes.UpdateSuccess ||
-        s.type === doctorActions.HospitalActionTypes.DeleteSuccess
+        s.type === hospitalActions.HospitalActionTypes.AddSuccess ||
+        s.type === hospitalActions.HospitalActionTypes.UpdateSuccess ||
+        s.type === hospitalActions.HospitalActionTypes.DeleteSuccess
       ),
       tap(() => {
-        this.store.dispatch(new doctorActions.CloseSidenav());
-        this.store.dispatch(new doctorActions.SetFilter({filter: initFilter}));
+        this.store.dispatch(new hospitalActions.CloseSidenav());
+        this.store.dispatch(new hospitalActions.SetFilter({filter: initFilter}));
       })
     ).subscribe());
 
@@ -146,8 +142,8 @@ export class DoctorComponent implements OnInit, OnDestroy {
 
   actionButtonRowTable(event): void {
     if (event.type === 'edit') {
-      this.store.dispatch(new doctorActions.GetHospitalAction({id: event.row.id}));
-      this.store.dispatch(new doctorActions.OpenSidenav({addStatus: 'edit'}));
+      this.store.dispatch(new hospitalActions.GetHospitalAction({id: event.row.id}));
+      this.store.dispatch(new hospitalActions.OpenSidenav({addStatus: 'edit'}));
     }
     if (event.type === 'delete') {
       const dialogRef = this.dialog.open(AlertComponent, {
@@ -158,7 +154,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
         }
       });
       dialogRef.afterClosed().subscribe(res => {
-        res === true ? this.store.dispatch(new doctorActions.DeleteAction({id: event.row.id})) : '';
+        res === true ? this.store.dispatch(new hospitalActions.DeleteAction({id: event.row.id})) : '';
       });
     }
   }
@@ -167,12 +163,12 @@ export class DoctorComponent implements OnInit, OnDestroy {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     params.api.sizeColumnsToFit();
-    this.store.dispatch(new doctorActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(new hospitalActions.SetFilter({filter: initFilter}));
   }
 
   onApply(): void {
     this.isLoadingFilter.next(true);
-    this.store.dispatch(new doctorActions.SetFilter({
+    this.store.dispatch(new hospitalActions.SetFilter({
       filter: {
         ...this.filter,
         name: this.filterForm.value.name
@@ -181,19 +177,19 @@ export class DoctorComponent implements OnInit, OnDestroy {
   }
 
   onAdd(): void {
-    this.store.dispatch(new doctorActions.OpenSidenav({addStatus: 'new'}));
+    this.store.dispatch(new hospitalActions.OpenSidenav({addStatus: 'new'}));
   }
 
   onReset(): void {
-    this.store.dispatch(new doctorActions.CloseFilter());
-    this.store.dispatch(new doctorActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(new hospitalActions.CloseFilter());
+    this.store.dispatch(new hospitalActions.SetFilter({filter: initFilter}));
   }
 
   clickOnFilter(hiddenFilter): void {
     if (hiddenFilter) {
-      this.store.dispatch(new doctorActions.OpenFilter());
+      this.store.dispatch(new hospitalActions.OpenFilter());
     } else {
-      this.store.dispatch(new doctorActions.CloseFilter());
+      this.store.dispatch(new hospitalActions.CloseFilter());
     }
   }
 

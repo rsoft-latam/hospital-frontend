@@ -83,42 +83,51 @@ export class RouteHandlerComponent implements OnInit, OnDestroy {
 
     // Define Menu Items here
     // Top Level Item (The item to click on so the dropdown opens)
-    const amazon = new SidenavItem({
-      name: 'Hospital',
+    const hospital = new SidenavItem({
+      name: 'Hospitals',
       route: '/hospital',
       icon: 'wb_cloudy',
       subItems: [],
       position: 1
     });
 
-    const coreData = new SidenavItem({
-      name: 'Doctor',
+    const doctor = new SidenavItem({
+      name: 'Doctors',
       route: '/doctor',
       icon: 'assessment',
       subItems: [],
       position: 1
     });
 
-    const repricer = new SidenavItem({
-      name: 'Patient',
+    const patient = new SidenavItem({
+      name: 'Patients',
       route: '/patient',
       icon: 'access_time',
       subItems: [],
       position: 1
     });
 
-    const crawler = new SidenavItem({
-      name: 'Specialty',
+    const specialty = new SidenavItem({
+      name: 'Specialties',
       route: '/specialty',
       icon: 'attach_file',
       subItems: [],
       position: 1
     });
 
-    this.store.dispatch(new fromSidenav.AddSidenavItemAction(amazon));
-    this.store.dispatch(new fromSidenav.AddSidenavItemAction(coreData));
-    this.store.dispatch(new fromSidenav.AddSidenavItemAction(repricer));
-    this.store.dispatch(new fromSidenav.AddSidenavItemAction(crawler));
+    const note = new SidenavItem({
+      name: 'Notes',
+      route: '/note',
+      icon: 'attach_file',
+      subItems: [],
+      position: 1
+    });
+
+    this.store.dispatch(new fromSidenav.AddSidenavItemAction(hospital));
+    this.store.dispatch(new fromSidenav.AddSidenavItemAction(doctor));
+    this.store.dispatch(new fromSidenav.AddSidenavItemAction(patient));
+    this.store.dispatch(new fromSidenav.AddSidenavItemAction(specialty));
+    this.store.dispatch(new fromSidenav.AddSidenavItemAction(note));
   }
 
 }

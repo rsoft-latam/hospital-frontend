@@ -28,6 +28,7 @@ import {AppAuthModule} from './pages/login/store/auth.module';
 import {AppDoctorModule} from './pages/doctor/store/doctor.module';
 import {AppPatientModule} from './pages/patient/store/patient.module';
 import {AppSpecialtyModule} from './pages/specialty/store/specialty.module';
+import {AppNoteModule} from './pages/note/store/note.module';
 
 const NGRX_IMPORTS = [
   StoreModule.forRoot(reducers, {metaReducers}),
@@ -40,6 +41,7 @@ const MODULES_NGRX_IMPORTS = [
   AppHospitalModule.forRoot(environment.app),
   AppPatientModule.forRoot(environment.app),
   AppSpecialtyModule.forRoot(environment.app),
+  AppNoteModule.forRoot(environment.app),
   SidenavModule.forRoot(environment.app)
 ];
 

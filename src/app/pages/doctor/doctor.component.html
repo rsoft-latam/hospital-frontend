@@ -4,7 +4,7 @@
                [position]="'end'"
                [opened]="sidenavOpen$ | async"
                style="min-width: 600px;">
-    <hospital-form></hospital-form>
+    <doctor-form></doctor-form>
   </mat-sidenav>
 
   <mat-sidenav-content style="height: 100%;">
@@ -15,7 +15,7 @@
 
       <div class="container" style="height: 85%;">
 
-        <elastic-breadcrumbs [currentPage]="'Mapping'" [names]="['Amazon']"
+        <elastic-breadcrumbs [currentPage]="'Doctors'"
                              [header]="'primary'"></elastic-breadcrumbs>
 
         <div fxLayout="column" fxLayout.gt-md="row" style="height: 100%;">

@@ -12,7 +12,8 @@ const routes: Routes = [
       {path: 'doctor', loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorModule)},
       {path: 'hospital', loadChildren: () => import('./pages/hospital/hospital.module').then(m => m.HospitalModule)},
       {path: 'patient', loadChildren: () => import('./pages/patient/patient.module').then(m => m.PatientModule)},
-      {path: 'specialty', loadChildren: () => import('./pages/specialty/specialty.module').then(m => m.SpecialtyModule)}
+      {path: 'specialty', loadChildren: () => import('./pages/specialty/specialty.module').then(m => m.SpecialtyModule)},
+      {path: 'note', loadChildren: () => import('./pages/note/note.module').then(m => m.NoteModule)}
     ]
   },
   {path: 'auth/login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)},
