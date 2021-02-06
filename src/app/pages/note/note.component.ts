@@ -81,8 +81,10 @@ export class NoteComponent implements OnInit, OnDestroy {
     // AG-GRID CONFIG
     this.columnDefs = [
       {headerName: 'Id', field: 'id'},
-      {headerName: 'Name', field: 'name'},
-      {headerName: 'Creation Date', field: 'creationDate'},
+      {headerName: 'idDoctor', field: 'idDoctor'},
+      {headerName: 'idPatient', field: 'idPatient'},
+      {headerName: 'description', field: 'description'},
+      {headerName: 'date', field: 'date'},
       {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
     ];
 

@@ -119,7 +119,6 @@ export class DoctorFormComponent implements OnInit, OnDestroy {
   }
 
   onSave(): void {
-    console.log('FFFFFFFFFFFFFFFFFFFFFFFFF', this.form.value);
     this.isLoadingSave.next(true);
     if (this.sidenavFormType === 'new') {
       this.store.dispatch(new doctorActions.AddAction({entity: this.form.value}));

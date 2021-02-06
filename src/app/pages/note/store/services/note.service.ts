@@ -20,23 +20,23 @@ export class NoteService implements IDataService<HospitalFilter> {
       sort: filter.sort,
       name: filter.name
     });
-    return this.http.get(`${this.config.apiBaseUrl}hospitals`, {params: params, observe: 'response'});
+    return this.http.get(`${this.config.apiBaseUrl}notes`, {params: params, observe: 'response'});
   }
 
   public create(body: any): Observable<HttpResponse<any>> {
-    return this.http.post(`${this.config.apiBaseUrl}hospitals`, body, {observe: 'response'});
+    return this.http.post(`${this.config.apiBaseUrl}notes`, body, {observe: 'response'});
   }
 
   public update(body: any): Observable<HttpResponse<any>> {
-    return this.http.put(`${this.config.apiBaseUrl}hospitals`, body, {observe: 'response'});
+    return this.http.put(`${this.config.apiBaseUrl}notes`, body, {observe: 'response'});
   }
 
   public delete(id): Observable<HttpResponse<any>> {
-    return this.http.delete(`${this.config.apiBaseUrl}hospitals/${id}`, {observe: 'response'});
+    return this.http.delete(`${this.config.apiBaseUrl}notes/${id}`, {observe: 'response'});
   }
 
   public getById(id: number): Observable<HttpResponse<any>> {
-    return this.http.get(`${this.config.apiBaseUrl}hospitals/${id}`, {observe: 'response'});
+    return this.http.get(`${this.config.apiBaseUrl}notes/${id}`, {observe: 'response'});
   }
 
 }

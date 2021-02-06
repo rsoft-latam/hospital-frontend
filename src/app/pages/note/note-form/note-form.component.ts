@@ -3,11 +3,13 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // RXJS
 import {BehaviorSubject, Subscription} from 'rxjs';
-import {filter, shareReplay, tap} from 'rxjs/operators';
+import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as hospitalActions from '../store/note.actions';
+import * as noteActions from '../store/note.actions';
+import {PatientService} from '../../patient/store/services/patient.service';
+import {DoctorService} from '../../doctor/store/services/doctor.service';
 
 @Component({
   selector: 'note-form',
@@ -25,13 +27,21 @@ export class NoteFormComponent implements OnInit, OnDestroy {
   isLoadingSave = new BehaviorSubject<boolean>(false);
 
   // SIDENAV FORM TYPE SUBS
-  sidenavFormType$ = this.store.select(s => s.appHospital.sidenavFormType).pipe(shareReplay());
+  sidenavFormType$ = this.store.select(s => s.appNote.sidenavFormType).pipe(shareReplay());
   sidenavFormTypeSubs: Subscription;
   sidenavFormType: string;
 
+  doctors = [];
+  isLoadingIdDoctor = new BehaviorSubject<boolean>(false);
+
+  patients = [];
+  isLoadingIdPatient = new BehaviorSubject<boolean>(false);
+
   constructor(private formBuilder: FormBuilder,
               private store: Store<State>,
-              private actions: ActionsSubject) {
+              private actions: ActionsSubject,
+              private patientService: PatientService,
+              private doctorService: DoctorService) {
 
   }
 
@@ -40,19 +50,23 @@ export class NoteFormComponent implements OnInit, OnDestroy {
     // CONFIG FORM
     this.form = this.formBuilder.group({
       id: null,
-      name: null,
-      creationDate: null
+      idDoctor: null,
+      idPatient: null,
+      date: null,
+      description: null
     });
 
     // GET HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === hospitalActions.HospitalActionTypes.GetHospitalSuccess),
+      filter(s => s.type === noteActions.HospitalActionTypes.GetHospitalSuccess),
       tap((s: any) => {
         const form = Object.assign({}, s.payload.entity.body);
         this.form.setValue({
           id: form.id,
-          name: form.name,
-          creationDate: form.creationDate
+          idDoctor: form.idDoctor,
+          idPatient: form.idPatient,
+          date: form.date,
+          description: form.description
         });
       })
     ).subscribe());
@@ -60,8 +74,8 @@ export class NoteFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === hospitalActions.HospitalActionTypes.AddSuccess ||
-        s.type === hospitalActions.HospitalActionTypes.UpdateSuccess),
+        s.type === noteActions.HospitalActionTypes.AddSuccess ||
+        s.type === noteActions.HospitalActionTypes.UpdateSuccess),
       tap((s) => {
         this.isLoadingSave.next(false);
         this.closeSidenav();
@@ -71,8 +85,8 @@ export class NoteFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD FAILURE
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === hospitalActions.HospitalActionTypes.AddFailure ||
-        s.type === hospitalActions.HospitalActionTypes.UpdateFailure),
+        s.type === noteActions.HospitalActionTypes.AddFailure ||
+        s.type === noteActions.HospitalActionTypes.UpdateFailure),
       tap(() => {
         this.isLoadingSave.next(false);
       })
@@ -85,6 +99,34 @@ export class NoteFormComponent implements OnInit, OnDestroy {
         this.sidenavFormType = s;
       })).subscribe();
 
+    // HOSPITAL FIELD SUBS
+    this.form.get('idPatient').valueChanges.pipe(
+      debounceTime(1000),
+      startWith(''),
+      tap(() => this.isLoadingIdPatient.next(true)),
+      switchMap(value => this.patientService.list({
+          name: value,
+          page: 0,
+          size: 50,
+          sort: null
+        }).pipe(finalize(() => this.isLoadingIdPatient.next(false)))
+      )
+    ).subscribe(res => this.patients = res.body);
+
+    // HOSPITAL FIELD SUBS
+    this.form.get('idDoctor').valueChanges.pipe(
+      debounceTime(1000),
+      startWith(''),
+      tap(() => this.isLoadingIdDoctor.next(true)),
+      switchMap(value => this.doctorService.list({
+          name: value,
+          page: 0,
+          size: 50,
+          sort: null
+        }).pipe(finalize(() => this.isLoadingIdDoctor.next(false)))
+      )
+    ).subscribe(res => this.doctors = res.body);
+
   }
 
   ngOnDestroy(): void {
@@ -93,16 +135,23 @@ export class NoteFormComponent implements OnInit, OnDestroy {
 
   onSave(): void {
     this.isLoadingSave.next(true);
+    const auxFormValue = Object.assign({}, this.form.value);
+    auxFormValue.idPatient = auxFormValue.idPatient.id;
+    auxFormValue.idDoctor = auxFormValue.idDoctor.id;
+
     if (this.sidenavFormType === 'new') {
-      this.store.dispatch(new hospitalActions.AddAction({entity: this.form.value}));
+      this.store.dispatch(new noteActions.AddAction({entity: auxFormValue}));
     }
     if (this.sidenavFormType === 'edit') {
-      this.store.dispatch(new hospitalActions.UpdateAction({entity: this.form.value}));
+      this.store.dispatch(new noteActions.UpdateAction({entity: auxFormValue}));
     }
   }
 
   closeSidenav(): void {
-    this.store.dispatch(new hospitalActions.CloseSidenav());
+    this.store.dispatch(new noteActions.CloseSidenav());
   }
 
+  displayFn(data?: any): string | undefined {
+    return data ? data.firstName + '-' + data.lastName : undefined;
+  }
 }

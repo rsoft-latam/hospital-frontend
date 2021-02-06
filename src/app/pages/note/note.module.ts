@@ -23,6 +23,8 @@ import {SupplierService} from '../../shared/services/supplier.service';
 import {NoteComponent} from './note.component';
 import {EditButtonComponent} from '../../shared/components/edit-button.component';
 import {NoteFormComponent} from './note-form/note-form.component';
+import {DoctorService} from '../doctor/store/services/doctor.service';
+import {PatientService} from '../patient/store/services/patient.service';
 
 const routes: Routes = [
   {path: '', component: NoteComponent}
@@ -48,7 +50,9 @@ const routes: Routes = [
   ],
   providers: [
     BrandService,
-    SupplierService
+    SupplierService,
+    DoctorService,
+    PatientService
   ],
   entryComponents: [
     AlertComponent

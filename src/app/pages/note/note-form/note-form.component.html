@@ -5,7 +5,7 @@
       <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
         <div>
           <div class="title">
-            {{sidenavFormType === 'new' ? 'Add Hospital' : 'Update Hospital'}}
+            {{sidenavFormType === 'new' ? 'Add Note' : 'Update Note'}}
           </div>
         </div>
       </div>
@@ -15,17 +15,60 @@
 
           <mat-form-field>
             <input matInput
-                   placeholder="Name"
+                   placeholder="Description"
                    type="text"
-                   [formControlName]="'name'">
+                   [formControlName]="'description'">
           </mat-form-field>
 
           <mat-form-field>
             <input matInput
-                   placeholder="Creation Date"
-                   type="text"
-                   [formControlName]="'creationDate'">
+                   [matDatepicker]="datepickerDate"
+                   placeholder="Date"
+                   readonly
+                   [formControlName]="'date'">
+            <mat-datepicker-toggle matSuffix [for]="datepickerDate"></mat-datepicker-toggle>
           </mat-form-field>
+          <mat-datepicker #datepickerDate></mat-datepicker>
+
+          <mat-form-field style="width: 100%;">
+            <input matInput
+                   [matAutocomplete]="auto"
+                   [formControlName]="'idPatient'"
+                   placeholder="Patient">
+          </mat-form-field>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngIf="isLoadingIdPatient | async">
+              <mat-spinner diameter="50"></mat-spinner>
+            </mat-option>
+            <div [hidden]="isLoadingIdPatient | async">
+              <ng-container>
+                <mat-option *ngFor="let patient of patients" [value]="patient">
+                  <span>{{patient.firstName}}-{{patient.lastName}}</span>
+                </mat-option>
+              </ng-container>
+            </div>
+          </mat-autocomplete>
+
+
+          <mat-form-field style="width: 100%;">
+            <input matInput
+                   [matAutocomplete]="auto"
+                   [formControlName]="'idDoctor'"
+                   placeholder="Doctor">
+          </mat-form-field>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngIf="isLoadingIdDoctor | async">
+              <mat-spinner diameter="50"></mat-spinner>
+            </mat-option>
+            <div [hidden]="isLoadingIdDoctor | async">
+              <ng-container>
+                <mat-option *ngFor="let doctor of doctors" [value]="doctor">
+                  <span>{{doctor.firstName}}-{{doctor.lastName}}</span>
+                </mat-option>
+              </ng-container>
+            </div>
+          </mat-autocomplete>
+
 
         </div>
       </div>
