@@ -3,11 +3,12 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // RXJS
 import {BehaviorSubject, Subscription} from 'rxjs';
-import {filter, shareReplay, tap} from 'rxjs/operators';
+import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as hospitalActions from '../store/patient.actions';
+import * as patientActions from '../store/patient.actions';
+import {HospitalService} from '../../hospital/store/services/hospital.service';
 
 @Component({
   selector: 'patient-form',
@@ -25,13 +26,17 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   isLoadingSave = new BehaviorSubject<boolean>(false);
 
   // SIDENAV FORM TYPE SUBS
-  sidenavFormType$ = this.store.select(s => s.appHospital.sidenavFormType).pipe(shareReplay());
+  sidenavFormType$ = this.store.select(s => s.appPatient.sidenavFormType).pipe(shareReplay());
   sidenavFormTypeSubs: Subscription;
   sidenavFormType: string;
 
+  patients = [];
+  isLoadingPatient = new BehaviorSubject<boolean>(false);
+
   constructor(private formBuilder: FormBuilder,
               private store: Store<State>,
-              private actions: ActionsSubject) {
+              private actions: ActionsSubject,
+              private hospitalService: HospitalService) {
 
   }
 
@@ -40,19 +45,27 @@ export class PatientFormComponent implements OnInit, OnDestroy {
     // CONFIG FORM
     this.form = this.formBuilder.group({
       id: null,
-      name: null,
-      creationDate: null
+      firstName: null,
+      lastName: null,
+      address: null,
+      birthday: null,
+      urlPhoto: null,
+      hospital: null
     });
 
     // GET HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === hospitalActions.HospitalActionTypes.GetHospitalSuccess),
+      filter(s => s.type === patientActions.HospitalActionTypes.GetHospitalSuccess),
       tap((s: any) => {
         const form = Object.assign({}, s.payload.entity.body);
         this.form.setValue({
           id: form.id,
-          name: form.name,
-          creationDate: form.creationDate
+          firstName: form.firstName,
+          lastName: form.lastName,
+          address: form.address,
+          birthday: form.birthday,
+          urlPhoto: form.urlPhoto,
+          hospital: form.hospital
         });
       })
     ).subscribe());
@@ -60,8 +73,8 @@ export class PatientFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === hospitalActions.HospitalActionTypes.AddSuccess ||
-        s.type === hospitalActions.HospitalActionTypes.UpdateSuccess),
+        s.type === patientActions.HospitalActionTypes.AddSuccess ||
+        s.type === patientActions.HospitalActionTypes.UpdateSuccess),
       tap((s) => {
         this.isLoadingSave.next(false);
         this.closeSidenav();
@@ -71,8 +84,8 @@ export class PatientFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD FAILURE
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === hospitalActions.HospitalActionTypes.AddFailure ||
-        s.type === hospitalActions.HospitalActionTypes.UpdateFailure),
+        s.type === patientActions.HospitalActionTypes.AddFailure ||
+        s.type === patientActions.HospitalActionTypes.UpdateFailure),
       tap(() => {
         this.isLoadingSave.next(false);
       })
@@ -85,6 +98,20 @@ export class PatientFormComponent implements OnInit, OnDestroy {
         this.sidenavFormType = s;
       })).subscribe();
 
+    // HOSPITAL FIELD SUBS
+    this.form.get('hospital').valueChanges.pipe(
+      debounceTime(1000),
+      startWith(''),
+      tap(() => this.isLoadingPatient.next(true)),
+      switchMap(value => this.hospitalService.list({
+          name: value,
+          page: 0,
+          size: 50,
+          sort: null
+        }).pipe(finalize(() => this.isLoadingPatient.next(false)))
+      )
+    ).subscribe(res => this.patients = res.body);
+
   }
 
   ngOnDestroy(): void {
@@ -94,15 +121,19 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   onSave(): void {
     this.isLoadingSave.next(true);
     if (this.sidenavFormType === 'new') {
-      this.store.dispatch(new hospitalActions.AddAction({entity: this.form.value}));
+      this.store.dispatch(new patientActions.AddAction({entity: this.form.value}));
     }
     if (this.sidenavFormType === 'edit') {
-      this.store.dispatch(new hospitalActions.UpdateAction({entity: this.form.value}));
+      this.store.dispatch(new patientActions.UpdateAction({entity: this.form.value}));
     }
   }
 
   closeSidenav(): void {
-    this.store.dispatch(new hospitalActions.CloseSidenav());
+    this.store.dispatch(new patientActions.CloseSidenav());
+  }
+
+  displayFn(data?: any): string | undefined {
+    return data ? data.name : undefined;
   }
 
 }
