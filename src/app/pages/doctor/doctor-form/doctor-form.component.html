@@ -5,7 +5,7 @@
       <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
         <div>
           <div class="title">
-            {{sidenavFormType === 'new' ? 'Add Hospital' : 'Update Hospital'}}
+            {{sidenavFormType === 'new' ? 'Add Doctor' : 'Update Doctor'}}
           </div>
         </div>
       </div>
@@ -15,17 +15,60 @@
 
           <mat-form-field>
             <input matInput
-                   placeholder="Name"
+                   placeholder="First Name"
                    type="text"
-                   [formControlName]="'name'">
+                   [formControlName]="'firstName'">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Last Name"
+                   type="text"
+                   [formControlName]="'lastName'">
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput
+                   placeholder="Address"
+                   type="text"
+                   [formControlName]="'address'">
           </mat-form-field>
 
           <mat-form-field>
             <input matInput
-                   placeholder="Creation Date"
-                   type="text"
-                   [formControlName]="'creationDate'">
+                   [matDatepicker]="datepickerBirthday"
+                   placeholder="Birthday"
+                   readonly
+                   [formControlName]="'birthday'">
+            <mat-datepicker-toggle matSuffix [for]="datepickerBirthday"></mat-datepicker-toggle>
           </mat-form-field>
+          <mat-datepicker #datepickerBirthday></mat-datepicker>
+
+          <mat-form-field>
+            <input matInput
+                   placeholder="Url Photo"
+                   type="text"
+                   [formControlName]="'urlPhoto'">
+          </mat-form-field>
+
+
+          <mat-form-field style="width: 100%;">
+            <input matInput
+                   [matAutocomplete]="auto"
+                   [formControlName]="'hospital'"
+                   placeholder="Hospital">
+          </mat-form-field>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngIf="isLoadingHospital | async">
+              <mat-spinner diameter="50"></mat-spinner>
+            </mat-option>
+            <div [hidden]="isLoadingHospital | async">
+              <ng-container>
+                <mat-option *ngFor="let hospital of hospitals" [value]="hospital">
+                  <span>{{hospital.name}}</span>
+                </mat-option>
+              </ng-container>
+            </div>
+          </mat-autocomplete>
+
 
         </div>
       </div>

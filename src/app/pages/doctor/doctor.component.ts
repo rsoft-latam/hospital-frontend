@@ -86,7 +86,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
       {headerName: 'Last Name', field: 'lastName'},
       {headerName: 'Address', field: 'address'},
       {headerName: 'Birthday', field: 'birthday'},
-      {headerName: 'Hospital', field: 'hospital'},
+      {headerName: 'Hospital', field: 'hospital', valueGetter: p => p?.data?.hospital?.name},
       {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
     ];
 
