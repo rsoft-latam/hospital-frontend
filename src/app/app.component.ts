@@ -1,18 +1,40 @@
-import { Component } from '@angular/core';
-import { MediaReplayService } from './core/utils/media-replay.service';
+// ANGULAR
+import {Component, OnDestroy, OnInit} from '@angular/core';
+// RXJS
+import {Subscription} from 'rxjs';
+// NGRX
+import {Store} from '@ngrx/store';
+import * as authActions from './pages/login/store/auth.actions';
 
 @Component({
-  selector: 'elastic-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-root',
+  template: `
+    <route-handler></route-handler>
+  `
 })
-export class AppComponent {
 
-  //noinspection JSUnusedLocalSymbols
-  constructor(
-    mediaReplay: MediaReplayService // workaround for Flex-Layout to receive the initial value
-  ) {
-    // Nothing here.
-    // You probably want to go to /core/layout/ :)
+export class AppComponent implements OnInit, OnDestroy {
+
+  private authSubs: Subscription;
+
+  constructor(private store: Store<any>) {
   }
+
+  ngOnInit(): void {
+
+    // GET AUTHENTICATION FROM LOCALSTORAGE
+    if (localStorage.getItem('authenticate') && localStorage.getItem('user')) {
+      const auth = {
+        user: JSON.parse(localStorage.getItem('user')),
+        authenticate: JSON.parse(localStorage.getItem('authenticate'))
+      };
+      this.store.dispatch(new authActions.AuthenticationSuccess(auth));
+    }
+
+  }
+
+  ngOnDestroy(): void {
+    this.authSubs?.unsubscribe();
+  }
+
 }

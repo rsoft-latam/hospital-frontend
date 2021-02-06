@@ -1,26 +1,29 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { SidenavItem } from './sidenav-item.model';
+import {Component, Input, OnInit} from '@angular/core';
+import {SidenavItem} from './sidenav-item.model';
 import * as fromRoot from '../../../reducers/index';
 import * as sidenavAction from '../shared/sidenav.action';
-import { Store } from '@ngrx/store';
+import {Store} from '@ngrx/store';
 
 @Component({
-  selector: 'elastic-sidenav-item',
+  selector: 'sidenav-item',
   templateUrl: './sidenav-item.component.html',
   styleUrls: ['./sidenav-item.component.scss']
 })
 export class SidenavItemComponent implements OnInit {
 
   scrollbar: any;
-
   @Input('item') item: SidenavItem;
   @Input('currentlyOpen') currentlyOpen: SidenavItem[] = [];
 
   constructor(
     private store: Store<fromRoot.State>
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
+    if (this.currentlyOpen.indexOf(this.item) > -1) {
+      return true;
+    }
   }
 
   toggleDropdown() {

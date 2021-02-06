@@ -1,4 +1,4 @@
-import { ScrollbarOptions } from 'smooth-scrollbar/interfaces';
+import {ScrollbarOptions} from 'smooth-scrollbar/interfaces';
 
 export const scrollbarOptions: Partial<ScrollbarOptions> = {
   damping: 0.2,

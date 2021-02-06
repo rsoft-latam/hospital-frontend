@@ -1,20 +1,19 @@
-import { Attribute, Component, ElementRef, Inject, Input, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import {Component, ElementRef, Inject, Input, OnDestroy, OnInit, PLATFORM_ID} from '@angular/core';
 import Scrollbar from 'smooth-scrollbar';
-import { scrollbarOptions } from './scrollbar-options';
-import { ScrollbarService } from './scrollbar.service';
-import { isPlatformBrowser } from '@angular/common';
+import {scrollbarOptions} from './scrollbar-options';
+import {ScrollbarService} from './scrollbar.service';
+import {isPlatformBrowser} from '@angular/common';
 
 @Component({
-  selector: 'elastic-scrollbar',
-  templateUrl: './scrollbar.component.html',
-  styleUrls: ['./scrollbar.component.scss']
+  selector: 'scrollbar',
+  template: `
+    <ng-content></ng-content>
+  `
 })
 export class ScrollbarComponent implements OnInit, OnDestroy {
 
   static index = 0;
-
   @Input() name: string;
-
   scrollbar: Scrollbar;
 
   constructor(

@@ -1,0 +1,60 @@
+<div fxLayout="column" fxLayoutGap="24px">
+  <form [formGroup]='form' (submit)="onSave()" autocomplete="off">
+
+    <div class="advanced-forms card alternative" fxFlex="100%" fxFlex.gt-sm style="box-shadow: none;">
+      <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+          <div class="title">
+            {{sidenavFormType === 'new' ? 'Add Hospital' : 'Update Hospital'}}
+          </div>
+        </div>
+      </div>
+
+      <div class="content" fxLayout="column" style="margin-top: 20px;">
+        <div class="result" fxLayout="column">
+
+          <mat-form-field>
+            <input matInput
+                   placeholder="Name"
+                   type="text"
+                   [formControlName]="'name'">
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput
+                   placeholder="Creation Date"
+                   type="text"
+                   [formControlName]="'creationDate'">
+          </mat-form-field>
+
+        </div>
+      </div>
+
+      <div class="example-button-row"
+           style="display: flex; flex-direction: row; justify-content: space-between; margin-top: 20px;">
+        <button mat-raised-button
+                class="pull-left"
+                color="primary"
+                type="reset"
+                (click)="closeSidenav()">
+          <span>Cancel</span>
+        </button>
+
+        <button mat-raised-button
+                class="pull-right"
+                style="margin-left: 15px;"
+                color="primary"
+                type="submit"
+                [disabled]="(isLoadingSave | async) || form.invalid">
+          <span>Save</span>
+          <span *ngIf="isLoadingSave | async" class="login-circular-btn-progress"
+                style="margin-left: 5px;">
+                  <mat-progress-spinner mode="indeterminate" [diameter]="20"></mat-progress-spinner>
+              </span>
+        </button>
+      </div>
+
+    </div>
+
+  </form>
+</div>

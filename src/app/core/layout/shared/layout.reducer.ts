@@ -18,7 +18,7 @@ export interface State {
 const initialState: State = {
   layout: 'alpha',
   sidenavOpen: true,
-  sidenavCollapsed: true,
+  sidenavCollapsed: false,
   sidenavAlign: 'start',
   sidenavMode: 'side',
   sidenavDisableClose: true,

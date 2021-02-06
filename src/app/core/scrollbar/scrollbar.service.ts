@@ -1,4 +1,4 @@
-import { ElementRef, Injectable } from '@angular/core';
+import {ElementRef, Injectable} from '@angular/core';
 import Scrollbar from 'smooth-scrollbar';
 
 @Injectable()
@@ -6,11 +6,12 @@ export class ScrollbarService {
 
   scrollbars: { [name: string]: { scrollbar: Scrollbar, element: any } };
 
-  constructor() { }
+  constructor() {
+  }
 
   add(name: string, scrollbar: Scrollbar, element: ElementRef) {
     if (!this.scrollbars) {
-      this.scrollbars = { };
+      this.scrollbars = {};
     }
 
     this.scrollbars[name] = {

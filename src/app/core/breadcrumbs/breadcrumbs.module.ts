@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { BreadcrumbsComponent } from './breadcrumbs.component';
-import { MatIconModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {BreadcrumbsComponent} from './breadcrumbs.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {RouterModule} from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -15,4 +15,5 @@ import { RouterModule } from '@angular/router';
   declarations: [BreadcrumbsComponent],
   exports: [BreadcrumbsComponent]
 })
-export class BreadcrumbsModule { }
+export class BreadcrumbsModule {
+}

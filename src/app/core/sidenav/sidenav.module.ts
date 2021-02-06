@@ -4,9 +4,11 @@ import { SidenavComponent } from './sidenav.component';
 import { SidenavItemComponent } from './sidenav-item/sidenav-item.component';
 import { SidenavCollapseDirective } from './sidenav-collapse.directive';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatIconModule, MatRippleModule } from '@angular/material';
 import { ScrollbarModule } from '../scrollbar/scrollbar.module';
 import { RouterModule } from '@angular/router';
+import {MatIconModule} from '@angular/material/icon';
+import {MatRippleModule} from '@angular/material/core';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   imports: [

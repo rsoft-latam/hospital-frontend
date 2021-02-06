@@ -9,6 +9,7 @@ export class SidenavItem {
   badgeColor: string;
   customClass: string;
   routerLinkActiveOptions: any;
+  badgeNumber: number;
 
   constructor(model: any = null) {
     if (model) {
@@ -20,8 +21,9 @@ export class SidenavItem {
       this.position = model.position;
       this.badge = model.badge;
       this.badgeColor = model.badgeColor;
+      this.badgeNumber = model.badgeNumber;
       this.customClass = model.customClass;
-      this.routerLinkActiveOptions = model.routerLinkActiveOptions ? model.routerLinkActiveOptions : { exact: false };
+      this.routerLinkActiveOptions = model.routerLinkActiveOptions ? model.routerLinkActiveOptions : {exact: false};
     }
   }
 

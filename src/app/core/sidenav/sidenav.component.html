@@ -17,7 +17,7 @@
   </div>
   <!-- /Layout: Alpha -->
 
-  <elastic-scrollbar class="menu" fxFlex>
+  <scrollbar class="menu" fxFlex>
 
     <div class="heading" fxLayout="row" fxLayoutAlign="space-between center">
       <div class="name">Navigation</div>
@@ -36,9 +36,9 @@
     </div>
 
     <div class="sidenav-item-holder" *ngFor="let item of sidenavItems$ | async">
-      <elastic-sidenav-item class="sidenav-item-container" [item]="item" [currentlyOpen]="currentlyOpen$ | async" ></elastic-sidenav-item>
+      <sidenav-item class="sidenav-item-container" [item]="item" [currentlyOpen]="currentlyOpen$ | async" ></sidenav-item>
     </div>
 
-  </elastic-scrollbar>
+  </scrollbar>
 
 </div>

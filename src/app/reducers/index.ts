@@ -1,6 +1,5 @@
-import { createSelector } from 'reselect';
-import { ActionReducerMap } from '@ngrx/store';
-import sortBy from 'lodash-es/sortBy';
+import {createSelector} from 'reselect';
+import {ActionReducerMap} from '@ngrx/store';
 
 /**
  * Every reducer module's default export is the reducer function itself. In
@@ -9,9 +8,15 @@ import sortBy from 'lodash-es/sortBy';
  * notation packages up all of the exports into a single object.
  */
 // import * as fromRouter from '@ngrx/router-store';
+import * as fromAuth from '../pages/login/store/auth.reducer';
 import * as fromLayout from '../core/layout/shared/layout.reducer';
 import * as fromSidenav from '../core/sidenav/shared/sidenav.reducer';
-import * as fromInbox from '../pages/inbox/shared/inbox.reducer';
+
+import * as fromAppDoctor from '../pages/doctor/store/doctor.reducer';
+import * as fromAppHospital from '../pages/hospital/store/hospital.reducer';
+import * as fromAppPatient from '../pages/patient/store/patient.reducer';
+import * as fromAppSpecialty from '../pages/specialty/store/specialty.reducer';
+
 
 /**
  * As mentioned, we treat each reducer like a table in a database. This means
@@ -21,7 +26,11 @@ export interface State {
   // router: fromRouter.RouterReducerState;
   layout: fromLayout.State;
   sidenav: fromSidenav.State;
-  inbox: fromInbox.State;
+  auth: fromAuth.AuthState;
+  appDoctor: fromAppDoctor.DoctorState;
+  appHospital: fromAppHospital.HospitalState;
+  appPatient: fromAppPatient.PatientState;
+  appSpecialty: fromAppSpecialty.SpecialtyState;
 }
 
 
@@ -36,7 +45,11 @@ export const reducers: ActionReducerMap<State> = {
   // router: fromRouter.routerReducer,
   layout: fromLayout.reducer,
   sidenav: fromSidenav.reducer,
-  inbox: fromInbox.reducer
+  auth: fromAuth.reducer,
+  appDoctor: fromAppDoctor.reducer,
+  appHospital: fromAppHospital.reducer,
+  appPatient: fromAppPatient.reducer,
+  appSpecialty: fromAppSpecialty.reducer
 };
 
 /**
@@ -93,38 +106,4 @@ export const getSidenavState = (state: State) => state.sidenav;
 
 export const getSidenavItems = createSelector(getSidenavState, fromSidenav.getSidenavItems);
 export const getSidenavCurrentlyOpen = createSelector(getSidenavState, fromSidenav.getSidenavCurrentlyOpen);
-
-/**
- * Inbox Reducers
- * @param state
- */
-
-export const getInboxState = (state: State) => state.inbox;
-
-export const getInboxMails = createSelector(getInboxState, fromInbox.getMails);
-export const getInboxCurrentlyOpen = createSelector(getInboxState, fromInbox.getCurrentlyOpen);
-export const getInboxActiveGroup = createSelector(getInboxState, fromInbox.getActiveGroup);
-export const getInboxActiveType = createSelector(getInboxState, fromInbox.getActiveType);
-export const getInboxShowOnlyStarred = createSelector(getInboxState, fromInbox.getShowOnlyStarred);
-
-export const getInboxMailsFiltered = createSelector(getInboxMails, getInboxActiveGroup, getInboxActiveType, getInboxShowOnlyStarred,
-  (mails, group, type, onlyStarred) => {
-  if (group) {
-    return sortBy(mails, 'when').reverse().filter((mail) => {
-      return (mail.group === group)
-    });
-  }
-
-  if (type) {
-    return sortBy(mails, 'when').reverse().filter((mail) => {
-      return (mail.type === type)
-    });
-  }
-
-  if (onlyStarred) {
-    return sortBy(mails, 'when').reverse().filter((mail) => {
-      return (mail.starred)
-    });
-  }
-});
-
+export const getSidenavCurrentlyNavPoints = createSelector(getSidenavState, fromSidenav.getSidenavCurrentlyNavPoints);

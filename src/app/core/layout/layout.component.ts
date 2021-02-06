@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import * as fromRoot from '../../reducers/index';
 import * as layout from './shared/layout.action';
-import { Store } from '@ngrx/store';
-import { NavigationEnd, Router } from '@angular/router';
-import { MediaReplayService } from '../utils/media-replay.service';
-import { MediaChange } from '@angular/flex-layout';
-import { componentDestroyed } from '../utils/component-destroyed';
-import { Observable } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {Store} from '@ngrx/store';
+import {NavigationEnd, Router} from '@angular/router';
+import {MediaReplayService} from '../utils/media-replay.service';
+import {MediaChange} from '@angular/flex-layout';
+import {componentDestroyed} from '../utils/component-destroyed';
+import {Observable} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 @Component({
   selector: 'elastic-layout',
