@@ -1,5 +1,6 @@
 // NGRX
-import {HospitalActionTypes, DoctorActions} from './note.actions';
+import {Action, createReducer, on} from '@ngrx/store';
+import * as noteActions from './note.actions';
 
 export interface NoteState {
   filterOpen: boolean;
@@ -13,42 +14,14 @@ export const initialState: NoteState = {
   sidenavFormType: undefined
 };
 
-export function reducer(state: NoteState = initialState, action: DoctorActions): NoteState {
+const featureReducer = createReducer(
+  initialState,
+  on(noteActions.OpenSidenav, (state, {addStatus}) => ({...state, sidenavOpen: true, sidenavFormType: addStatus})),
+  on(noteActions.CloseSidenav, state => ({...state, sidenavOpen: false, sidenavFormType: undefined})),
+  on(noteActions.CloseFilter, state => ({...state, filterOpen: false})),
+  on(noteActions.OpenFilter, state => ({...state, filterOpen: true}))
+);
 
-  switch (action.type) {
-
-    case HospitalActionTypes.OpenSidenav: {
-      return {
-        ...state,
-        sidenavOpen: true,
-        sidenavFormType: action.payload.addStatus
-      };
-    }
-
-    case HospitalActionTypes.CloseSidenav: {
-      return {
-        ...state,
-        sidenavOpen: false,
-        sidenavFormType: undefined
-      };
-    }
-
-    case HospitalActionTypes.CloseFilter: {
-      return {
-        ...state,
-        filterOpen: false
-      };
-    }
-
-    case HospitalActionTypes.OpenFilter: {
-      return {
-        ...state,
-        filterOpen: true
-      };
-    }
-
-    default:
-      return state;
-  }
-
+export function reducer(state: NoteState | undefined, action: Action): any {
+  return featureReducer(state, action);
 }

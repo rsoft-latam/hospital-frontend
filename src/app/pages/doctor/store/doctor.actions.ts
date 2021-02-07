@@ -23,6 +23,6 @@ export const DeleteAction = createAction('[DOCTOR]DeleteAction', props<{ id: num
 export const DeleteSuccess = createAction('[DOCTOR]DeleteSuccess', props<{ entity: any }>());
 export const DeleteFailure = createAction('[DOCTOR]DeleteFailure', props<{ validation: any }>());
 
-export const GetHospitalAction = createAction('[DOCTOR]GetHospitalActionn', props<{ id: string }>());
-export const GetHospitalSuccess = createAction('[DOCTOR]GetHospitalSuccess', props<{ entity: any }>());
-export const GetHospitalFailure = createAction('[DOCTOR]GetHospitalFailure', props<{ validation: any }>());
+export const GetDoctorAction = createAction('[DOCTOR]GetDoctorAction', props<{ id: string }>());
+export const GetDoctorSuccess = createAction('[DOCTOR]GetDoctorSuccess', props<{ entity: any }>());
+export const GetDoctorFailure = createAction('[DOCTOR]GetDoctorFailure', props<{ validation: any }>());

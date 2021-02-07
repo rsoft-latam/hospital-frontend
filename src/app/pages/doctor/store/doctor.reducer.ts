@@ -1,5 +1,5 @@
 // NGRX
-import * as actionsHospital from './doctor.actions';
+import * as actionsDoctor from './doctor.actions';
 import {Action, createReducer, on} from '@ngrx/store';
 
 export interface DoctorState {
@@ -16,10 +16,10 @@ export const initialState: DoctorState = {
 
 const featureReducer = createReducer(
   initialState,
-  on(actionsHospital.OpenSidenav, (state, {addStatus}) => ({...state, sidenavOpen: true, sidenavFormType: addStatus})),
-  on(actionsHospital.CloseSidenav, state => ({...state, sidenavOpen: false, sidenavFormType: undefined})),
-  on(actionsHospital.CloseFilter, state => ({...state, filterOpen: false})),
-  on(actionsHospital.OpenFilter, state => ({...state, filterOpen: true}))
+  on(actionsDoctor.OpenSidenav, (state, {addStatus}) => ({...state, sidenavOpen: true, sidenavFormType: addStatus})),
+  on(actionsDoctor.CloseSidenav, state => ({...state, sidenavOpen: false, sidenavFormType: undefined})),
+  on(actionsDoctor.CloseFilter, state => ({...state, filterOpen: false})),
+  on(actionsDoctor.OpenFilter, state => ({...state, filterOpen: true}))
 );
 
 export function reducer(state: DoctorState | undefined, action: Action): any {

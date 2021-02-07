@@ -58,9 +58,9 @@ export class NoteFormComponent implements OnInit, OnDestroy {
 
     // GET HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === noteActions.HospitalActionTypes.GetHospitalSuccess),
+      filter(s => s.type === noteActions.GetNoteSuccess.type),
       tap((s: any) => {
-        const form = Object.assign({}, s.payload.entity.body);
+        const form = Object.assign({}, s.entity.body);
         this.form.setValue({
           id: form.id,
           idDoctor: form.idDoctor,
@@ -74,8 +74,8 @@ export class NoteFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === noteActions.HospitalActionTypes.AddSuccess ||
-        s.type === noteActions.HospitalActionTypes.UpdateSuccess),
+        s.type === noteActions.AddSuccess.type ||
+        s.type === noteActions.UpdateSuccess.type),
       tap((s) => {
         this.isLoadingSave.next(false);
         this.closeSidenav();
@@ -85,8 +85,8 @@ export class NoteFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD FAILURE
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === noteActions.HospitalActionTypes.AddFailure ||
-        s.type === noteActions.HospitalActionTypes.UpdateFailure),
+        s.type === noteActions.AddFailure.type ||
+        s.type === noteActions.UpdateFailure.type),
       tap(() => {
         this.isLoadingSave.next(false);
       })
@@ -142,15 +142,15 @@ export class NoteFormComponent implements OnInit, OnDestroy {
     auxFormValue.idDoctor = auxFormValue.idDoctor.id;
 
     if (this.sidenavFormType === 'new') {
-      this.store.dispatch(new noteActions.AddAction({entity: auxFormValue}));
+      this.store.dispatch(noteActions.AddAction({entity: auxFormValue}));
     }
     if (this.sidenavFormType === 'edit') {
-      this.store.dispatch(new noteActions.UpdateAction({entity: auxFormValue}));
+      this.store.dispatch(noteActions.UpdateAction({entity: auxFormValue}));
     }
   }
 
   closeSidenav(): void {
-    this.store.dispatch(new noteActions.CloseSidenav());
+    this.store.dispatch(noteActions.CloseSidenav());
   }
 
   displayFn(data?: any): string | undefined {

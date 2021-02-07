@@ -45,7 +45,6 @@ export class HospitalComponent implements OnInit, OnDestroy {
   public rowSelection;
   public rowGroupPanelShow;
   public pivotPanelShow;
-  public paginationPageSize;
   public paginationNumberFormatter;
   public defaultColDef;
   public context;
@@ -115,8 +114,8 @@ export class HospitalComponent implements OnInit, OnDestroy {
 
     // SET FILTER SUBS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === hospitalActions.HospitalActionTypes.SetFilter),
-      map((s: any) => s.payload.filter),
+      filter(s => s.type === hospitalActions.SetFilter.type),
+      map((s: any) => s.filter),
       tap((filter: HospitalFilter) => {
         this.filter = Object.assign({}, filter);
         this.isLoadingFilter.next(false);
@@ -131,13 +130,13 @@ export class HospitalComponent implements OnInit, OnDestroy {
     // ADD UPDATE DELETE HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === hospitalActions.HospitalActionTypes.AddSuccess ||
-        s.type === hospitalActions.HospitalActionTypes.UpdateSuccess ||
-        s.type === hospitalActions.HospitalActionTypes.DeleteSuccess
+        s.type === hospitalActions.AddSuccess.type ||
+        s.type === hospitalActions.UpdateSuccess.type ||
+        s.type === hospitalActions.DeleteSuccess.type
       ),
       tap(() => {
-        this.store.dispatch(new hospitalActions.CloseSidenav());
-        this.store.dispatch(new hospitalActions.SetFilter({filter: initFilter}));
+        this.store.dispatch(hospitalActions.CloseSidenav());
+        this.store.dispatch(hospitalActions.SetFilter({filter: initFilter}));
       })
     ).subscribe());
 
@@ -150,8 +149,8 @@ export class HospitalComponent implements OnInit, OnDestroy {
 
   actionButtonRowTable(event): void {
     if (event.type === 'edit') {
-      this.store.dispatch(new hospitalActions.GetHospitalAction({id: event.row.id}));
-      this.store.dispatch(new hospitalActions.OpenSidenav({addStatus: 'edit'}));
+      this.store.dispatch(hospitalActions.GetHospitalAction({id: event.row.id}));
+      this.store.dispatch(hospitalActions.OpenSidenav({addStatus: 'edit'}));
     }
     if (event.type === 'delete') {
       const dialogRef = this.dialog.open(AlertComponent, {
@@ -162,7 +161,7 @@ export class HospitalComponent implements OnInit, OnDestroy {
         }
       });
       dialogRef.afterClosed().subscribe(res => {
-        res === true ? this.store.dispatch(new hospitalActions.DeleteAction({id: event.row.id})) : '';
+        res === true ? this.store.dispatch(hospitalActions.DeleteAction({id: event.row.id})) : '';
       });
     }
   }
@@ -171,12 +170,12 @@ export class HospitalComponent implements OnInit, OnDestroy {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     params.api.sizeColumnsToFit();
-    this.store.dispatch(new hospitalActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(hospitalActions.SetFilter({filter: initFilter}));
   }
 
   onApply(): void {
     this.isLoadingFilter.next(true);
-    this.store.dispatch(new hospitalActions.SetFilter({
+    this.store.dispatch(hospitalActions.SetFilter({
       filter: {
         ...this.filter,
         name: this.filterForm.value.name
@@ -185,25 +184,25 @@ export class HospitalComponent implements OnInit, OnDestroy {
   }
 
   onAdd(): void {
-    this.store.dispatch(new hospitalActions.OpenSidenav({addStatus: 'new'}));
+    this.store.dispatch(hospitalActions.OpenSidenav({addStatus: 'new'}));
   }
 
   onReset(): void {
-    this.store.dispatch(new hospitalActions.CloseFilter());
-    this.store.dispatch(new hospitalActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(hospitalActions.CloseFilter());
+    this.store.dispatch(hospitalActions.SetFilter({filter: initFilter}));
   }
 
   clickOnFilter(hiddenFilter): void {
     if (hiddenFilter) {
-      this.store.dispatch(new hospitalActions.OpenFilter());
+      this.store.dispatch(hospitalActions.OpenFilter());
     } else {
-      this.store.dispatch(new hospitalActions.CloseFilter());
+      this.store.dispatch(hospitalActions.CloseFilter());
     }
   }
 
 
   onPagination(event: PageEvent): void {
-    this.store.dispatch(new hospitalActions.SetFilter({
+    this.store.dispatch(hospitalActions.SetFilter({
       filter: {
         ...this.filter,
         size: event.pageSize,

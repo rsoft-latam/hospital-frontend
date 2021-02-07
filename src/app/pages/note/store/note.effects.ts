@@ -4,8 +4,8 @@ import {Injectable} from '@angular/core';
 import {of} from 'rxjs';
 import {catchError, exhaustMap, map} from 'rxjs/operators';
 // NGRX
-import * as amazon from './note.actions';
-import {Actions, ofType, Effect} from '@ngrx/effects';
+import * as noteActions from './note.actions';
+import {Actions, ofType, createEffect} from '@ngrx/effects';
 // Others
 import {NoteService} from './services/note.service';
 
@@ -16,52 +16,44 @@ export class NoteEffects {
               private apiService: NoteService) {
   }
 
-  @Effect()
-  create$ = this.actions$.pipe(
-    ofType(amazon.HospitalActionTypes.AddAction),
-    map((action: amazon.AddAction) => action.payload),
+  create$ = createEffect(() => this.actions$.pipe(
+    ofType(noteActions.AddAction.type),
     exhaustMap((param: any) =>
       this.apiService.create(param.entity).pipe(
-        map(success => new amazon.AddSuccess({entity: success})),
-        catchError(error => of(new amazon.AddFailure({validation: error})))
+        map(success => noteActions.AddSuccess({entity: success})),
+        catchError(error => of(noteActions.AddFailure({validation: error})))
       )
     )
-  );
+  ));
 
-  @Effect()
-  update$ = this.actions$.pipe(
-    ofType(amazon.HospitalActionTypes.UpdateAction),
-    map((action: amazon.UpdateAction) => action.payload),
+  update$ = createEffect(() => this.actions$.pipe(
+    ofType(noteActions.UpdateAction.type),
     exhaustMap((param: any) =>
       this.apiService.update(param.entity).pipe(
-        map(success => new amazon.UpdateSuccess({entity: success})),
-        catchError(error => of(new amazon.UpdateFailure({validation: error})))
+        map(success => noteActions.UpdateSuccess({entity: success})),
+        catchError(error => of(noteActions.UpdateFailure({validation: error})))
       )
     )
-  );
+  ));
 
-  @Effect()
-  delete$ = this.actions$.pipe(
-    ofType(amazon.HospitalActionTypes.DeleteAction),
-    map((action: amazon.DeleteAction) => action.payload),
+  delete$ = createEffect(() => this.actions$.pipe(
+    ofType(noteActions.DeleteAction.type),
     exhaustMap((param: any) =>
       this.apiService.delete(param.id).pipe(
-        map(success => new amazon.DeleteSuccess({entity: success})),
-        catchError(err => of(new amazon.DeleteFailure({validation: err})))
+        map(success => noteActions.DeleteSuccess({entity: success})),
+        catchError(err => of(noteActions.DeleteFailure({validation: err})))
       )
     )
-  );
+  ));
 
-  @Effect()
-  getById$ = this.actions$.pipe(
-    ofType(amazon.HospitalActionTypes.GetHospitalAction),
-    map((action: amazon.GetHospitalAction) => action.payload),
+  getById$ = createEffect(() => this.actions$.pipe(
+    ofType(noteActions.GetNoteAction.type),
     exhaustMap((param: any) =>
       this.apiService.getById(param.id).pipe(
-        map(success => new amazon.GetHospitalSuccess({entity: success})),
-        catchError(error => of(new amazon.GetHospitalFailure({validation: error})))
+        map(success => noteActions.GetNoteSuccess({entity: success})),
+        catchError(error => of(noteActions.GetNoteFailure({validation: error})))
       )
     )
-  );
+  ));
 
 }

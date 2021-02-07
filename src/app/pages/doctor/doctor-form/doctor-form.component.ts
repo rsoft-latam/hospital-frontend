@@ -55,7 +55,7 @@ export class DoctorFormComponent implements OnInit, OnDestroy {
 
     // GET HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === doctorActions.GetHospitalSuccess.type),
+      filter(s => s.type === doctorActions.GetDoctorSuccess.type),
       tap((s: any) => {
         const form = Object.assign({}, s.entity.body);
         this.form.setValue({

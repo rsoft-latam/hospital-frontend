@@ -159,7 +159,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
 
   actionButtonRowTable(event): void {
     if (event.type === 'edit') {
-      this.store.dispatch(doctorActions.GetHospitalAction({id: event.row.id}));
+      this.store.dispatch(doctorActions.GetDoctorAction({id: event.row.id}));
       this.store.dispatch(doctorActions.OpenSidenav({addStatus: 'edit'}));
     }
     if (event.type === 'delete') {

@@ -45,7 +45,6 @@ export class NoteComponent implements OnInit, OnDestroy {
   public rowSelection;
   public rowGroupPanelShow;
   public pivotPanelShow;
-  public paginationPageSize;
   public paginationNumberFormatter;
   public defaultColDef;
   public context;
@@ -117,8 +116,8 @@ export class NoteComponent implements OnInit, OnDestroy {
 
     // SET FILTER SUBS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === noteActions.HospitalActionTypes.SetFilter),
-      map((s: any) => s.payload.filter),
+      filter(s => s.type === noteActions.SetFilter.type),
+      map((s: any) => s.filter),
       tap((filter: NoteFilter) => {
         this.filter = Object.assign({}, filter);
         this.isLoadingFilter.next(false);
@@ -132,13 +131,13 @@ export class NoteComponent implements OnInit, OnDestroy {
     // ADD UPDATE DELETE HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === noteActions.HospitalActionTypes.AddSuccess ||
-        s.type === noteActions.HospitalActionTypes.UpdateSuccess ||
-        s.type === noteActions.HospitalActionTypes.DeleteSuccess
+        s.type === noteActions.AddSuccess.type ||
+        s.type === noteActions.UpdateSuccess.type ||
+        s.type === noteActions.DeleteSuccess.type
       ),
       tap(() => {
-        this.store.dispatch(new noteActions.CloseSidenav());
-        this.store.dispatch(new noteActions.SetFilter({filter: initFilter}));
+        this.store.dispatch(noteActions.CloseSidenav());
+        this.store.dispatch(noteActions.SetFilter({filter: initFilter}));
       })
     ).subscribe());
 
@@ -151,8 +150,8 @@ export class NoteComponent implements OnInit, OnDestroy {
 
   actionButtonRowTable(event): void {
     if (event.type === 'edit') {
-      this.store.dispatch(new noteActions.GetHospitalAction({id: event.row.id}));
-      this.store.dispatch(new noteActions.OpenSidenav({addStatus: 'edit'}));
+      this.store.dispatch(noteActions.GetNoteAction({id: event.row.id}));
+      this.store.dispatch(noteActions.OpenSidenav({addStatus: 'edit'}));
     }
     if (event.type === 'delete') {
       const dialogRef = this.dialog.open(AlertComponent, {
@@ -163,7 +162,7 @@ export class NoteComponent implements OnInit, OnDestroy {
         }
       });
       dialogRef.afterClosed().subscribe(res => {
-        res === true ? this.store.dispatch(new noteActions.DeleteAction({id: event.row.id})) : '';
+        res === true ? this.store.dispatch(noteActions.DeleteAction({id: event.row.id})) : '';
       });
     }
   }
@@ -172,12 +171,12 @@ export class NoteComponent implements OnInit, OnDestroy {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     params.api.sizeColumnsToFit();
-    this.store.dispatch(new noteActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(noteActions.SetFilter({filter: initFilter}));
   }
 
   onApply(): void {
     this.isLoadingFilter.next(true);
-    this.store.dispatch(new noteActions.SetFilter({
+    this.store.dispatch(noteActions.SetFilter({
       filter: {
         ...this.filter,
         name: this.filterForm.value.name
@@ -186,25 +185,25 @@ export class NoteComponent implements OnInit, OnDestroy {
   }
 
   onAdd(): void {
-    this.store.dispatch(new noteActions.OpenSidenav({addStatus: 'new'}));
+    this.store.dispatch(noteActions.OpenSidenav({addStatus: 'new'}));
   }
 
   onReset(): void {
-    this.store.dispatch(new noteActions.CloseFilter());
-    this.store.dispatch(new noteActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(noteActions.CloseFilter());
+    this.store.dispatch(noteActions.SetFilter({filter: initFilter}));
   }
 
   clickOnFilter(hiddenFilter): void {
     if (hiddenFilter) {
-      this.store.dispatch(new noteActions.OpenFilter());
+      this.store.dispatch(noteActions.OpenFilter());
     } else {
-      this.store.dispatch(new noteActions.CloseFilter());
+      this.store.dispatch(noteActions.CloseFilter());
     }
   }
 
 
   onPagination(event: PageEvent): void {
-    this.store.dispatch(new noteActions.SetFilter({
+    this.store.dispatch(noteActions.SetFilter({
       filter: {
         ...this.filter,
         size: event.pageSize,

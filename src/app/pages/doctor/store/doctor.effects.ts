@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 import {of} from 'rxjs';
 import {catchError, exhaustMap, map} from 'rxjs/operators';
 // NGRX
-import * as amazon from './doctor.actions';
+import * as actionsDoctor from './doctor.actions';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
 // Others
 import {DoctorService} from './services/doctor.service';
@@ -17,41 +17,41 @@ export class DoctorEffects {
   }
 
   create$ = createEffect(() => this.actions$.pipe(
-    ofType(amazon.AddAction.type),
+    ofType(actionsDoctor.AddAction.type),
     exhaustMap((param: any) =>
       this.apiService.create(param.entity).pipe(
-        map(success => amazon.AddSuccess({entity: success})),
-        catchError(error => of(amazon.AddFailure({validation: error})))
+        map(success => actionsDoctor.AddSuccess({entity: success})),
+        catchError(error => of(actionsDoctor.AddFailure({validation: error})))
       )
     )
   ));
 
   update$ = createEffect(() => this.actions$.pipe(
-    ofType(amazon.UpdateAction.type),
+    ofType(actionsDoctor.UpdateAction.type),
     exhaustMap((param: any) =>
       this.apiService.update(param.entity).pipe(
-        map(success => amazon.UpdateSuccess({entity: success})),
-        catchError(error => of(amazon.UpdateFailure({validation: error})))
+        map(success => actionsDoctor.UpdateSuccess({entity: success})),
+        catchError(error => of(actionsDoctor.UpdateFailure({validation: error})))
       )
     )
   ));
 
   delete$ = createEffect(() => this.actions$.pipe(
-    ofType(amazon.DeleteAction.type),
+    ofType(actionsDoctor.DeleteAction.type),
     exhaustMap((param: any) =>
       this.apiService.delete(param.id).pipe(
-        map(success => amazon.DeleteSuccess({entity: success})),
-        catchError(err => of(amazon.DeleteFailure({validation: err})))
+        map(success => actionsDoctor.DeleteSuccess({entity: success})),
+        catchError(err => of(actionsDoctor.DeleteFailure({validation: err})))
       )
     )
   ));
 
   getById$ = createEffect(() => this.actions$.pipe(
-    ofType(amazon.GetHospitalAction.type),
+    ofType(actionsDoctor.GetDoctorAction.type),
     exhaustMap((param: any) =>
       this.apiService.getById(param.id).pipe(
-        map(success => amazon.GetHospitalSuccess({entity: success})),
-        catchError(error => of(amazon.GetHospitalFailure({validation: error})))
+        map(success => actionsDoctor.GetDoctorSuccess({entity: success})),
+        catchError(error => of(actionsDoctor.GetDoctorFailure({validation: error})))
       )
     )
   ));
