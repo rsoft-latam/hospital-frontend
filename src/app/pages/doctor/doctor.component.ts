@@ -167,10 +167,10 @@ export class DoctorComponent implements OnInit, OnDestroy {
           method: 'listByIdDoctor',
           filter: {idDoctor: {value: event.row.id, type: 'equals'}, page: 0, size: 50, sort: ''},
           columnDefs: [
-            {headerName: 'firstNamePatient', field: 'firstNamePatient'},
-            {headerName: 'lastNamePatient', field: 'lastNamePatient'},
-            {headerName: 'description', field: 'description'},
-            {headerName: 'date', field: 'date', valueGetter: (p: any) => formatDate(p.data.date)}
+            {headerName: 'First Name Patient', field: 'firstNamePatient'},
+            {headerName: 'Last Name Patient', field: 'lastNamePatient'},
+            {headerName: 'Description', field: 'description'},
+            {headerName: 'Date', field: 'date', valueGetter: (p: any) => formatDate(p.data.date)}
           ]
         }
       });
