@@ -48,7 +48,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatDialogModule,
     MatChipsModule,
     MatSliderModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ]
 })
 

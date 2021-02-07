@@ -36,7 +36,7 @@
                       [style.borderLeft]="(filterOpen$ | async) ? '': '1px solid #dddddd'"
                       [style.borderTop]="(filterOpen$ | async) ? '': '1px solid #f0f0f0'"
                       [style.zIndex]="(filterOpen$ | async) ? '': 1"
-                      (click)="clickOnFilter(filter.hidden)"
+                      (click)="clickOnFilter(filterIcon.hidden)"
                       [ngStyle.xs]="{'margin-right.px': 5, 'border-radius': '4px 4px 0px 0px'}"
                       [ngStyle.sm]="{'margin-right.px': 5, 'border-radius': '4px 4px 0px 0px'}"
                       [ngStyle.md]="{'margin-right.px': 5, 'border-radius': '4px 4px 0px 0px'}"
@@ -48,7 +48,7 @@
 
           <div [hidden]="!(filterOpen$ | async)"
                flex
-               #filter
+               #filterIcon
                class="animated2 slideInLeft"
                [style.borderRadius]="(filterOpen$ | async) ? '': '0px 0px 0px 4px'"
                [ngStyle.xs]="{'margin-right.px': 0, 'margin-bottom.px': 5}"
@@ -120,6 +120,11 @@
               [frameworkComponents]="frameworkComponents"
               (gridReady)="onGridReady($event)">
             </ag-grid-angular>
+            <mat-paginator [length]="total"
+                           [pageSize]="filter?.size"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPagination($event)">
+            </mat-paginator>
           </div>
 
         </div>

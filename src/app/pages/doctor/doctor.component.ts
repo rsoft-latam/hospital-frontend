@@ -22,6 +22,7 @@ import {ActionsButtonPatientComponent} from '../../shared/components/actions-but
 import {InformationComponent} from '../../shared/modules/information/information.component';
 import {NoteService} from '../note/store/services/note.service';
 import {ActionButtonComponent} from '../../shared/components/action-button.component';
+import {PageEvent} from '@angular/material/paginator';
 
 const initFilter: DoctorFilter = {
   firstName: '',
@@ -64,6 +65,9 @@ export class DoctorComponent implements OnInit, OnDestroy {
   filterForm: FormGroup;
 
   subs: Subscription;
+
+  total = 0;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor(public dialog: MatDialog,
               private store: Store<State>,
@@ -124,7 +128,10 @@ export class DoctorComponent implements OnInit, OnDestroy {
       tap((filter: DoctorFilter) => {
         this.filter = Object.assign({}, filter);
         this.isLoadingFilter.next(false);
-        this.subs = this.mappingService.list(filter).subscribe(data => this.gridApi.setRowData(data.body));
+        this.subs = this.mappingService.list(filter).subscribe(data => {
+          this.total = parseFloat(data.headers.get('X-Total-Count'));
+          this.gridApi.setRowData(data.body);
+        });
       })
     ).subscribe());
 
@@ -217,6 +224,17 @@ export class DoctorComponent implements OnInit, OnDestroy {
     } else {
       this.store.dispatch(new doctorActions.CloseFilter());
     }
+  }
+
+
+  onPagination(event: PageEvent): void {
+    this.store.dispatch(new doctorActions.SetFilter({
+      filter: {
+        ...this.filter,
+        size: event.pageSize,
+        page: event.pageIndex
+      }
+    }));
   }
 
 }

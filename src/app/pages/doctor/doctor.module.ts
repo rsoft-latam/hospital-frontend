@@ -11,7 +11,6 @@ import {ScrollbarModule} from '../../core/scrollbar/scrollbar.module';
 import {PageHeaderModule} from '../../core/page-header/page-header.module';
 import {BreadcrumbsModule} from '../../core/breadcrumbs/breadcrumbs.module';
 import {SharedMaterialModule} from '../../shared/shared-material.module';
-import {ValidationModule} from '../../core/validated-input/validation.module';
 import {SharedActionsTableModule} from '../../shared/shared-actions-table.module';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
     ScrollbarModule,
     PageHeaderModule,
     BreadcrumbsModule,
-    ValidationModule,
     CdkTableModule,
     RouterModule.forChild(routes),
     AgGridModule.withComponents([ActionButtonComponent])
