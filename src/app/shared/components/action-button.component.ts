@@ -20,7 +20,7 @@ export class ActionButtonComponent implements ICellRendererAngularComp {
     this.params = params;
   }
 
-  public invokeParentMethod(type: string) {
+  public invokeParentMethod(type: string): void {
     this.params.context.componentParent.actionButtonRowTable({row: this.params.node.data, type: type});
   }
 

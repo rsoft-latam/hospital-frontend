@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'elastic-breadcrumbs',
@@ -20,16 +20,11 @@ import {Component, Input, OnInit} from '@angular/core';
   `,
   styleUrls: ['./breadcrumbs.component.scss']
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent {
 
   @Input() currentPage: string;
   @Input() names: string[] = [];
   @Input() routes: string[] = [];
   @Input() header;
 
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
 }

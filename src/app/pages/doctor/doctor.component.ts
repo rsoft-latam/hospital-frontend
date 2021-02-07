@@ -24,8 +24,6 @@ import {NoteService} from '../note/store/services/note.service';
 import {PageEvent} from '@angular/material/paginator';
 
 const initFilter: DoctorFilter = {
-  firstName: '',
-  lastName: '',
   page: 0,
   size: 50,
   sort: ''

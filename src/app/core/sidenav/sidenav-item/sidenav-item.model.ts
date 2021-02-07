@@ -27,18 +27,18 @@ export class SidenavItem {
     }
   }
 
-  hasSubItems() {
+  hasSubItems(): any {
     if (this.subItems) {
       return this.subItems.length > 0;
     }
     return false;
   }
 
-  hasParent() {
+  hasParent(): any {
     return !!this.parent;
   }
 
-  mapSubItems(list: SidenavItem[]) {
+  mapSubItems(list: SidenavItem[]): any {
     if (list) {
       list.forEach((item, index) => {
         list[index] = new SidenavItem(item);
@@ -48,11 +48,11 @@ export class SidenavItem {
     }
   }
 
-  routeIsFunction() {
+  routeIsFunction(): any {
     return this.route instanceof Function || typeof this.route === 'function';
   }
 
-  generateLetterIcon() {
+  generateLetterIcon(): any {
     const words = this.name.split(' ');
 
     if (words.length > 1) {

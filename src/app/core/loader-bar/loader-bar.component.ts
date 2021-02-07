@@ -36,12 +36,12 @@ export class LoaderBarComponent implements OnInit, OnDestroy {
   constructor(private loaderService: LoaderBarService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.subscription = this.loaderService.loaderState
       .subscribe((state: LoaderBarState) => this.show = state.show);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription?.unsubscribe();
   }
 }

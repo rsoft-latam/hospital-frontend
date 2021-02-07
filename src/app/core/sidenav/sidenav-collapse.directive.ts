@@ -1,4 +1,4 @@
-import { Directive, HostBinding, HostListener, Input } from '@angular/core';
+import {Directive, HostBinding, HostListener, Input} from '@angular/core';
 
 @Directive({
   selector: '[vrSidenavCollapse]'
@@ -13,19 +13,20 @@ export class SidenavCollapseDirective {
   open: boolean;
 
   @HostListener('mouseenter')
-  onMouseEnter() {
+  onMouseEnter(): any {
     if (this.vrSidenavCollapse) {
       this.open = true;
     }
   }
 
   @HostListener('mouseleave')
-  onMouseLeave() {
+  onMouseLeave(): any {
     if (this.vrSidenavCollapse) {
       this.open = false;
     }
   }
 
-  constructor() { }
+  constructor() {
+  }
 
 }

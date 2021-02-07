@@ -9,7 +9,7 @@ import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 // NGRX
 import {State} from '../../reducers/index';
 import * as patientActions from './store/patient.actions';
-import {Action, ActionsSubject, Store} from '@ngrx/store';
+import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {PatientService} from './store/services/patient.service';
 // COMPONENTS
@@ -25,8 +25,6 @@ import {DoctorService} from '../doctor/store/services/doctor.service';
 import {PageEvent} from '@angular/material/paginator';
 
 const initFilter: HospitalFilter = {
-  firstName: '',
-  lastName: '',
   page: 0,
   size: 50,
   sort: ''

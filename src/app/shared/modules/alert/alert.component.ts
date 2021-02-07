@@ -1,8 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-alert',
   template: `
     <div *ngIf="data.type === 'error'">
       <h1 mat-dialog-title>{{data.title ? data.title : data.type}}</h1>
@@ -62,17 +61,13 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 })
 export class AlertComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AlertComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.data.errorArrayFields) {
       this.data.errorArrayFields = Object.entries(this.data.errorArrayFields);
     }
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 }

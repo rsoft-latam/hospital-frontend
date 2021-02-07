@@ -23,7 +23,7 @@ export class ScrollbarComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (!this.name) {
       this.name = String(ScrollbarComponent.index++);
     }
@@ -34,9 +34,10 @@ export class ScrollbarComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     if (isPlatformBrowser(this.platformId)) {
       this.scrollbarService.remove(this.name);
     }
   }
+
 }

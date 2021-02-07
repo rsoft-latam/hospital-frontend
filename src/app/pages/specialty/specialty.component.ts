@@ -22,7 +22,6 @@ import {PageEvent} from '@angular/material/paginator';
 import * as specialtyActions from './store/specialty.actions';
 
 const initFilter: SpecialtyFilter = {
-  name: '',
   page: 0,
   size: 50,
   sort: ''
@@ -45,7 +44,6 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
   public rowSelection;
   public rowGroupPanelShow;
   public pivotPanelShow;
-  public paginationPageSize;
   public paginationNumberFormatter;
   public defaultColDef;
   public context;

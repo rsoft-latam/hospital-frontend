@@ -40,11 +40,11 @@ export class RouteHandlerComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscriptionRouter?.unsubscribe();
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // Set Sidenav Currently Open on Page load
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {

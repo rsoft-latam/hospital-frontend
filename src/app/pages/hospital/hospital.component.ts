@@ -22,7 +22,6 @@ import {ActionButtonComponent} from '../../shared/components/action-button.compo
 import {PageEvent} from '@angular/material/paginator';
 
 const initFilter: HospitalFilter = {
-  name: '',
   page: 0,
   size: 50,
   sort: ''

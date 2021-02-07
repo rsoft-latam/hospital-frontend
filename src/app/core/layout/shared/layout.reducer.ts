@@ -1,6 +1,5 @@
 import * as layout from './layout.action';
-import { updateObject } from '../../utils/update-object';
-
+import {updateObject} from '../../utils/update-object';
 
 export interface State {
   layout?: string;
@@ -31,7 +30,7 @@ const initialState: State = {
 // Layouts
 
 const layouts: { [name: string]: Partial<State> } = {
-  'alpha': {
+  alpha: {
     layout: 'alpha',
     sidenavOpen: true,
     sidenavCollapsed: true,
@@ -39,7 +38,7 @@ const layouts: { [name: string]: Partial<State> } = {
     sidenavDisableClose: true,
     layoutBoxed: false
   },
-  'beta': {
+  beta: {
     layout: 'beta',
     sidenavOpen: true,
     sidenavCollapsed: false,
@@ -47,7 +46,7 @@ const layouts: { [name: string]: Partial<State> } = {
     sidenavDisableClose: true,
     layoutBoxed: false
   },
-  'gamma': {
+  gamma: {
     layout: 'gamma',
     sidenavOpen: false,
     sidenavCollapsed: false,
@@ -171,19 +170,19 @@ export function reducer(state = initialState, action: layout.Actions): State {
     case layout.OPEN_SETTINGS: {
       return updateObject<State>(state, {
         settingsOpen: true
-      })
+      });
     }
 
     case layout.CLOSE_SETTINGS: {
       return updateObject<State>(state, {
         settingsOpen: false
-      })
+      });
     }
 
     case layout.TOGGLE_SETTINGS: {
       return updateObject<State>(state, {
         settingsOpen: !state.settingsOpen
-      })
+      });
     }
 
     case layout.SET_CARD_ELEVATION: {
@@ -191,7 +190,7 @@ export function reducer(state = initialState, action: layout.Actions): State {
 
       return updateObject<State>(state, {
         cardElevation: elevation
-      })
+      });
     }
 
     default:
@@ -209,4 +208,3 @@ export const getLayout = (state: State) => state.layout;
 export const getLayoutBoxed = (state: State) => state.layoutBoxed;
 export const getSettingsOpen = (state: State) => state.settingsOpen;
 export const getCardElevation = (state: State) => state.cardElevation;
-

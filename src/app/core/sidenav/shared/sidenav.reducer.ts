@@ -1,7 +1,5 @@
 import * as sidenav from './sidenav.action';
 import {SidenavItem} from '../sidenav-item/sidenav-item.model';
-import find from 'lodash-es/find';
-import each from 'lodash-es/each';
 
 export interface State {
   sidenavItems: SidenavItem[];
@@ -64,20 +62,6 @@ export function reducer(state = initialState, action: sidenav.Actions): State {
     }
 
     case sidenav.SET_CURRENTLY_OPEN_BY_ROUTE: {
-      /*const route = action.payload as string;
-      let currentlyOpen = [];
-      const item = findByRouteRecursive(route, state.sidenavItems);
-
-      if (item && item.hasParent()) {
-        currentlyOpen = getAllParentItems(item.parent);
-      } else if (item) {
-        currentlyOpen = [item];
-      }
-
-      return Object.assign({}, state, {
-        currentlyOpen: currentlyOpen
-      });
-*/
       const route = action.payload as string;
       let currentlyOpen = state.currentlyOpen;
       let item = findByRouteRecursive(route, state.sidenavItems);
@@ -133,7 +117,7 @@ export function reducer(state = initialState, action: sidenav.Actions): State {
   }
 }
 
-function getAllParentItems(item: SidenavItem, currentlyOpenTemp: SidenavItem[] = []) {
+function getAllParentItems(item: SidenavItem, currentlyOpenTemp: SidenavItem[] = []): any {
   currentlyOpenTemp.unshift(item);
 
   if (item.hasParent()) {

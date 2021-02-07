@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 import {ToolbarUserButtonComponent} from './toolbar-user-button/toolbar-user-button.component';
 import {ToolbarAlphaComponent} from './toolbar-alpha.component';
 import {ToolbarBetaComponent} from './toolbar-beta.component';
-import {SearchComponent} from './search/search.component';
 import {ToolbarGammaComponent} from './toolbar-gamma.component';
 import {ToolbarNavigationComponent} from './toolbar-navigation/toolbar-navigation.component';
 import {ToolbarNavigationItemComponent} from './toolbar-navigation/toolbar-navigation-item/toolbar-navigation-item.component';
@@ -44,7 +43,6 @@ import {MatRadioModule} from '@angular/material/radio';
     ToolbarLayoutComponent,
     ToolbarAlphaComponent,
     ToolbarBetaComponent,
-    SearchComponent,
     ToolbarGammaComponent,
     ToolbarNavigationComponent,
     ToolbarNavigationItemComponent,
@@ -55,7 +53,6 @@ import {MatRadioModule} from '@angular/material/radio';
     ToolbarLayoutComponent,
     ToolbarAlphaComponent,
     ToolbarBetaComponent,
-    SearchComponent,
     ToolbarGammaComponent,
     ToolbarNavigationComponent,
     ToolbarNavigationItemComponent,

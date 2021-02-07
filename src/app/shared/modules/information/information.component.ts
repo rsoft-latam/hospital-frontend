@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {PageEvent} from '@angular/material/paginator';
 
 @Component({
@@ -40,8 +40,7 @@ export class InformationComponent implements OnInit {
   pageSizeOptions: number[] = [5, 10, 25, 100];
   filter: any;
 
-  constructor(public dialogRef: MatDialogRef<InformationComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit(): void {
@@ -60,14 +59,9 @@ export class InformationComponent implements OnInit {
       resizable: true
     };
 
-
     if (this.data.errorArrayFields) {
       this.data.errorArrayFields = Object.entries(this.data.errorArrayFields);
     }
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
   }
 
   onGridReady(params): void {

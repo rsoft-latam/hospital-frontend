@@ -9,7 +9,7 @@ export class ScrollbarService {
   constructor() {
   }
 
-  add(name: string, scrollbar: Scrollbar, element: ElementRef) {
+  add(name: string, scrollbar: Scrollbar, element: ElementRef): void {
     if (!this.scrollbars) {
       this.scrollbars = {};
     }
@@ -20,11 +20,11 @@ export class ScrollbarService {
     };
   }
 
-  remove(name: string) {
+  remove(name: string): void {
     delete this.scrollbars[name];
   }
 
-  get(name: string) {
+  get(name: string): any {
     return this.scrollbars[name];
   }
 }

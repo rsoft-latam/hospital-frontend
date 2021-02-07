@@ -37,17 +37,13 @@ export class LayoutComponent implements OnInit, OnDestroy {
 
   cardElevation$: Observable<string>;
 
-  buyNowToolbarVisible = true;
-
-  constructor(
-    private mediaReplayService: MediaReplayService,
-    private router: Router,
-    private store: Store<fromRoot.State>,
-    private cd: ChangeDetectorRef
-  ) {
+  constructor(private mediaReplayService: MediaReplayService,
+              private router: Router,
+              private store: Store<fromRoot.State>,
+              private cd: ChangeDetectorRef) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.sidenavOpen$ = this.store.select(fromRoot.getSidenavOpen);
     this.sidenavCollapsed$ = this.store.select(fromRoot.getSidenavCollapsed);
     this.sidenavAlign$ = this.store.select(fromRoot.getSidenavAlign);
@@ -93,54 +89,50 @@ export class LayoutComponent implements OnInit, OnDestroy {
     });
   }
 
-  openSidenav() {
+  openSidenav(): void {
     this.store.dispatch(new layout.OpenSidenavAction());
   }
 
-  closeSidenav() {
+  closeSidenav(): void {
     this.store.dispatch(new layout.CloseSidenavAction());
   }
 
-  toggleSidenav() {
+  toggleSidenav(): void {
     this.store.dispatch(new layout.ToggleSidenavAction());
   }
 
-  toggleSidenavCollapse() {
+  toggleSidenavCollapse(): void {
     this.store.dispatch(new layout.ToggleSidenavCollapseAction());
   }
 
-  setSidenavMode(mode: string) {
+  setSidenavMode(mode: string): void {
     this.store.dispatch(new layout.SetSidenavModeAction(mode));
   }
 
-  setSidenavDisableClose(value: boolean) {
+  setSidenavDisableClose(value: boolean): void {
     this.store.dispatch(new layout.SetSidenavDisableCloseAction(value));
   }
 
-  openQuickpanel() {
+  openQuickpanel(): void {
     this.store.dispatch(new layout.OpenQuickpanelAction());
   }
 
-  closeQuickpanel() {
+  closeQuickpanel(): void {
     this.store.dispatch(new layout.CloseQuickpanelAction());
   }
 
-  toggleQuickpanel() {
+  toggleQuickpanel(): void {
     this.store.dispatch(new layout.ToggleQuickpanelAction());
   }
 
-  openSettings() {
+  openSettings(): void {
     this.store.dispatch(new layout.OpenSettingsAction());
   }
 
-  closeSettings() {
+  closeSettings(): void {
     this.store.dispatch(new layout.CloseSettingsAction());
   }
 
-  toggleSettings() {
-    this.store.dispatch(new layout.ToggleSettingsAction());
-  }
-
-  ngOnDestroy() {
+  ngOnDestroy(): void {
   }
 }

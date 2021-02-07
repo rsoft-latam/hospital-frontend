@@ -9,22 +9,18 @@ const routes: Routes = [
     component: LayoutComponent,
     children: [
       {path: '', redirectTo: 'hospital', pathMatch: 'full'},
+      {path: 'note', loadChildren: () => import('./pages/note/note.module').then(m => m.NoteModule)},
       {path: 'doctor', loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorModule)},
-      {path: 'hospital', loadChildren: () => import('./pages/hospital/hospital.module').then(m => m.HospitalModule)},
       {path: 'patient', loadChildren: () => import('./pages/patient/patient.module').then(m => m.PatientModule)},
-      {path: 'specialty', loadChildren: () => import('./pages/specialty/specialty.module').then(m => m.SpecialtyModule)},
-      {path: 'note', loadChildren: () => import('./pages/note/note.module').then(m => m.NoteModule)}
+      {path: 'hospital', loadChildren: () => import('./pages/hospital/hospital.module').then(m => m.HospitalModule)},
+      {path: 'specialty', loadChildren: () => import('./pages/specialty/specialty.module').then(m => m.SpecialtyModule)}
     ]
   },
   {path: 'auth/login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)},
-  {path: 'signin-oidc', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled',
-    scrollPositionRestoration: 'top'
-  })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 

@@ -36,7 +36,8 @@
     </div>
 
     <div class="sidenav-item-holder" *ngFor="let item of sidenavItems$ | async">
-      <sidenav-item class="sidenav-item-container" [item]="item" [currentlyOpen]="currentlyOpen$ | async" ></sidenav-item>
+      <sidenav-item class="sidenav-item-container" [item]="item"
+                    [currentlyOpen]="currentlyOpen$ | async"></sidenav-item>
     </div>
 
   </scrollbar>

@@ -100,8 +100,7 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
       startWith(''),
       tap(() => this.isLoadingDoctor.next(true)),
       switchMap(value => this.doctorService.list({
-          firstName: value,
-          lastName: '',
+          firstName: {value: value, type: 'contains'},
           page: 0,
           size: 50,
           sort: null

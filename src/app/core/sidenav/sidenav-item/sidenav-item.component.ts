@@ -20,19 +20,19 @@ export class SidenavItemComponent implements OnInit {
   ) {
   }
 
-  ngOnInit() {
+  ngOnInit(): any {
     if (this.currentlyOpen.indexOf(this.item) > -1) {
       return true;
     }
   }
 
-  toggleDropdown() {
+  toggleDropdown(): void {
     if (this.item.hasSubItems()) {
       this.store.dispatch(new sidenavAction.ToggleOpenSidenavItemAction(this.item));
     }
   }
 
-  isOpen(item: SidenavItem) {
+  isOpen(item: SidenavItem): any {
     return this.currentlyOpen.indexOf(item) > -1;
   }
 

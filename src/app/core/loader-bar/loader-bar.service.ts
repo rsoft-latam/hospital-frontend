@@ -14,11 +14,11 @@ export class LoaderBarService {
   constructor() {
   }
 
-  show() {
+  show(): void {
     this.loaderSubject.next(<LoaderBarState>{show: true});
   }
 
-  hide() {
+  hide(): void {
     this.loaderSubject.next(<LoaderBarState>{show: false});
   }
 }

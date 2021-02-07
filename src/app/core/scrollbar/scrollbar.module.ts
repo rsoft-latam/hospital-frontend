@@ -10,10 +10,14 @@ import {ScrollbarService} from './scrollbar.service';
   declarations: [
     ScrollbarComponent
   ],
+  providers: [
+    ScrollbarService
+  ],
   exports: [
     ScrollbarComponent
   ]
 
 })
+
 export class ScrollbarModule {
 }
