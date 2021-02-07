@@ -8,20 +8,22 @@ import {filter, map, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 // NGRX
 import {State} from '../../reducers/index';
-import * as doctorActions from './store/doctor.actions';
+import * as doctorActions from './status/doctor.actions';
 import {Action, ActionsSubject, Store} from '@ngrx/store';
 // SERVICESa
-import {DoctorService} from './store/services/doctor.service';
+import {DoctorService} from './services/doctor.service';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
-import {DoctorFilter} from './store/models/doctor-filter.model';
+import {DoctorFilter} from './models/doctor-filter.model';
 import {ActionsButtonPatientComponent} from '../../shared/components/actions-button-patient.component';
 import {InformationComponent} from '../../shared/modules/information/information.component';
-import {NoteService} from '../note/store/services/note.service';
+import {NoteService} from '../note/services/note.service';
 import {PageEvent} from '@angular/material/paginator';
+import {DatePipe} from '@angular/common';
+import {formatDate} from '../../shared/utils/format.util';
 
 const initFilter: DoctorFilter = {
   page: 0,
@@ -92,9 +94,9 @@ export class DoctorComponent implements OnInit, OnDestroy {
       {headerName: 'Birthday', field: 'birthday'},
       {headerName: 'Hospital', field: 'hospital', valueGetter: p => p?.data?.hospital?.name},
       {headerName: 'createdBy', field: 'createdBy'},
-      {headerName: 'createdDate', field: 'createdDate'},
+      {headerName: 'createdDate', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
       {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'}
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
     ];
 
     this.context = {componentParent: this};
@@ -180,7 +182,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
           cols: [],
           service: this.noteService,
           method: 'listByIdDoctor',
-          filter: {idDoctor: event.row.id, page: 0, size: 50, sort: ''},
+          filter: {idDoctor: {value: event.row.id, type: 'equals'}, page: 0, size: 50, sort: ''},
           columnDefs: [
             {headerName: 'firstNamePatient', field: 'firstNamePatient'},
             {headerName: 'lastNamePatient', field: 'lastNamePatient'},

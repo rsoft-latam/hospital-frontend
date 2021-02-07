@@ -7,8 +7,8 @@ import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} 
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as hospitalActions from '../store/specialty.actions';
-import {DoctorService} from '../../doctor/store/services/doctor.service';
+import * as hospitalActions from '../status/specialty.actions';
+import {DoctorService} from '../../doctor/services/doctor.service';
 
 @Component({
   selector: 'specialty-form',

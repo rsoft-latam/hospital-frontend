@@ -10,16 +10,18 @@ import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 import {State} from '../../reducers/index';
 import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
-import {SpecialtyService} from './store/services/specialty.service';
+import {SpecialtyService} from './services/specialty.service';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
-import {SpecialtyFilter} from './store/models/specialty-filter.model';
+import {SpecialtyFilter} from './models/specialty-filter.model';
 import {ActionButtonComponent} from '../../shared/components/action-button.component';
 import {PageEvent} from '@angular/material/paginator';
-import * as specialtyActions from './store/specialty.actions';
+import * as specialtyActions from './status/specialty.actions';
+import {DatePipe} from '@angular/common';
+import {formatDate} from '../../shared/utils/format.util';
 
 const initFilter: SpecialtyFilter = {
   page: 0,
@@ -85,9 +87,9 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
       {headerName: 'Doctor', field: 'doctor', valueGetter: p => p?.data?.doctor?.firstName + '-' + p?.data?.doctor?.lastName},
       {headerName: 'Icon', field: 'icon'},
       {headerName: 'createdBy', field: 'createdBy'},
-      {headerName: 'createdDate', field: 'createdDate'},
+      {headerName: 'createdDate', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
       {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'}
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
     ];
 
     this.context = {componentParent: this};

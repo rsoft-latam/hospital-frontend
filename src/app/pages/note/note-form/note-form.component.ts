@@ -7,9 +7,9 @@ import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} 
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as noteActions from '../store/note.actions';
-import {PatientService} from '../../patient/store/services/patient.service';
-import {DoctorService} from '../../doctor/store/services/doctor.service';
+import * as noteActions from '../status/note.actions';
+import {PatientService} from '../../patient/services/patient.service';
+import {DoctorService} from '../../doctor/services/doctor.service';
 
 @Component({
   selector: 'note-form',

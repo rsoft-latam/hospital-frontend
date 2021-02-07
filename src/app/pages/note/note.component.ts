@@ -8,18 +8,20 @@ import {filter, map, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 // NGRX
 import {State} from '../../reducers/index';
-import * as noteActions from './store/note.actions';
+import * as noteActions from './status/note.actions';
 import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
-import {NoteService} from './store/services/note.service';
+import {NoteService} from './services/note.service';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
-import {NoteFilter} from './store/models/note-filter.model';
+import {NoteFilter} from './models/note-filter.model';
 import {ActionButtonComponent} from '../../shared/components/action-button.component';
 import {PageEvent} from '@angular/material/paginator';
+import {DatePipe} from '@angular/common';
+import {formatDate} from '../../shared/utils/format.util';
 
 const initFilter: NoteFilter = {
   page: 0,
@@ -85,9 +87,9 @@ export class NoteComponent implements OnInit, OnDestroy {
       {headerName: 'description', field: 'description'},
       {headerName: 'date', field: 'date'},
       {headerName: 'createdBy', field: 'createdBy'},
-      {headerName: 'createdDate', field: 'createdDate'},
+      {headerName: 'createdDate', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
       {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'}
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
     ];
 
     this.context = {componentParent: this};

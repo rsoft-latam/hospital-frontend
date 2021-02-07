@@ -7,7 +7,7 @@ import {filter, shareReplay, tap} from 'rxjs/operators';
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as hospitalActions from '../store/hospital.actions';
+import * as hospitalActions from '../status/hospital.actions';
 
 @Component({
   selector: 'hospital-form',
@@ -39,8 +39,8 @@ export class HospitalFormComponent implements OnInit, OnDestroy {
 
     // CONFIG FORM
     this.form = this.formBuilder.group({
-      id: [null, [Validators.required]],
-      name: null,
+      id: null,
+      name: [null, [Validators.required]],
       creationDate: null
     });
 

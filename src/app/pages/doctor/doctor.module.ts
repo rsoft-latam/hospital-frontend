@@ -17,7 +17,7 @@ import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {DoctorComponent} from './doctor.component';
 import {DoctorFormComponent} from './doctor-form/doctor-form.component';
-import {HospitalService} from '../hospital/store/services/hospital.service';
+import {HospitalService} from '../hospital/services/hospital.service';
 import {ActionButtonComponent} from '../../shared/components/action-button.component';
 
 const routes: Routes = [

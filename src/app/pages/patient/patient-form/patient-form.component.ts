@@ -7,8 +7,8 @@ import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} 
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as patientActions from '../store/patient.actions';
-import {HospitalService} from '../../hospital/store/services/hospital.service';
+import * as patientActions from '../status/patient.actions';
+import {HospitalService} from '../../hospital/services/hospital.service';
 
 @Component({
   selector: 'patient-form',
@@ -104,7 +104,7 @@ export class PatientFormComponent implements OnInit, OnDestroy {
       startWith(''),
       tap(() => this.isLoadingPatient.next(true)),
       switchMap(value => this.hospitalService.list({
-          name: value,
+          name: {value: value, type: 'contains'},
           page: 0,
           size: 50,
           sort: null

@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate {
 
   /*
   How can I remove the dependency to ApplicationState?
-  If I incect AuthState it compiles, but still the ApplicationState will be injected with the store
+  If I incect AuthState it compiles, but still the ApplicationState will be injected with the status
   */
 
   canActivate(): Observable<boolean> {

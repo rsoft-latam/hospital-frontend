@@ -8,18 +8,20 @@ import {filter, map, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 // NGRX
 import {State} from '../../reducers/index';
-import * as hospitalActions from './store/hospital.actions';
+import * as hospitalActions from './status/hospital.actions';
 import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
-import {HospitalService} from './store/services/hospital.service';
+import {HospitalService} from './services/hospital.service';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
-import {HospitalFilter} from './store/models/hospital-filter.model';
+import {HospitalFilter} from './models/hospital-filter.model';
 import {ActionButtonComponent} from '../../shared/components/action-button.component';
 import {PageEvent} from '@angular/material/paginator';
+import {DatePipe} from '@angular/common';
+import {formatDate} from '../../shared/utils/format.util';
 
 const initFilter: HospitalFilter = {
   page: 0,
@@ -83,9 +85,9 @@ export class HospitalComponent implements OnInit, OnDestroy {
       {headerName: 'Name', field: 'name'},
       {headerName: 'Creation Date', field: 'creationDate'},
       {headerName: 'createdBy', field: 'createdBy'},
-      {headerName: 'createdDate', field: 'createdDate'},
+      {headerName: 'createdDate', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
       {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'}
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
     ];
 
     this.context = {componentParent: this};
