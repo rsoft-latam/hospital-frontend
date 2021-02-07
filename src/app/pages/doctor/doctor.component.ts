@@ -10,7 +10,7 @@ import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 import {State} from '../../reducers/index';
 import * as doctorActions from './store/doctor.actions';
 import {Action, ActionsSubject, Store} from '@ngrx/store';
-// SERVICES
+// SERVICESa
 import {DoctorService} from './store/services/doctor.service';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
@@ -129,9 +129,10 @@ export class DoctorComponent implements OnInit, OnDestroy {
         this.filter = Object.assign({}, filter);
         this.isLoadingFilter.next(false);
         this.subs = this.mappingService.list(filter).subscribe(data => {
-          this.total = parseFloat(data.headers.get('X-Total-Count'));
-          this.gridApi.setRowData(data.body);
-        });
+            this.total = parseFloat(data.headers.get('X-Total-Count'));
+            this.gridApi.setRowData(data.body);
+          }
+        );
       })
     ).subscribe());
 

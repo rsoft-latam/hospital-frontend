@@ -8,8 +8,8 @@ import {filter, map, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 // NGRX
 import {State} from '../../reducers/index';
-import * as hospitalActions from './store/note.actions';
-import {Action, ActionsSubject, Store} from '@ngrx/store';
+import * as noteActions from './store/note.actions';
+import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {NoteService} from './store/services/note.service';
 // COMPONENTS
@@ -19,6 +19,7 @@ import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
 import {NoteFilter} from './store/models/note-filter.model';
 import {ActionButtonComponent} from '../../shared/components/action-button.component';
+import {PageEvent} from '@angular/material/paginator';
 
 const initFilter: NoteFilter = {
   name: '',
@@ -61,6 +62,9 @@ export class NoteComponent implements OnInit, OnDestroy {
   filterForm: FormGroup;
 
   subs: Subscription;
+
+  total = 0;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor(public dialog: MatDialog,
               private store: Store<State>,
@@ -113,25 +117,28 @@ export class NoteComponent implements OnInit, OnDestroy {
 
     // SET FILTER SUBS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === hospitalActions.HospitalActionTypes.SetFilter),
+      filter(s => s.type === noteActions.HospitalActionTypes.SetFilter),
       map((s: any) => s.payload.filter),
       tap((filter: NoteFilter) => {
         this.filter = Object.assign({}, filter);
         this.isLoadingFilter.next(false);
-        this.subs = this.mappingService.list(filter).subscribe(data => this.gridApi.setRowData(data.body));
+        this.subs = this.mappingService.list(filter).subscribe(data => {
+          this.total = parseFloat(data.headers.get('X-Total-Count'));
+          this.gridApi.setRowData(data.body);
+        });
       })
     ).subscribe());
 
     // ADD UPDATE DELETE HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === hospitalActions.HospitalActionTypes.AddSuccess ||
-        s.type === hospitalActions.HospitalActionTypes.UpdateSuccess ||
-        s.type === hospitalActions.HospitalActionTypes.DeleteSuccess
+        s.type === noteActions.HospitalActionTypes.AddSuccess ||
+        s.type === noteActions.HospitalActionTypes.UpdateSuccess ||
+        s.type === noteActions.HospitalActionTypes.DeleteSuccess
       ),
       tap(() => {
-        this.store.dispatch(new hospitalActions.CloseSidenav());
-        this.store.dispatch(new hospitalActions.SetFilter({filter: initFilter}));
+        this.store.dispatch(new noteActions.CloseSidenav());
+        this.store.dispatch(new noteActions.SetFilter({filter: initFilter}));
       })
     ).subscribe());
 
@@ -144,8 +151,8 @@ export class NoteComponent implements OnInit, OnDestroy {
 
   actionButtonRowTable(event): void {
     if (event.type === 'edit') {
-      this.store.dispatch(new hospitalActions.GetHospitalAction({id: event.row.id}));
-      this.store.dispatch(new hospitalActions.OpenSidenav({addStatus: 'edit'}));
+      this.store.dispatch(new noteActions.GetHospitalAction({id: event.row.id}));
+      this.store.dispatch(new noteActions.OpenSidenav({addStatus: 'edit'}));
     }
     if (event.type === 'delete') {
       const dialogRef = this.dialog.open(AlertComponent, {
@@ -156,7 +163,7 @@ export class NoteComponent implements OnInit, OnDestroy {
         }
       });
       dialogRef.afterClosed().subscribe(res => {
-        res === true ? this.store.dispatch(new hospitalActions.DeleteAction({id: event.row.id})) : '';
+        res === true ? this.store.dispatch(new noteActions.DeleteAction({id: event.row.id})) : '';
       });
     }
   }
@@ -165,12 +172,12 @@ export class NoteComponent implements OnInit, OnDestroy {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     params.api.sizeColumnsToFit();
-    this.store.dispatch(new hospitalActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(new noteActions.SetFilter({filter: initFilter}));
   }
 
   onApply(): void {
     this.isLoadingFilter.next(true);
-    this.store.dispatch(new hospitalActions.SetFilter({
+    this.store.dispatch(new noteActions.SetFilter({
       filter: {
         ...this.filter,
         name: this.filterForm.value.name
@@ -179,20 +186,31 @@ export class NoteComponent implements OnInit, OnDestroy {
   }
 
   onAdd(): void {
-    this.store.dispatch(new hospitalActions.OpenSidenav({addStatus: 'new'}));
+    this.store.dispatch(new noteActions.OpenSidenav({addStatus: 'new'}));
   }
 
   onReset(): void {
-    this.store.dispatch(new hospitalActions.CloseFilter());
-    this.store.dispatch(new hospitalActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(new noteActions.CloseFilter());
+    this.store.dispatch(new noteActions.SetFilter({filter: initFilter}));
   }
 
   clickOnFilter(hiddenFilter): void {
     if (hiddenFilter) {
-      this.store.dispatch(new hospitalActions.OpenFilter());
+      this.store.dispatch(new noteActions.OpenFilter());
     } else {
-      this.store.dispatch(new hospitalActions.CloseFilter());
+      this.store.dispatch(new noteActions.CloseFilter());
     }
+  }
+
+
+  onPagination(event: PageEvent): void {
+    this.store.dispatch(new noteActions.SetFilter({
+      filter: {
+        ...this.filter,
+        size: event.pageSize,
+        page: event.pageIndex
+      }
+    }));
   }
 
 }

@@ -19,6 +19,7 @@ import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
 import {HospitalFilter} from './store/models/hospital-filter.model';
 import {ActionButtonComponent} from '../../shared/components/action-button.component';
+import {PageEvent} from '@angular/material/paginator';
 
 const initFilter: HospitalFilter = {
   name: '',
@@ -61,6 +62,9 @@ export class HospitalComponent implements OnInit, OnDestroy {
   filterForm: FormGroup;
 
   subs: Subscription;
+
+  total = 0;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
   constructor(public dialog: MatDialog,
               private store: Store<State>,
@@ -116,7 +120,11 @@ export class HospitalComponent implements OnInit, OnDestroy {
       tap((filter: HospitalFilter) => {
         this.filter = Object.assign({}, filter);
         this.isLoadingFilter.next(false);
-        this.subs = this.mappingService.list(filter).subscribe(data => this.gridApi.setRowData(data.body));
+        this.subs = this.mappingService.list(filter).subscribe(data => {
+            this.total = parseFloat(data.headers.get('X-Total-Count'));
+            this.gridApi.setRowData(data.body);
+          }
+        );
       })
     ).subscribe());
 
@@ -191,6 +199,17 @@ export class HospitalComponent implements OnInit, OnDestroy {
     } else {
       this.store.dispatch(new hospitalActions.CloseFilter());
     }
+  }
+
+
+  onPagination(event: PageEvent): void {
+    this.store.dispatch(new hospitalActions.SetFilter({
+      filter: {
+        ...this.filter,
+        size: event.pageSize,
+        page: event.pageIndex
+      }
+    }));
   }
 
 }
