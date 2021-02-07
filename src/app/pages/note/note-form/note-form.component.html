@@ -17,6 +17,7 @@
             <input matInput
                    placeholder="Description"
                    type="text"
+                   required
                    [formControlName]="'description'">
           </mat-form-field>
 
@@ -25,6 +26,7 @@
                    [matDatepicker]="datepickerDate"
                    placeholder="Date"
                    readonly
+                   required
                    [formControlName]="'date'">
             <mat-datepicker-toggle matSuffix [for]="datepickerDate"></mat-datepicker-toggle>
           </mat-form-field>
@@ -33,6 +35,7 @@
           <mat-form-field style="width: 100%;">
             <input matInput
                    [matAutocomplete]="autoIdPatient"
+                   required
                    [formControlName]="'idPatient'"
                    placeholder="Patient">
           </mat-form-field>
@@ -53,6 +56,7 @@
           <mat-form-field style="width: 100%;">
             <input matInput
                    [matAutocomplete]="autoIdDoctor"
+                   required
                    [formControlName]="'idDoctor'"
                    placeholder="Doctor">
           </mat-form-field>

@@ -1,5 +1,5 @@
 // Angular
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // RXJS
 import {BehaviorSubject, Subscription} from 'rxjs';
@@ -45,7 +45,7 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
     // CONFIG FORM
     this.form = this.formBuilder.group({
       id: null,
-      name: null,
+      name: [null, [Validators.required]],
       description: null,
       icon: null,
       doctor: null

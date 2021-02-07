@@ -17,18 +17,21 @@
             <input matInput
                    placeholder="First Name"
                    type="text"
+                   required
                    [formControlName]="'firstName'">
           </mat-form-field>
           <mat-form-field>
             <input matInput
                    placeholder="Last Name"
                    type="text"
+                   required
                    [formControlName]="'lastName'">
           </mat-form-field>
           <mat-form-field>
             <input matInput
                    placeholder="Address"
                    type="text"
+                   required
                    [formControlName]="'address'">
           </mat-form-field>
 
@@ -37,6 +40,7 @@
                    [matDatepicker]="datepickerBirthday"
                    placeholder="Birthday"
                    readonly
+                   required
                    [formControlName]="'birthday'">
             <mat-datepicker-toggle matSuffix [for]="datepickerBirthday"></mat-datepicker-toggle>
           </mat-form-field>

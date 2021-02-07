@@ -19,7 +19,7 @@ import {AppConfig} from '../../shared/models/app-config.model';
 import {HospitalFilter} from './store/models/specialty-filter.model';
 import {ActionButtonComponent} from '../../shared/components/action-button.component';
 import {PageEvent} from '@angular/material/paginator';
-import * as specialtyActions from '../patient/store/patient.actions';
+import * as specialtyActions from './store/specialty.actions';
 
 const initFilter: HospitalFilter = {
   name: '',
