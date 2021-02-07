@@ -105,7 +105,8 @@ export class NoteFormComponent implements OnInit, OnDestroy {
       startWith(''),
       tap(() => this.isLoadingIdPatient.next(true)),
       switchMap(value => this.patientService.list({
-          name: value,
+          firstName: value,
+          lastName: '',
           page: 0,
           size: 50,
           sort: null
@@ -120,6 +121,7 @@ export class NoteFormComponent implements OnInit, OnDestroy {
       tap(() => this.isLoadingIdDoctor.next(true)),
       switchMap(value => this.doctorService.list({
           firstName: value,
+          lastName: '',
           page: 0,
           size: 50,
           sort: null

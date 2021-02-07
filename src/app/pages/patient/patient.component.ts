@@ -25,7 +25,8 @@ import {DoctorService} from '../doctor/store/services/doctor.service';
 import {PageEvent} from '@angular/material/paginator';
 
 const initFilter: HospitalFilter = {
-  name: '',
+  firstName: '',
+  lastName: '',
   page: 0,
   size: 50,
   sort: ''
@@ -80,7 +81,8 @@ export class PatientComponent implements OnInit, OnDestroy {
 
     // FILTER FORM CONFIG
     this.filterForm = this.formBuilder.group({
-      name: null
+      firstName: null,
+      lastName: null
     });
 
     // AG-GRID CONFIG
@@ -204,7 +206,9 @@ export class PatientComponent implements OnInit, OnDestroy {
     this.store.dispatch(new patientActions.SetFilter({
       filter: {
         ...this.filter,
-        name: this.filterForm.value.name
+        page: 0,
+        firstName: this.filterForm.value.firstName,
+        lastName: this.filterForm.value.lastName
       }
     }));
   }

@@ -62,12 +62,15 @@
                 <mat-card-content fxLayout="column">
                   <mat-form-field fxFlex.gt-sm>
                     <input matInput
-                           placeholder="Name"
-                           [formControlName]="'name'"
-                           name="searchBy"
-                           id="searchBy"
+                           placeholder="First Name"
+                           [formControlName]="'firstName'"
                            type="text">
-                    <mat-icon matSuffix>search</mat-icon>
+                  </mat-form-field>
+                  <mat-form-field fxFlex.gt-sm>
+                    <input matInput
+                           placeholder="Last Name"
+                           [formControlName]="'lastName'"
+                           type="text">
                   </mat-form-field>
 
                   <div style="display: flex; flex-direction: row; justify-content: space-between; margin-top: 20px;">

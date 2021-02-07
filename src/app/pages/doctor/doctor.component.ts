@@ -26,6 +26,7 @@ import {PageEvent} from '@angular/material/paginator';
 
 const initFilter: DoctorFilter = {
   firstName: '',
+  lastName: '',
   page: 0,
   size: 50,
   sort: ''
@@ -79,7 +80,8 @@ export class DoctorComponent implements OnInit, OnDestroy {
 
     // FILTER FORM CONFIG
     this.filterForm = this.formBuilder.group({
-      name: null
+      firstName: null,
+      lastName: null
     });
 
     // AG-GRID CONFIG
@@ -205,7 +207,9 @@ export class DoctorComponent implements OnInit, OnDestroy {
     this.store.dispatch(new doctorActions.SetFilter({
       filter: {
         ...this.filter,
-        firstName: this.filterForm.value.name
+        page: 0,
+        firstName: this.filterForm.value.firstName,
+        lastName: this.filterForm.value.lastName
       }
     }));
   }
