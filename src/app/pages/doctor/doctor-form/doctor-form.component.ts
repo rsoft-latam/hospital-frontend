@@ -55,9 +55,9 @@ export class DoctorFormComponent implements OnInit, OnDestroy {
 
     // GET HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === doctorActions.HospitalActionTypes.GetHospitalSuccess),
+      filter(s => s.type === doctorActions.GetHospitalSuccess.type),
       tap((s: any) => {
-        const form = Object.assign({}, s.payload.entity.body);
+        const form = Object.assign({}, s.entity.body);
         this.form.setValue({
           id: form.id,
           firstName: form.firstName,
@@ -73,8 +73,8 @@ export class DoctorFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === doctorActions.HospitalActionTypes.AddSuccess ||
-        s.type === doctorActions.HospitalActionTypes.UpdateSuccess),
+        s.type === doctorActions.AddSuccess.type ||
+        s.type === doctorActions.UpdateSuccess.type),
       tap((s) => {
         this.isLoadingSave.next(false);
         this.closeSidenav();
@@ -84,8 +84,8 @@ export class DoctorFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD FAILURE
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === doctorActions.HospitalActionTypes.AddFailure ||
-        s.type === doctorActions.HospitalActionTypes.UpdateFailure),
+        s.type === doctorActions.AddFailure.type ||
+        s.type === doctorActions.UpdateFailure.type),
       tap(() => {
         this.isLoadingSave.next(false);
       })
@@ -121,15 +121,15 @@ export class DoctorFormComponent implements OnInit, OnDestroy {
   onSave(): void {
     this.isLoadingSave.next(true);
     if (this.sidenavFormType === 'new') {
-      this.store.dispatch(new doctorActions.AddAction({entity: this.form.value}));
+      this.store.dispatch(doctorActions.AddAction({entity: this.form.value}));
     }
     if (this.sidenavFormType === 'edit') {
-      this.store.dispatch(new doctorActions.UpdateAction({entity: this.form.value}));
+      this.store.dispatch(doctorActions.UpdateAction({entity: this.form.value}));
     }
   }
 
   closeSidenav(): void {
-    this.store.dispatch(new doctorActions.CloseSidenav());
+    this.store.dispatch(doctorActions.CloseSidenav());
   }
 
   displayFn(data?: any): string | undefined {

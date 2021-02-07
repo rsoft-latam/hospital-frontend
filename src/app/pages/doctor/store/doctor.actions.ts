@@ -1,172 +1,28 @@
 // NGRX
-import {Action} from '@ngrx/store';
+import {createAction, props} from '@ngrx/store';
 // OTHERS
 import {DoctorFilter} from './models/doctor-filter.model';
 
-export enum HospitalActionTypes {
+export const CloseSidenav = createAction('[DOCTOR]CloseSidenav');
+export const OpenSidenav = createAction('[DOCTOR]OpenSidenav', props<{ addStatus: string }>());
 
-  CloseSidenav = '[DOCTOR]CloseSidenav',
-  OpenSidenav = '[DOCTOR]OpenSidenav',
+export const CloseFilter = createAction('[DOCTOR]CloseFilter');
+export const OpenFilter = createAction('[DOCTOR]OpenFilter');
 
-  CloseFilter = '[DOCTOR]CloseFilter',
-  OpenFilter = '[DOCTOR]OpenFilter',
+export const SetFilter = createAction('[DOCTOR]SetFilter', props<{ filter: DoctorFilter }>());
 
-  SetFilter = '[DOCTOR]SetFilter',
+export const AddAction = createAction('[DOCTOR]AddAction', props<{ entity: any }>());
+export const AddSuccess = createAction('[DOCTOR]AddSuccess', props<{ entity: any }>());
+export const AddFailure = createAction('[DOCTOR]AddFailure', props<{ validation: any }>());
 
-  AddAction = '[DOCTOR]AddAction',
-  AddSuccess = '[DOCTOR]AddSuccess',
-  AddFailure = '[DOCTOR]AddFailure',
+export const UpdateAction = createAction('[DOCTOR]UpdateAction', props<{ entity: any }>());
+export const UpdateSuccess = createAction('[DOCTOR]UpdateSuccess', props<{ entity: any }>());
+export const UpdateFailure = createAction('[DOCTOR]UpdateFailure', props<{ validation: any }>());
 
-  UpdateAction = '[DOCTOR]UpdateAction',
-  UpdateSuccess = '[DOCTOR]UpdateSuccess',
-  UpdateFailure = '[DOCTOR]UpdateFailure',
+export const DeleteAction = createAction('[DOCTOR]DeleteAction', props<{ id: number }>());
+export const DeleteSuccess = createAction('[DOCTOR]DeleteSuccess', props<{ entity: any }>());
+export const DeleteFailure = createAction('[DOCTOR]DeleteFailure', props<{ validation: any }>());
 
-  DeleteAction = '[DOCTOR]DeleteAction',
-  DeleteSuccess = '[DOCTOR]DeleteSuccess',
-  DeleteFailure = '[DOCTOR]DeleteFailure',
-
-  GetHospitalAction = '[DOCTOR]GetHospitalAction',
-  GetHospitalSuccess = '[DOCTOR]GetHospitalSuccess',
-  GetHospitalFailure = '[DOCTOR]GetHospitalFailure',
-
-}
-
-export class OpenSidenav implements Action {
-  readonly type = HospitalActionTypes.OpenSidenav;
-
-  constructor(public payload: { addStatus: string }) {
-  }
-}
-
-export class CloseSidenav implements Action {
-  readonly type = HospitalActionTypes.CloseSidenav;
-}
-
-
-export class OpenFilter implements Action {
-  readonly type = HospitalActionTypes.OpenFilter;
-}
-
-export class CloseFilter implements Action {
-  readonly type = HospitalActionTypes.CloseFilter;
-}
-
-export class SetFilter implements Action {
-  readonly type = HospitalActionTypes.SetFilter;
-
-  constructor(public payload: { filter: DoctorFilter }) {
-  }
-}
-
-export class AddAction implements Action {
-  readonly type = HospitalActionTypes.AddAction;
-
-  constructor(public payload: { entity: any }) {
-  }
-}
-
-export class AddSuccess implements Action {
-  readonly type = HospitalActionTypes.AddSuccess;
-
-  constructor(public payload: { entity: any }) {
-  }
-}
-
-export class AddFailure implements Action {
-  readonly type = HospitalActionTypes.AddFailure;
-
-  constructor(public payload: { validation: any }) {
-  }
-}
-
-
-export class UpdateAction implements Action {
-  readonly type = HospitalActionTypes.UpdateAction;
-
-  constructor(public payload: { entity: any }) {
-  }
-}
-
-export class UpdateSuccess implements Action {
-  readonly type = HospitalActionTypes.UpdateSuccess;
-
-  constructor(public payload: { entity: any }) {
-  }
-}
-
-export class UpdateFailure implements Action {
-  readonly type = HospitalActionTypes.UpdateFailure;
-
-  constructor(public payload: { validation: any }) {
-  }
-}
-
-
-export class DeleteAction implements Action {
-  readonly type = HospitalActionTypes.DeleteAction;
-
-  constructor(public payload: { id: number }) {
-  }
-}
-
-export class DeleteSuccess implements Action {
-  readonly type = HospitalActionTypes.DeleteSuccess;
-
-  constructor(public payload: { entity: any }) {
-  }
-}
-
-export class DeleteFailure implements Action {
-  readonly type = HospitalActionTypes.DeleteFailure;
-
-  constructor(public payload: { validation: any }) {
-  }
-}
-
-
-export class GetHospitalAction implements Action {
-  readonly type = HospitalActionTypes.GetHospitalAction;
-
-  constructor(public payload: { id: string }) {
-  }
-}
-
-export class GetHospitalSuccess implements Action {
-  readonly type = HospitalActionTypes.GetHospitalSuccess;
-
-  constructor(public payload: { entity: any }) {
-  }
-}
-
-export class GetHospitalFailure implements Action {
-  readonly type = HospitalActionTypes.GetHospitalFailure;
-
-  constructor(public payload: { validation: any }) {
-  }
-
-}
-
-export type DoctorActions =
-  | CloseSidenav
-  | OpenSidenav
-
-  | CloseFilter
-  | OpenFilter
-
-  | SetFilter
-
-  | AddAction
-  | AddSuccess
-  | AddFailure
-
-  | UpdateAction
-  | UpdateSuccess
-  | UpdateFailure
-
-  | DeleteAction
-  | DeleteSuccess
-  | DeleteFailure
-
-  | GetHospitalAction
-  | GetHospitalSuccess
-  | GetHospitalFailure;
+export const GetHospitalAction = createAction('[DOCTOR]GetHospitalActionn', props<{ id: string }>());
+export const GetHospitalSuccess = createAction('[DOCTOR]GetHospitalSuccess', props<{ entity: any }>());
+export const GetHospitalFailure = createAction('[DOCTOR]GetHospitalFailure', props<{ validation: any }>());

@@ -124,8 +124,8 @@ export class DoctorComponent implements OnInit, OnDestroy {
 
     // SET FILTER SUBS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === doctorActions.HospitalActionTypes.SetFilter),
-      map((s: any) => s.payload.filter),
+      filter(s => s.type === doctorActions.SetFilter.type),
+      map((s: any) => s.filter),
       tap((filter: DoctorFilter) => {
         this.filter = Object.assign({}, filter);
         this.isLoadingFilter.next(false);
@@ -140,13 +140,13 @@ export class DoctorComponent implements OnInit, OnDestroy {
     // ADD UPDATE DELETE HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === doctorActions.HospitalActionTypes.AddSuccess ||
-        s.type === doctorActions.HospitalActionTypes.UpdateSuccess ||
-        s.type === doctorActions.HospitalActionTypes.DeleteSuccess
+        s.type === doctorActions.AddSuccess.type ||
+        s.type === doctorActions.UpdateSuccess.type ||
+        s.type === doctorActions.DeleteSuccess.type
       ),
       tap(() => {
-        this.store.dispatch(new doctorActions.CloseSidenav());
-        this.store.dispatch(new doctorActions.SetFilter({filter: initFilter}));
+        this.store.dispatch(doctorActions.CloseSidenav());
+        this.store.dispatch(doctorActions.SetFilter({filter: initFilter}));
       })
     ).subscribe());
 
@@ -159,8 +159,8 @@ export class DoctorComponent implements OnInit, OnDestroy {
 
   actionButtonRowTable(event): void {
     if (event.type === 'edit') {
-      this.store.dispatch(new doctorActions.GetHospitalAction({id: event.row.id}));
-      this.store.dispatch(new doctorActions.OpenSidenav({addStatus: 'edit'}));
+      this.store.dispatch(doctorActions.GetHospitalAction({id: event.row.id}));
+      this.store.dispatch(doctorActions.OpenSidenav({addStatus: 'edit'}));
     }
     if (event.type === 'delete') {
       const dialogRef = this.dialog.open(AlertComponent, {
@@ -171,7 +171,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
         }
       });
       dialogRef.afterClosed().subscribe(res => {
-        res === true ? this.store.dispatch(new doctorActions.DeleteAction({id: event.row.id})) : '';
+        res === true ? this.store.dispatch(doctorActions.DeleteAction({id: event.row.id})) : '';
       });
     }
     if (event.type === 'doctor') {
@@ -201,12 +201,12 @@ export class DoctorComponent implements OnInit, OnDestroy {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     params.api.sizeColumnsToFit();
-    this.store.dispatch(new doctorActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(doctorActions.SetFilter({filter: initFilter}));
   }
 
   onApply(): void {
     this.isLoadingFilter.next(true);
-    this.store.dispatch(new doctorActions.SetFilter({
+    this.store.dispatch(doctorActions.SetFilter({
       filter: {
         ...this.filter,
         page: 0,
@@ -217,25 +217,25 @@ export class DoctorComponent implements OnInit, OnDestroy {
   }
 
   onAdd(): void {
-    this.store.dispatch(new doctorActions.OpenSidenav({addStatus: 'new'}));
+    this.store.dispatch(doctorActions.OpenSidenav({addStatus: 'new'}));
   }
 
   onReset(): void {
-    this.store.dispatch(new doctorActions.CloseFilter());
-    this.store.dispatch(new doctorActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(doctorActions.CloseFilter());
+    this.store.dispatch(doctorActions.SetFilter({filter: initFilter}));
   }
 
   clickOnFilter(hiddenFilter): void {
     if (hiddenFilter) {
-      this.store.dispatch(new doctorActions.OpenFilter());
+      this.store.dispatch(doctorActions.OpenFilter());
     } else {
-      this.store.dispatch(new doctorActions.CloseFilter());
+      this.store.dispatch(doctorActions.CloseFilter());
     }
   }
 
 
   onPagination(event: PageEvent): void {
-    this.store.dispatch(new doctorActions.SetFilter({
+    this.store.dispatch(doctorActions.SetFilter({
       filter: {
         ...this.filter,
         size: event.pageSize,
