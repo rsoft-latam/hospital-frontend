@@ -2,7 +2,7 @@
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // RXJS
-import {BehaviorSubject, Subscription} from 'rxjs';
+import {BehaviorSubject, forkJoin, Subscription} from 'rxjs';
 import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 // NGRX
 import {State} from '../../../reducers';
@@ -61,13 +61,25 @@ export class NoteFormComponent implements OnInit, OnDestroy {
       filter(s => s.type === noteActions.GetNoteSuccess.type),
       tap((s: any) => {
         const form = Object.assign({}, s.entity.body);
-        this.form.setValue({
-          id: form.id,
-          idDoctor: form.idDoctor,
-          idPatient: form.idPatient,
-          date: form.date,
-          description: form.description
-        });
+        forkJoin([
+          this.doctorService.getById(form.idDoctor),
+          this.patientService.getById(form.idPatient)
+        ]).subscribe(
+          res => this.form.setValue({
+            id: form.id,
+            idDoctor: res[0].body,
+            idPatient: res[1].body,
+            date: form.date,
+            description: form.description
+          }),
+          error => this.form.setValue({
+            id: form.id,
+            idDoctor: {firstName: '---', lastName: '---'},
+            idPatient: {firstName: '---', lastName: '---'},
+            date: form.date,
+            description: form.description
+          })
+        );
       })
     ).subscribe());
 

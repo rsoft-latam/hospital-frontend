@@ -42,12 +42,6 @@ export class NoteComponent implements OnInit, OnDestroy {
   private gridApi;
   private gridColumnApi;
   public columnDefs;
-  public autoGroupColumnDef;
-  public rowSelection;
-  public rowGroupPanelShow;
-  public pivotPanelShow;
-  public paginationNumberFormatter;
-  public defaultColDef;
   public context;
   public frameworkComponents;
 
@@ -80,31 +74,20 @@ export class NoteComponent implements OnInit, OnDestroy {
 
     // AG-GRID CONFIG
     this.columnDefs = [
-      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', width: 110},
-      {headerName: 'Id', field: 'id'},
-      {headerName: 'idDoctor', field: 'idDoctor'},
-      {headerName: 'idPatient', field: 'idPatient'},
-      {headerName: 'description', field: 'description'},
-      {headerName: 'date', field: 'date'},
-      {headerName: 'createdBy', field: 'createdBy'},
-      {headerName: 'createdDate', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
-      {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
+      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 110, maxWidth: 110},
+      {headerName: 'ID Doctor', field: 'idDoctor'},
+      {headerName: 'ID Patient', field: 'idPatient'},
+      {headerName: 'Description', field: 'description'},
+      {headerName: 'Date', field: 'date'},
+      {headerName: 'Created By', field: 'createdBy'},
+      {headerName: 'Created Date', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
+      {headerName: 'Last Modified By', field: 'lastModifiedBy'},
+      {headerName: 'Last Modified Date', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
     ];
 
     this.context = {componentParent: this};
     this.frameworkComponents = {
       editButtonComponent: ActionButtonComponent
-    };
-
-    this.defaultColDef = {
-      editable: false,
-      enableRowGroup: true,
-      suppressSizeToFit: true,
-      enablePivot: true,
-      enableValue: true,
-      sortable: true,
-      resizable: true
     };
 
   }

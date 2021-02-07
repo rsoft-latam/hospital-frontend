@@ -9,10 +9,6 @@ import {PageEvent} from '@angular/material/paginator';
         style="width: 100%; height: 100%;"
         class="ag-theme-material"
         [columnDefs]="columnDefs"
-        [rowSelection]="rowSelection"
-        [rowGroupPanelShow]="rowGroupPanelShow"
-        [pivotPanelShow]="pivotPanelShow"
-        [defaultColDef]="defaultColDef"
         (gridReady)="onGridReady($event)">
       </ag-grid-angular>
       <mat-paginator [length]="total"
@@ -29,12 +25,6 @@ export class InformationComponent implements OnInit {
   private gridApi;
   private gridColumnApi;
   public columnDefs;
-  public autoGroupColumnDef;
-  public rowSelection;
-  public rowGroupPanelShow;
-  public pivotPanelShow;
-  public paginationNumberFormatter;
-  public defaultColDef;
 
   total = 0;
   pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -49,19 +39,6 @@ export class InformationComponent implements OnInit {
     this.filter = this.data.filter;
     this.columnDefs = this.data.columnDefs;
 
-    this.defaultColDef = {
-      editable: false,
-      enableRowGroup: true,
-      suppressSizeToFit: true,
-      enablePivot: true,
-      enableValue: true,
-      sortable: true,
-      resizable: true
-    };
-
-    if (this.data.errorArrayFields) {
-      this.data.errorArrayFields = Object.entries(this.data.errorArrayFields);
-    }
   }
 
   onGridReady(params): void {

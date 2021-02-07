@@ -45,12 +45,6 @@ export class PatientComponent implements OnInit, OnDestroy {
   private gridApi;
   private gridColumnApi;
   public columnDefs;
-  public autoGroupColumnDef;
-  public rowSelection;
-  public rowGroupPanelShow;
-  public pivotPanelShow;
-  public paginationNumberFormatter;
-  public defaultColDef;
   public context;
   public frameworkComponents;
 
@@ -86,33 +80,23 @@ export class PatientComponent implements OnInit, OnDestroy {
 
     // AG-GRID CONFIG
     this.columnDefs = [
-      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', width: 140},
-      {headerName: 'Id', field: 'id'},
+      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 140, maxWidth: 140},
+      {headerName: 'ID', field: 'id'},
       {headerName: 'Photo', field: 'urlPhoto'},
       {headerName: 'First Name', field: 'firstName'},
       {headerName: 'Last Name', field: 'lastName'},
       {headerName: 'Address', field: 'address'},
       {headerName: 'Birthday', field: 'birthday'},
       {headerName: 'Hospital', field: 'hospital', valueGetter: p => p?.data?.hospital?.name},
-      {headerName: 'createdBy', field: 'createdBy'},
-      {headerName: 'createdDate', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
-      {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
+      {headerName: 'Created By', field: 'createdBy'},
+      {headerName: 'Created Date', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
+      {headerName: 'Last Modified By', field: 'lastModifiedBy'},
+      {headerName: 'Last Modified Date', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
     ];
 
     this.context = {componentParent: this};
     this.frameworkComponents = {
       editButtonComponent: ActionsButtonPatientComponent
-    };
-
-    this.defaultColDef = {
-      editable: false,
-      enableRowGroup: true,
-      suppressSizeToFit: true,
-      enablePivot: true,
-      enableValue: true,
-      sortable: true,
-      resizable: true
     };
 
   }
@@ -187,7 +171,7 @@ export class PatientComponent implements OnInit, OnDestroy {
             {headerName: 'firstNameDoctor', field: 'firstNameDoctor'},
             {headerName: 'lastNameDoctor', field: 'lastNameDoctor'},
             {headerName: 'description', field: 'description'},
-            {headerName: 'date', field: 'date'}
+            {headerName: 'date', field: 'date', valueGetter: (p: any) => formatDate(p.data.date)}
           ]
         }
       });

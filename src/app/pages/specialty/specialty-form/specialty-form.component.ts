@@ -7,7 +7,7 @@ import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} 
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as hospitalActions from '../status/specialty.actions';
+import * as specialtyActions from '../status/specialty.actions';
 import {DoctorService} from '../../doctor/services/doctor.service';
 
 @Component({
@@ -26,7 +26,7 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
   isLoadingSave = new BehaviorSubject<boolean>(false);
 
   // SIDENAV FORM TYPE SUBS
-  sidenavFormType$ = this.store.select(s => s.appHospital.sidenavFormType).pipe(shareReplay());
+  sidenavFormType$ = this.store.select(s => s.appSpecialty.sidenavFormType).pipe(shareReplay());
   sidenavFormTypeSubs: Subscription;
   sidenavFormType: string;
 
@@ -53,7 +53,7 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
 
     // GET HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === hospitalActions.GetSpecialtySuccess.type),
+      filter(s => s.type === specialtyActions.GetSpecialtySuccess.type),
       tap((s: any) => {
         const form = Object.assign({}, s.entity.body);
         this.form.setValue({
@@ -69,8 +69,8 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === hospitalActions.AddSuccess.type ||
-        s.type === hospitalActions.UpdateSuccess.type),
+        s.type === specialtyActions.AddSuccess.type ||
+        s.type === specialtyActions.UpdateSuccess.type),
       tap((s) => {
         this.isLoadingSave.next(false);
         this.closeSidenav();
@@ -80,8 +80,8 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD FAILURE
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === hospitalActions.AddFailure.type ||
-        s.type === hospitalActions.UpdateFailure.type),
+        s.type === specialtyActions.AddFailure.type ||
+        s.type === specialtyActions.UpdateFailure.type),
       tap(() => {
         this.isLoadingSave.next(false);
       })
@@ -117,15 +117,15 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
   onSave(): void {
     this.isLoadingSave.next(true);
     if (this.sidenavFormType === 'new') {
-      this.store.dispatch(hospitalActions.AddAction({entity: this.form.value}));
+      this.store.dispatch(specialtyActions.AddAction({entity: this.form.value}));
     }
     if (this.sidenavFormType === 'edit') {
-      this.store.dispatch(hospitalActions.UpdateAction({entity: this.form.value}));
+      this.store.dispatch(specialtyActions.UpdateAction({entity: this.form.value}));
     }
   }
 
   closeSidenav(): void {
-    this.store.dispatch(hospitalActions.CloseSidenav());
+    this.store.dispatch(specialtyActions.CloseSidenav());
   }
 
   displayFn(data?: any): string | undefined {

@@ -42,12 +42,6 @@ export class HospitalComponent implements OnInit, OnDestroy {
   private gridApi;
   private gridColumnApi;
   public columnDefs;
-  public autoGroupColumnDef;
-  public rowSelection;
-  public rowGroupPanelShow;
-  public pivotPanelShow;
-  public paginationNumberFormatter;
-  public defaultColDef;
   public context;
   public frameworkComponents;
 
@@ -80,29 +74,19 @@ export class HospitalComponent implements OnInit, OnDestroy {
 
     // AG-GRID CONFIG
     this.columnDefs = [
-      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', width: 110},
-      {headerName: 'Id', field: 'id'},
+      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 110, maxWidth: 110},
+      {headerName: 'ID', field: 'id'},
       {headerName: 'Name', field: 'name'},
       {headerName: 'Creation Date', field: 'creationDate'},
-      {headerName: 'createdBy', field: 'createdBy'},
-      {headerName: 'createdDate', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
-      {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
+      {headerName: 'Created By', field: 'createdBy'},
+      {headerName: 'Created Date', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
+      {headerName: 'Last Modified By', field: 'lastModifiedBy'},
+      {headerName: 'Last Modified Date', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
     ];
 
     this.context = {componentParent: this};
     this.frameworkComponents = {
       editButtonComponent: ActionButtonComponent
-    };
-
-    this.defaultColDef = {
-      editable: false,
-      enableRowGroup: true,
-      suppressSizeToFit: true,
-      enablePivot: true,
-      enableValue: true,
-      sortable: true,
-      resizable: true
     };
 
   }
