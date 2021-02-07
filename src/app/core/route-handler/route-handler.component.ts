@@ -86,7 +86,7 @@ export class RouteHandlerComponent implements OnInit, OnDestroy {
     const hospital = new SidenavItem({
       name: 'Hospitals',
       route: '/hospital',
-      icon: 'wb_cloudy',
+      icon: 'local_hospital',
       subItems: [],
       position: 1
     });
@@ -94,7 +94,7 @@ export class RouteHandlerComponent implements OnInit, OnDestroy {
     const doctor = new SidenavItem({
       name: 'Doctors',
       route: '/doctor',
-      icon: 'assessment',
+      icon: 'supervisor_account',
       subItems: [],
       position: 1
     });
@@ -102,7 +102,7 @@ export class RouteHandlerComponent implements OnInit, OnDestroy {
     const patient = new SidenavItem({
       name: 'Patients',
       route: '/patient',
-      icon: 'access_time',
+      icon: 'person',
       subItems: [],
       position: 1
     });
@@ -110,7 +110,7 @@ export class RouteHandlerComponent implements OnInit, OnDestroy {
     const specialty = new SidenavItem({
       name: 'Specialties',
       route: '/specialty',
-      icon: 'attach_file',
+      icon: 'folder',
       subItems: [],
       position: 1
     });
@@ -118,7 +118,7 @@ export class RouteHandlerComponent implements OnInit, OnDestroy {
     const note = new SidenavItem({
       name: 'Notes',
       route: '/note',
-      icon: 'attach_file',
+      icon: 'library_books',
       subItems: [],
       position: 1
     });

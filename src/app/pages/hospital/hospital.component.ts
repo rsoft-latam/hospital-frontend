@@ -80,14 +80,14 @@ export class HospitalComponent implements OnInit, OnDestroy {
 
     // AG-GRID CONFIG
     this.columnDefs = [
+      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', width: 110},
       {headerName: 'Id', field: 'id'},
       {headerName: 'Name', field: 'name'},
       {headerName: 'Creation Date', field: 'creationDate'},
       {headerName: 'createdBy', field: 'createdBy'},
       {headerName: 'createdDate', field: 'createdDate'},
       {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'},
-      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'}
     ];
 
     this.context = {componentParent: this};

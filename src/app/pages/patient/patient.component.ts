@@ -87,6 +87,7 @@ export class PatientComponent implements OnInit, OnDestroy {
 
     // AG-GRID CONFIG
     this.columnDefs = [
+      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', width: 140},
       {headerName: 'Id', field: 'id'},
       {headerName: 'Photo', field: 'urlPhoto'},
       {headerName: 'First Name', field: 'firstName'},
@@ -97,8 +98,7 @@ export class PatientComponent implements OnInit, OnDestroy {
       {headerName: 'createdBy', field: 'createdBy'},
       {headerName: 'createdDate', field: 'createdDate'},
       {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'},
-      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'}
     ];
 
     this.context = {componentParent: this};

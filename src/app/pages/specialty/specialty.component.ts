@@ -80,6 +80,7 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
 
     // AG-GRID CONFIG
     this.columnDefs = [
+      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', width: 110},
       {headerName: 'Id', field: 'id'},
       {headerName: 'Name', field: 'name'},
       {headerName: 'Description', field: 'description'},
@@ -88,8 +89,7 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
       {headerName: 'createdBy', field: 'createdBy'},
       {headerName: 'createdDate', field: 'createdDate'},
       {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'},
-      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'}
     ];
 
     this.context = {componentParent: this};
@@ -201,7 +201,6 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
       this.store.dispatch(new specialtyActions.CloseFilter());
     }
   }
-
 
 
   onPagination(event: PageEvent): void {

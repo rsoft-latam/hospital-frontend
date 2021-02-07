@@ -21,7 +21,6 @@ import {DoctorFilter} from './store/models/doctor-filter.model';
 import {ActionsButtonPatientComponent} from '../../shared/components/actions-button-patient.component';
 import {InformationComponent} from '../../shared/modules/information/information.component';
 import {NoteService} from '../note/store/services/note.service';
-import {ActionButtonComponent} from '../../shared/components/action-button.component';
 import {PageEvent} from '@angular/material/paginator';
 
 const initFilter: DoctorFilter = {
@@ -86,6 +85,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
 
     // AG-GRID CONFIG
     this.columnDefs = [
+      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', width: 140},
       {headerName: 'Id', field: 'id'},
       {headerName: 'Url Photo', field: 'urlPhoto'},
       {headerName: 'First Name', field: 'firstName'},
@@ -96,13 +96,12 @@ export class DoctorComponent implements OnInit, OnDestroy {
       {headerName: 'createdBy', field: 'createdBy'},
       {headerName: 'createdDate', field: 'createdDate'},
       {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
-      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'},
-      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'}
     ];
 
     this.context = {componentParent: this};
     this.frameworkComponents = {
-      editButtonComponent: ActionButtonComponent
+      editButtonComponent: ActionsButtonPatientComponent
     };
 
     this.defaultColDef = {
