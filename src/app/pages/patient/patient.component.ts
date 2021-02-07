@@ -185,14 +185,14 @@ export class PatientComponent implements OnInit, OnDestroy {
     this.store.dispatch(patientActions.SetFilter({filter: initFilter}));
   }
 
-  onApply(): void {
+  onSearch(): void {
     this.isLoadingFilter.next(true);
     this.store.dispatch(patientActions.SetFilter({
       filter: {
         ...this.filter,
         page: 0,
-        firstName: this.filterForm.value.firstName,
-        lastName: this.filterForm.value.lastName
+        firstName: {value: this.filterForm.value.firstName, type: 'contains'},
+        lastName: {value: this.filterForm.value.lastName, type: 'contains'}
       }
     }));
   }

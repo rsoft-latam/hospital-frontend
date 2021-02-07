@@ -159,12 +159,12 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
     this.store.dispatch(specialtyActions.SetFilter({filter: initFilter}));
   }
 
-  onApply(): void {
+  onSearch(): void {
     this.isLoadingFilter.next(true);
     this.store.dispatch(specialtyActions.SetFilter({
       filter: {
         ...this.filter,
-        name: this.filterForm.value.name
+        name: {value: this.filterForm.value.name, type: 'contains'}
       }
     }));
   }

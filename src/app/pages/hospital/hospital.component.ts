@@ -158,12 +158,13 @@ export class HospitalComponent implements OnInit, OnDestroy {
     this.store.dispatch(hospitalActions.SetFilter({filter: initFilter}));
   }
 
-  onApply(): void {
+  onSearch(): void {
     this.isLoadingFilter.next(true);
     this.store.dispatch(hospitalActions.SetFilter({
       filter: {
         ...this.filter,
-        name: this.filterForm.value.name
+        page: 0,
+        name: {value: this.filterForm.value.name, type: 'contains'}
       }
     }));
   }

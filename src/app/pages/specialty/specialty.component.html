@@ -56,7 +56,7 @@
                [ngStyle.md]="{'margin-right.px': 0, 'margin-bottom.px': 5}"
                [ngStyle.lg]="{'margin-right.px': -3, 'margin-top.px': 100}"
                [ngStyle.xl]="{'margin-right.px': -3, 'margin-top.px': 100}">
-            <form [formGroup]='filterForm' (submit)="onApply()" autocomplete="off">
+            <form [formGroup]='filterForm' (submit)="onSearch()" autocomplete="off">
               <mat-card>
                 <mat-card-title><span style="font-size: 18px;">FILTERS</span></mat-card-title>
                 <mat-card-content fxLayout="column">

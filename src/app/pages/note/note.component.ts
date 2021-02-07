@@ -20,7 +20,6 @@ import {AppConfig} from '../../shared/models/app-config.model';
 import {NoteFilter} from './models/note-filter.model';
 import {ActionButtonComponent} from '../../shared/components/action-button.component';
 import {PageEvent} from '@angular/material/paginator';
-import {DatePipe} from '@angular/common';
 import {formatDate} from '../../shared/utils/format.util';
 
 const initFilter: NoteFilter = {
@@ -45,10 +44,6 @@ export class NoteComponent implements OnInit, OnDestroy {
   public context;
   public frameworkComponents;
 
-  // FILTER SUBS
-  filter: NoteFilter;
-  isLoadingFilter = new BehaviorSubject<boolean>(false);
-
   // OTHERS
   sidenavOpen$: Observable<boolean>;
   filterOpen$: Observable<boolean>;
@@ -56,6 +51,7 @@ export class NoteComponent implements OnInit, OnDestroy {
   filterForm: FormGroup;
 
   subs: Subscription;
+  filter: NoteFilter;
 
   total = 0;
   pageSizeOptions: number[] = [5, 10, 25, 100];
@@ -104,7 +100,6 @@ export class NoteComponent implements OnInit, OnDestroy {
       map((s: any) => s.filter),
       tap((filter: NoteFilter) => {
         this.filter = Object.assign({}, filter);
-        this.isLoadingFilter.next(false);
         this.subs = this.mappingService.list(filter).subscribe(data => {
           this.total = parseFloat(data.headers.get('X-Total-Count'));
           this.gridApi.setRowData(data.body);
@@ -158,16 +153,6 @@ export class NoteComponent implements OnInit, OnDestroy {
     this.store.dispatch(noteActions.SetFilter({filter: initFilter}));
   }
 
-  onApply(): void {
-    this.isLoadingFilter.next(true);
-    this.store.dispatch(noteActions.SetFilter({
-      filter: {
-        ...this.filter,
-        name: this.filterForm.value.name
-      }
-    }));
-  }
-
   onAdd(): void {
     this.store.dispatch(noteActions.OpenSidenav({addStatus: 'new'}));
   }
@@ -184,7 +169,6 @@ export class NoteComponent implements OnInit, OnDestroy {
       this.store.dispatch(noteActions.CloseFilter());
     }
   }
-
 
   onPagination(event: PageEvent): void {
     this.store.dispatch(noteActions.SetFilter({
