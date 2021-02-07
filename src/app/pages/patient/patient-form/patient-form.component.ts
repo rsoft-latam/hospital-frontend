@@ -55,9 +55,9 @@ export class PatientFormComponent implements OnInit, OnDestroy {
 
     // GET HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === patientActions.HospitalActionTypes.GetHospitalSuccess),
+      filter(s => s.type === patientActions.GetPatientSuccess.type),
       tap((s: any) => {
-        const form = Object.assign({}, s.payload.entity.body);
+        const form = Object.assign({}, s.entity.body);
         this.form.setValue({
           id: form.id,
           firstName: form.firstName,
@@ -73,8 +73,8 @@ export class PatientFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === patientActions.HospitalActionTypes.AddSuccess ||
-        s.type === patientActions.HospitalActionTypes.UpdateSuccess),
+        s.type === patientActions.AddSuccess.type ||
+        s.type === patientActions.UpdateSuccess.type),
       tap((s) => {
         this.isLoadingSave.next(false);
         this.closeSidenav();
@@ -84,8 +84,8 @@ export class PatientFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD FAILURE
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === patientActions.HospitalActionTypes.AddFailure ||
-        s.type === patientActions.HospitalActionTypes.UpdateFailure),
+        s.type === patientActions.AddFailure.type ||
+        s.type === patientActions.UpdateFailure.type),
       tap(() => {
         this.isLoadingSave.next(false);
       })
@@ -121,15 +121,15 @@ export class PatientFormComponent implements OnInit, OnDestroy {
   onSave(): void {
     this.isLoadingSave.next(true);
     if (this.sidenavFormType === 'new') {
-      this.store.dispatch(new patientActions.AddAction({entity: this.form.value}));
+      this.store.dispatch(patientActions.AddAction({entity: this.form.value}));
     }
     if (this.sidenavFormType === 'edit') {
-      this.store.dispatch(new patientActions.UpdateAction({entity: this.form.value}));
+      this.store.dispatch(patientActions.UpdateAction({entity: this.form.value}));
     }
   }
 
   closeSidenav(): void {
-    this.store.dispatch(new patientActions.CloseSidenav());
+    this.store.dispatch(patientActions.CloseSidenav());
   }
 
   displayFn(data?: any): string | undefined {

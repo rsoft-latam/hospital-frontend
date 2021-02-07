@@ -16,12 +16,12 @@ import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
-import {HospitalFilter} from './store/models/specialty-filter.model';
+import {SpecialtyFilter} from './store/models/specialty-filter.model';
 import {ActionButtonComponent} from '../../shared/components/action-button.component';
 import {PageEvent} from '@angular/material/paginator';
 import * as specialtyActions from './store/specialty.actions';
 
-const initFilter: HospitalFilter = {
+const initFilter: SpecialtyFilter = {
   name: '',
   page: 0,
   size: 50,
@@ -52,7 +52,7 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
   public frameworkComponents;
 
   // FILTER SUBS
-  filter: HospitalFilter;
+  filter: SpecialtyFilter;
   isLoadingFilter = new BehaviorSubject<boolean>(false);
 
   // OTHERS
@@ -117,9 +117,9 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
 
     // SET FILTER SUBS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === specialtyActions.HospitalActionTypes.SetFilter),
-      map((s: any) => s.payload.filter),
-      tap((filter: HospitalFilter) => {
+      filter(s => s.type === specialtyActions.SetFilter.type),
+      map((s: any) => s.filter),
+      tap((filter: SpecialtyFilter) => {
         this.filter = Object.assign({}, filter);
         this.isLoadingFilter.next(false);
         this.subs = this.mappingService.list(filter).subscribe(data => {
@@ -132,13 +132,13 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
     // ADD UPDATE DELETE HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === specialtyActions.HospitalActionTypes.AddSuccess ||
-        s.type === specialtyActions.HospitalActionTypes.UpdateSuccess ||
-        s.type === specialtyActions.HospitalActionTypes.DeleteSuccess
+        s.type === specialtyActions.AddSuccess.type ||
+        s.type === specialtyActions.UpdateSuccess.type ||
+        s.type === specialtyActions.DeleteSuccess.type
       ),
       tap(() => {
-        this.store.dispatch(new specialtyActions.CloseSidenav());
-        this.store.dispatch(new specialtyActions.SetFilter({filter: initFilter}));
+        this.store.dispatch(specialtyActions.CloseSidenav());
+        this.store.dispatch(specialtyActions.SetFilter({filter: initFilter}));
       })
     ).subscribe());
 
@@ -151,8 +151,8 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
 
   actionButtonRowTable(event): void {
     if (event.type === 'edit') {
-      this.store.dispatch(new specialtyActions.GetHospitalAction({id: event.row.id}));
-      this.store.dispatch(new specialtyActions.OpenSidenav({addStatus: 'edit'}));
+      this.store.dispatch(specialtyActions.GetSpecialtyAction({id: event.row.id}));
+      this.store.dispatch(specialtyActions.OpenSidenav({addStatus: 'edit'}));
     }
     if (event.type === 'delete') {
       const dialogRef = this.dialog.open(AlertComponent, {
@@ -163,7 +163,7 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
         }
       });
       dialogRef.afterClosed().subscribe(res => {
-        res === true ? this.store.dispatch(new specialtyActions.DeleteAction({id: event.row.id})) : '';
+        res === true ? this.store.dispatch(specialtyActions.DeleteAction({id: event.row.id})) : '';
       });
     }
   }
@@ -172,12 +172,12 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     params.api.sizeColumnsToFit();
-    this.store.dispatch(new specialtyActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(specialtyActions.SetFilter({filter: initFilter}));
   }
 
   onApply(): void {
     this.isLoadingFilter.next(true);
-    this.store.dispatch(new specialtyActions.SetFilter({
+    this.store.dispatch(specialtyActions.SetFilter({
       filter: {
         ...this.filter,
         name: this.filterForm.value.name
@@ -186,25 +186,25 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
   }
 
   onAdd(): void {
-    this.store.dispatch(new specialtyActions.OpenSidenav({addStatus: 'new'}));
+    this.store.dispatch(specialtyActions.OpenSidenav({addStatus: 'new'}));
   }
 
   onReset(): void {
-    this.store.dispatch(new specialtyActions.CloseFilter());
-    this.store.dispatch(new specialtyActions.SetFilter({filter: initFilter}));
+    this.store.dispatch(specialtyActions.CloseFilter());
+    this.store.dispatch(specialtyActions.SetFilter({filter: initFilter}));
   }
 
   clickOnFilter(hiddenFilter): void {
     if (hiddenFilter) {
-      this.store.dispatch(new specialtyActions.OpenFilter());
+      this.store.dispatch(specialtyActions.OpenFilter());
     } else {
-      this.store.dispatch(new specialtyActions.CloseFilter());
+      this.store.dispatch(specialtyActions.CloseFilter());
     }
   }
 
 
   onPagination(event: PageEvent): void {
-    this.store.dispatch(new specialtyActions.SetFilter({
+    this.store.dispatch(specialtyActions.SetFilter({
       filter: {
         ...this.filter,
         size: event.pageSize,

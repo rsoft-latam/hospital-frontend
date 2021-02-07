@@ -53,9 +53,9 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
 
     // GET HOSPITAL SUCCESS
     this.actionSubs.push(this.actions.pipe(
-      filter(s => s.type === hospitalActions.HospitalActionTypes.GetHospitalSuccess),
+      filter(s => s.type === hospitalActions.GetSpecialtySuccess.type),
       tap((s: any) => {
-        const form = Object.assign({}, s.payload.entity.body);
+        const form = Object.assign({}, s.entity.body);
         this.form.setValue({
           id: form.id,
           name: form.name,
@@ -69,8 +69,8 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === hospitalActions.HospitalActionTypes.AddSuccess ||
-        s.type === hospitalActions.HospitalActionTypes.UpdateSuccess),
+        s.type === hospitalActions.AddSuccess.type ||
+        s.type === hospitalActions.UpdateSuccess.type),
       tap((s) => {
         this.isLoadingSave.next(false);
         this.closeSidenav();
@@ -80,8 +80,8 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
     // UPDATE OR ADD FAILURE
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
-        s.type === hospitalActions.HospitalActionTypes.AddFailure ||
-        s.type === hospitalActions.HospitalActionTypes.UpdateFailure),
+        s.type === hospitalActions.AddFailure.type ||
+        s.type === hospitalActions.UpdateFailure.type),
       tap(() => {
         this.isLoadingSave.next(false);
       })
@@ -118,15 +118,15 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
   onSave(): void {
     this.isLoadingSave.next(true);
     if (this.sidenavFormType === 'new') {
-      this.store.dispatch(new hospitalActions.AddAction({entity: this.form.value}));
+      this.store.dispatch(hospitalActions.AddAction({entity: this.form.value}));
     }
     if (this.sidenavFormType === 'edit') {
-      this.store.dispatch(new hospitalActions.UpdateAction({entity: this.form.value}));
+      this.store.dispatch(hospitalActions.UpdateAction({entity: this.form.value}));
     }
   }
 
   closeSidenav(): void {
-    this.store.dispatch(new hospitalActions.CloseSidenav());
+    this.store.dispatch(hospitalActions.CloseSidenav());
   }
 
   displayFn(data?: any): string | undefined {

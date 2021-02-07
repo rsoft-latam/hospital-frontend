@@ -184,9 +184,6 @@ export class DoctorComponent implements OnInit, OnDestroy {
           method: 'listByIdDoctor',
           filter: {idDoctor: event.row.id, page: 0, size: 50, sort: ''},
           columnDefs: [
-            {headerName: 'Id', field: 'id'},
-            {headerName: 'firstNameDoctor', field: 'firstNameDoctor'},
-            {headerName: 'lastNameDoctor', field: 'lastNameDoctor'},
             {headerName: 'firstNamePatient', field: 'firstNamePatient'},
             {headerName: 'lastNamePatient', field: 'lastNamePatient'},
             {headerName: 'description', field: 'description'},
