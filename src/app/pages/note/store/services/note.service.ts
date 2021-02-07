@@ -34,4 +34,14 @@ export class NoteService implements IDataService<NoteFilter> {
     return this.http.get(`${this.config.apiBaseUrl}notes/${id}`, {observe: 'response'});
   }
 
+  public listByIdPatient(filter: NoteFilter): Observable<HttpResponse<any>> {
+    const params = createRequestOption(filter);
+    return this.http.get(`${this.config.apiBaseUrl}notes/patient/${filter.idPatient}`, {params: params, observe: 'response'});
+  }
+
+  public listByIdDoctor(filter: NoteFilter): Observable<HttpResponse<any>> {
+    const params = createRequestOption(filter);
+    return this.http.get(`${this.config.apiBaseUrl}notes/doctor/${filter.idDoctor}`, {params: params, observe: 'response'});
+  }
+
 }

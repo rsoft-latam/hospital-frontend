@@ -4,12 +4,14 @@ import {InformationComponent} from './information.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {AgGridModule} from 'ag-grid-angular';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   imports: [
     CommonModule,
     MatButtonModule,
     MatDialogModule,
+    MatPaginatorModule,
     AgGridModule.withComponents([])
   ],
   declarations: [InformationComponent],

@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {PageEvent} from '@angular/material/paginator';
 
 @Component({
   template: `
@@ -14,6 +15,11 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
         [defaultColDef]="defaultColDef"
         (gridReady)="onGridReady($event)">
       </ag-grid-angular>
+      <mat-paginator [length]="total"
+                     [pageSize]="filter?.size"
+                     [pageSizeOptions]="pageSizeOptions"
+                     (page)="onPagination($event)">
+      </mat-paginator>
     </div>
   `
 })
@@ -27,17 +33,21 @@ export class InformationComponent implements OnInit {
   public rowSelection;
   public rowGroupPanelShow;
   public pivotPanelShow;
-  public paginationPageSize;
   public paginationNumberFormatter;
   public defaultColDef;
+
+  total = 0;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  filter: any;
 
   constructor(public dialogRef: MatDialogRef<InformationComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
 
     // AG-GRID CONFIG
+    this.filter = this.data.filter;
     this.columnDefs = this.data.columnDefs;
 
     this.defaultColDef = {
@@ -64,10 +74,21 @@ export class InformationComponent implements OnInit {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     params.api.sizeColumnsToFit();
-    this.data.service.list(this.data.initFilter).subscribe(res => {
-      this.gridApi.setRowData(res.body);
+    this.data.service[this.data.method](this.data.filter).subscribe(data => {
+      this.total = parseFloat(data.headers.get('X-Total-Count'));
+      this.gridApi.setRowData(data.body);
     });
-    //this.store.dispatch(new hospitalActions.SetFilter({filter: initFilter}));
+  }
+
+  onPagination(event: PageEvent): void {
+    this.data.service[this.data.method]({
+      ...this.filter,
+      size: event.pageSize,
+      page: event.pageIndex
+    }).subscribe(data => {
+      this.total = parseFloat(data.headers.get('X-Total-Count'));
+      this.gridApi.setRowData(data.body);
+    });
   }
 
 }

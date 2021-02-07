@@ -182,12 +182,16 @@ export class PatientComponent implements OnInit, OnDestroy {
           row: event.row,
           cols: [],
           service: this.noteService,
-          initFilter: {idPatient: event.row.id, page: 0, size: 50, sort: ''},
+          method: 'listByIdPatient',
+          filter: {idPatient: event.row.id, page: 0, size: 50, sort: ''},
           columnDefs: [
             {headerName: 'Id', field: 'id'},
-            {headerName: 'idDoctor', field: 'idDoctor'},
+            {headerName: 'firstNamePatient', field: 'firstNamePatient'},
+            {headerName: 'lastNamePatient', field: 'lastNamePatient'},
+            {headerName: 'firstNameDoctor', field: 'firstNameDoctor'},
+            {headerName: 'lastNameDoctor', field: 'lastNameDoctor'},
             {headerName: 'description', field: 'description'},
-            {headerName: 'date', field: 'date'},
+            {headerName: 'date', field: 'date'}
           ]
         }
       });
