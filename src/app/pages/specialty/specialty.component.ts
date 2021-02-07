@@ -12,15 +12,13 @@ import * as hospitalActions from './store/specialty.actions';
 import {Action, ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {SpecialtyService} from './store/services/specialty.service';
-import {BrandService} from '../../shared/services/brand.service';
-import {SupplierService} from '../../shared/services/supplier.service';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
-import {EditButtonComponent} from '../../shared/components/edit-button.component';
 import {HospitalFilter} from './store/models/specialty-filter.model';
+import {ActionButtonComponent} from '../../shared/components/action-button.component';
 
 const initFilter: HospitalFilter = {
   name: '',
@@ -68,9 +66,7 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
               private store: Store<State>,
               private actions: ActionsSubject,
               private formBuilder: FormBuilder,
-              private brandService: BrandService,
               private mappingService: SpecialtyService,
-              private supplierService: SupplierService,
               @Inject('config') private config: AppConfig) {
 
     // FILTER FORM CONFIG
@@ -85,12 +81,16 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
       {headerName: 'Description', field: 'description'},
       {headerName: 'Doctor', field: 'doctor', valueGetter: p => p?.data?.doctor?.firstName + '-' + p?.data?.doctor?.lastName},
       {headerName: 'Icon', field: 'icon'},
+      {headerName: 'createdBy', field: 'createdBy'},
+      {headerName: 'createdDate', field: 'createdDate'},
+      {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'},
       {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
     ];
 
     this.context = {componentParent: this};
     this.frameworkComponents = {
-      editButtonComponent: EditButtonComponent
+      editButtonComponent: ActionButtonComponent
     };
 
     this.defaultColDef = {

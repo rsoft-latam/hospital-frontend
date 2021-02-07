@@ -146,7 +146,7 @@ export class GetHospitalFailure implements Action {
 
 }
 
-export type DoctorActions =
+export type HospitalActions =
   | CloseSidenav
   | OpenSidenav
 

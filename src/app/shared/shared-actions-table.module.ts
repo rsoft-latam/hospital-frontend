@@ -6,10 +6,8 @@ import {CommonModule} from '@angular/common';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 // COMPONENTS
-import {EditButtonComponent} from './components/edit-button.component';
-import {CheckButtonComponent} from './components/check-button.component';
 import {ActionButtonComponent} from './components/action-button.component';
-import {SeverityButtonComponent} from './components/severity-button.component';
+import {ActionsButtonPatientComponent} from './components/actions-button-patient.component';
 
 @NgModule({
   imports: [
@@ -20,15 +18,11 @@ import {SeverityButtonComponent} from './components/severity-button.component';
   ],
   declarations: [
     ActionButtonComponent,
-    CheckButtonComponent,
-    SeverityButtonComponent,
-    EditButtonComponent
+    ActionsButtonPatientComponent
   ],
   exports: [
     ActionButtonComponent,
-    CheckButtonComponent,
-    SeverityButtonComponent,
-    EditButtonComponent
+    ActionsButtonPatientComponent
   ]
 })
 

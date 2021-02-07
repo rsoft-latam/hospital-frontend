@@ -1,12 +1,11 @@
 // ANGULAR
 import {BrowserModule} from '@angular/platform-browser';
 import {ServiceWorkerModule} from '@angular/service-worker';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {NgModule, enableProdMode} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
+import {NgModule} from '@angular/core';
 // Modules
 import {CoreModule} from './core/core.module';
 import {AppRoutingModule} from './app-routing.module';
-import {AlertModule} from './shared/modules/alert/alert.module';
 import {RouteHandlerModule} from './core/route-handler/route-handler.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 // COMPONENTS
@@ -21,8 +20,6 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {SidenavModule} from './core/sidenav/shared/sidenav.module';
 // OTHERS
 import {environment} from '../environments/environment';
-import {ErrorInterceptor} from './shared/interceptors/error.interceptor';
-import {Error504Interceptor} from './shared/interceptors/error-504.interceptor';
 import {AppHospitalModule} from './pages/hospital/store/hospital.module';
 import {AppAuthModule} from './pages/login/store/auth.module';
 import {AppDoctorModule} from './pages/doctor/store/doctor.module';
@@ -38,11 +35,11 @@ const NGRX_IMPORTS = [
 const MODULES_NGRX_IMPORTS = [
   AppAuthModule.forRoot(environment.auth),
   AppDoctorModule.forRoot(environment.app),
-  AppHospitalModule.forRoot(environment.app),
   AppPatientModule.forRoot(environment.app),
   AppSpecialtyModule.forRoot(environment.app),
   AppNoteModule.forRoot(environment.app),
-  SidenavModule.forRoot(environment.app)
+  SidenavModule.forRoot(environment.app),
+  AppHospitalModule.forRoot(environment.app)
 ];
 
 @NgModule({
@@ -59,21 +56,7 @@ const MODULES_NGRX_IMPORTS = [
     RouteHandlerModule,
     !environment.production ? StoreDevtoolsModule.instrument({maxAge: 50}) : [],
     ...MODULES_NGRX_IMPORTS,
-    ...NGRX_IMPORTS,
-
-    AlertModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: Error504Interceptor,
-      multi: true
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: ErrorInterceptor,
-      multi: true
-    }
+    ...NGRX_IMPORTS
   ],
   bootstrap: [AppComponent]
 })

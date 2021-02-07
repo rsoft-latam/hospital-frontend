@@ -20,7 +20,7 @@ export class SpecialtyService implements IDataService<HospitalFilter> {
       sort: filter.sort,
       name: filter.name
     });
-    return this.http.get(`${this.config.apiBaseUrl}specialties`, {params: params, observe: 'response'});
+    return this.http.get(`${this.config.apiBaseUrl}specialties-auditory`, {params: params, observe: 'response'});
   }
 
   public create(body: any): Observable<HttpResponse<any>> {

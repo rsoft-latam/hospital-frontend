@@ -12,18 +12,19 @@ import * as doctorActions from './store/doctor.actions';
 import {Action, ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {DoctorService} from './store/services/doctor.service';
-import {BrandService} from '../../shared/services/brand.service';
-import {SupplierService} from '../../shared/services/supplier.service';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
-import {EditButtonComponent} from '../../shared/components/edit-button.component';
-import {HospitalFilter} from './store/models/doctor-filter.model';
+import {DoctorFilter} from './store/models/doctor-filter.model';
+import {ActionsButtonPatientComponent} from '../../shared/components/actions-button-patient.component';
+import {InformationComponent} from '../../shared/modules/information/information.component';
+import {NoteService} from '../note/store/services/note.service';
+import {ActionButtonComponent} from '../../shared/components/action-button.component';
 
-const initFilter: HospitalFilter = {
-  name: '',
+const initFilter: DoctorFilter = {
+  firstName: '',
   page: 0,
   size: 50,
   sort: ''
@@ -53,7 +54,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
   public frameworkComponents;
 
   // FILTER SUBS
-  filter: HospitalFilter;
+  filter: DoctorFilter;
   isLoadingFilter = new BehaviorSubject<boolean>(false);
 
   // OTHERS
@@ -68,9 +69,8 @@ export class DoctorComponent implements OnInit, OnDestroy {
               private store: Store<State>,
               private actions: ActionsSubject,
               private formBuilder: FormBuilder,
-              private brandService: BrandService,
               private mappingService: DoctorService,
-              private supplierService: SupplierService,
+              private noteService: NoteService,
               @Inject('config') private config: AppConfig) {
 
     // FILTER FORM CONFIG
@@ -87,12 +87,16 @@ export class DoctorComponent implements OnInit, OnDestroy {
       {headerName: 'Address', field: 'address'},
       {headerName: 'Birthday', field: 'birthday'},
       {headerName: 'Hospital', field: 'hospital', valueGetter: p => p?.data?.hospital?.name},
+      {headerName: 'createdBy', field: 'createdBy'},
+      {headerName: 'createdDate', field: 'createdDate'},
+      {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'},
       {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
     ];
 
     this.context = {componentParent: this};
     this.frameworkComponents = {
-      editButtonComponent: EditButtonComponent
+      editButtonComponent: ActionButtonComponent
     };
 
     this.defaultColDef = {
@@ -117,7 +121,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
     this.actionSubs.push(this.actions.pipe(
       filter(s => s.type === doctorActions.HospitalActionTypes.SetFilter),
       map((s: any) => s.payload.filter),
-      tap((filter: HospitalFilter) => {
+      tap((filter: DoctorFilter) => {
         this.filter = Object.assign({}, filter);
         this.isLoadingFilter.next(false);
         this.subs = this.mappingService.list(filter).subscribe(data => this.gridApi.setRowData(data.body));
@@ -161,6 +165,24 @@ export class DoctorComponent implements OnInit, OnDestroy {
         res === true ? this.store.dispatch(new doctorActions.DeleteAction({id: event.row.id})) : '';
       });
     }
+    if (event.type === 'doctor') {
+      this.dialog.open(InformationComponent, {
+        data: {
+          title: 'Patients And Notes',
+          row: event.row,
+          cols: [],
+          service: this.noteService,
+          initFilter: {idDoctor: event.row.id, page: 0, size: 50, sort: ''},
+          columnDefs: [
+            {headerName: 'Id', field: 'id'},
+            {headerName: 'idDoctor', field: 'idDoctor'},
+            {headerName: 'idPatient', field: 'idPatient'},
+            {headerName: 'description', field: 'description'},
+            {headerName: 'date', field: 'date'},
+          ]
+        }
+      });
+    }
   }
 
   onGridReady(params): void {
@@ -175,7 +197,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
     this.store.dispatch(new doctorActions.SetFilter({
       filter: {
         ...this.filter,
-        name: this.filterForm.value.name
+        firstName: this.filterForm.value.name
       }
     }));
   }

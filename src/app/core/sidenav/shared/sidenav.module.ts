@@ -7,7 +7,6 @@ import {reducer} from './sidenav.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {SidenavEffects} from './sidenav.effects';
 // SERVICES
-import {NavService} from '../../../shared/services/nav.service';
 import {AppConfig} from '../../../shared/models/app-config.model';
 
 @NgModule({
@@ -19,7 +18,6 @@ export class SidenavModule {
     return {
       ngModule: RootSidenavModule,
       providers: [
-        NavService,
         {provide: 'config', useValue: config}
       ]
     };

@@ -11,16 +11,20 @@ import {ICellRendererAngularComp} from 'ag-grid-angular';
             style="background: none; border: none; margin: 0; padding: 0; cursor: pointer;">
       <mat-icon style="font-size: 20px; margin-left: 5px; margin-top: 3px;">delete</mat-icon>
     </button>
+    <button (click)="invokeParentMethod('doctor')"
+            style="background: none; border: none; margin: 0; padding: 0; cursor: pointer;">
+      <mat-icon style="font-size: 20px; margin-left: 5px; margin-top: 3px;">assignment</mat-icon>
+    </button>
   `
 })
-export class ActionButtonComponent implements ICellRendererAngularComp {
+export class ActionsButtonPatientComponent implements ICellRendererAngularComp {
   public params: any;
 
   agInit(params: any): void {
     this.params = params;
   }
 
-  public invokeParentMethod(type: string) {
+  public invokeParentMethod(type: string): void {
     this.params.context.componentParent.actionButtonRowTable({row: this.params.node.data, type: type});
   }
 

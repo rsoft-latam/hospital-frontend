@@ -32,11 +32,11 @@
 
           <mat-form-field style="width: 100%;">
             <input matInput
-                   [matAutocomplete]="auto"
+                   [matAutocomplete]="autoIdPatient"
                    [formControlName]="'idPatient'"
                    placeholder="Patient">
           </mat-form-field>
-          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-autocomplete #autoIdPatient="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngIf="isLoadingIdPatient | async">
               <mat-spinner diameter="50"></mat-spinner>
             </mat-option>
@@ -52,11 +52,11 @@
 
           <mat-form-field style="width: 100%;">
             <input matInput
-                   [matAutocomplete]="auto"
+                   [matAutocomplete]="autoIdDoctor"
                    [formControlName]="'idDoctor'"
                    placeholder="Doctor">
           </mat-form-field>
-          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-autocomplete #autoIdDoctor="matAutocomplete" [displayWith]="displayFn">
             <mat-option *ngIf="isLoadingIdDoctor | async">
               <mat-spinner diameter="50"></mat-spinner>
             </mat-option>

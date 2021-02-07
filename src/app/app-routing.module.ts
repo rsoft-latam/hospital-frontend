@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      {path: 'hospital', loadChildren: () => import('./pages/hospital/hospital.module').then(m => m.HospitalModule), pathMatch: 'full'},
+      {path: '', redirectTo: 'hospital', pathMatch: 'full'},
       {path: 'doctor', loadChildren: () => import('./pages/doctor/doctor.module').then(m => m.DoctorModule)},
       {path: 'hospital', loadChildren: () => import('./pages/hospital/hospital.module').then(m => m.HospitalModule)},
       {path: 'patient', loadChildren: () => import('./pages/patient/patient.module').then(m => m.PatientModule)},

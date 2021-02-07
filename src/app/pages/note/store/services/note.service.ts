@@ -3,24 +3,19 @@ import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Inject, Injectable} from '@angular/core';
 import {AppConfig} from '../../../../shared/models/app-config.model';
 import {IDataService} from '../../../../shared/models/data-service.model';
-import {HospitalFilter} from '../models/note-filter.model';
+import {NoteFilter} from '../models/note-filter.model';
 import {createRequestOption} from '../../../../shared/utils/request-util';
 
 @Injectable()
-export class NoteService implements IDataService<HospitalFilter> {
+export class NoteService implements IDataService<NoteFilter> {
 
   constructor(private http: HttpClient,
               @Inject('config') private config: AppConfig) {
   }
 
-  public list(filter: HospitalFilter): Observable<HttpResponse<any>> {
-    const params = createRequestOption({
-      page: filter.page,
-      size: filter.size,
-      sort: filter.sort,
-      name: filter.name
-    });
-    return this.http.get(`${this.config.apiBaseUrl}notes`, {params: params, observe: 'response'});
+  public list(filter: NoteFilter): Observable<HttpResponse<any>> {
+    const params = createRequestOption(filter);
+    return this.http.get(`${this.config.apiBaseUrl}notes-auditory`, {params: params, observe: 'response'});
   }
 
   public create(body: any): Observable<HttpResponse<any>> {

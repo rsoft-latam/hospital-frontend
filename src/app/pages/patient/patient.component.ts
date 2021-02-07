@@ -12,15 +12,16 @@ import * as hospitalActions from './store/patient.actions';
 import {Action, ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {PatientService} from './store/services/patient.service';
-import {BrandService} from '../../shared/services/brand.service';
-import {SupplierService} from '../../shared/services/supplier.service';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
-import {EditButtonComponent} from '../../shared/components/edit-button.component';
 import {HospitalFilter} from './store/models/patient-filter.model';
+import {ActionsButtonPatientComponent} from '../../shared/components/actions-button-patient.component';
+import {InformationComponent} from '../../shared/modules/information/information.component';
+import {NoteService} from '../note/store/services/note.service';
+import {DoctorService} from '../doctor/store/services/doctor.service';
 
 const initFilter: HospitalFilter = {
   name: '',
@@ -68,9 +69,9 @@ export class PatientComponent implements OnInit, OnDestroy {
               private store: Store<State>,
               private actions: ActionsSubject,
               private formBuilder: FormBuilder,
-              private brandService: BrandService,
               private mappingService: PatientService,
-              private supplierService: SupplierService,
+              private noteService: NoteService,
+              private doctorService: DoctorService,
               @Inject('config') private config: AppConfig) {
 
     // FILTER FORM CONFIG
@@ -87,12 +88,16 @@ export class PatientComponent implements OnInit, OnDestroy {
       {headerName: 'Address', field: 'address'},
       {headerName: 'Birthday', field: 'birthday'},
       {headerName: 'Hospital', field: 'hospital', valueGetter: p => p?.data?.hospital?.name},
+      {headerName: 'createdBy', field: 'createdBy'},
+      {headerName: 'createdDate', field: 'createdDate'},
+      {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'},
       {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
     ];
 
     this.context = {componentParent: this};
     this.frameworkComponents = {
-      editButtonComponent: EditButtonComponent
+      editButtonComponent: ActionsButtonPatientComponent
     };
 
     this.defaultColDef = {
@@ -159,6 +164,23 @@ export class PatientComponent implements OnInit, OnDestroy {
       });
       dialogRef.afterClosed().subscribe(res => {
         res === true ? this.store.dispatch(new hospitalActions.DeleteAction({id: event.row.id})) : '';
+      });
+    }
+    if (event.type === 'doctor') {
+      this.dialog.open(InformationComponent, {
+        data: {
+          title: 'Doctors And Notes',
+          row: event.row,
+          cols: [],
+          service: this.noteService,
+          initFilter: {idPatient: event.row.id, page: 0, size: 50, sort: ''},
+          columnDefs: [
+            {headerName: 'Id', field: 'id'},
+            {headerName: 'idDoctor', field: 'idDoctor'},
+            {headerName: 'description', field: 'description'},
+            {headerName: 'date', field: 'date'},
+          ]
+        }
       });
     }
   }

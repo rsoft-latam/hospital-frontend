@@ -1,7 +1,7 @@
 // NGRX
 import {Action} from '@ngrx/store';
 // OTHERS
-import {HospitalFilter} from './models/note-filter.model';
+import {NoteFilter} from './models/note-filter.model';
 
 export enum HospitalActionTypes {
 
@@ -54,7 +54,7 @@ export class CloseFilter implements Action {
 export class SetFilter implements Action {
   readonly type = HospitalActionTypes.SetFilter;
 
-  constructor(public payload: { filter: HospitalFilter }) {
+  constructor(public payload: { filter: NoteFilter }) {
   }
 }
 

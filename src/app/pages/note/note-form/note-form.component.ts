@@ -119,7 +119,7 @@ export class NoteFormComponent implements OnInit, OnDestroy {
       startWith(''),
       tap(() => this.isLoadingIdDoctor.next(true)),
       switchMap(value => this.doctorService.list({
-          name: value,
+          firstName: value,
           page: 0,
           size: 50,
           sort: null

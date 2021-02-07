@@ -12,17 +12,15 @@ import * as hospitalActions from './store/note.actions';
 import {Action, ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {NoteService} from './store/services/note.service';
-import {BrandService} from '../../shared/services/brand.service';
-import {SupplierService} from '../../shared/services/supplier.service';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
-import {EditButtonComponent} from '../../shared/components/edit-button.component';
-import {HospitalFilter} from './store/models/note-filter.model';
+import {NoteFilter} from './store/models/note-filter.model';
+import {ActionButtonComponent} from '../../shared/components/action-button.component';
 
-const initFilter: HospitalFilter = {
+const initFilter: NoteFilter = {
   name: '',
   page: 0,
   size: 50,
@@ -53,7 +51,7 @@ export class NoteComponent implements OnInit, OnDestroy {
   public frameworkComponents;
 
   // FILTER SUBS
-  filter: HospitalFilter;
+  filter: NoteFilter;
   isLoadingFilter = new BehaviorSubject<boolean>(false);
 
   // OTHERS
@@ -68,9 +66,7 @@ export class NoteComponent implements OnInit, OnDestroy {
               private store: Store<State>,
               private actions: ActionsSubject,
               private formBuilder: FormBuilder,
-              private brandService: BrandService,
               private mappingService: NoteService,
-              private supplierService: SupplierService,
               @Inject('config') private config: AppConfig) {
 
     // FILTER FORM CONFIG
@@ -85,12 +81,16 @@ export class NoteComponent implements OnInit, OnDestroy {
       {headerName: 'idPatient', field: 'idPatient'},
       {headerName: 'description', field: 'description'},
       {headerName: 'date', field: 'date'},
+      {headerName: 'createdBy', field: 'createdBy'},
+      {headerName: 'createdDate', field: 'createdDate'},
+      {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'},
       {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
     ];
 
     this.context = {componentParent: this};
     this.frameworkComponents = {
-      editButtonComponent: EditButtonComponent
+      editButtonComponent: ActionButtonComponent
     };
 
     this.defaultColDef = {
@@ -115,7 +115,7 @@ export class NoteComponent implements OnInit, OnDestroy {
     this.actionSubs.push(this.actions.pipe(
       filter(s => s.type === hospitalActions.HospitalActionTypes.SetFilter),
       map((s: any) => s.payload.filter),
-      tap((filter: HospitalFilter) => {
+      tap((filter: NoteFilter) => {
         this.filter = Object.assign({}, filter);
         this.isLoadingFilter.next(false);
         this.subs = this.mappingService.list(filter).subscribe(data => this.gridApi.setRowData(data.body));

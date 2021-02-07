@@ -1,5 +1,5 @@
 // NGRX
-import {HospitalActionTypes, DoctorActions} from './hospital.actions';
+import {HospitalActionTypes, HospitalActions} from './hospital.actions';
 
 export interface HospitalState {
   filterOpen: boolean;
@@ -13,7 +13,7 @@ export const initialState: HospitalState = {
   sidenavFormType: undefined
 };
 
-export function reducer(state: HospitalState = initialState, action: DoctorActions): HospitalState {
+export function reducer(state: HospitalState = initialState, action: HospitalActions): HospitalState {
 
   switch (action.type) {
 

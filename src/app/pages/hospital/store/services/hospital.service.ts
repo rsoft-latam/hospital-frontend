@@ -14,13 +14,8 @@ export class HospitalService implements IDataService<HospitalFilter> {
   }
 
   public list(filter: HospitalFilter): Observable<HttpResponse<any>> {
-    const params = createRequestOption({
-      page: filter.page,
-      size: filter.size,
-      sort: filter.sort,
-      name: filter.name
-    });
-    return this.http.get(`${this.config.apiBaseUrl}hospitals`, {params: params, observe: 'response'});
+    const params = createRequestOption(filter);
+    return this.http.get(`${this.config.apiBaseUrl}hospitals-auditory`, {params: params, observe: 'response'});
   }
 
   public create(body: any): Observable<HttpResponse<any>> {

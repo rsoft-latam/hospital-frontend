@@ -5,7 +5,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 // Modules
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {AlertModule} from './modules/alert/alert.module';
-import {ErrorModule} from './modules/error/error.module';
 
 @NgModule({
   exports: [
@@ -13,7 +12,6 @@ import {ErrorModule} from './modules/error/error.module';
     FormsModule,
     ReactiveFormsModule,
     AlertModule,
-    ErrorModule,
     FlexLayoutModule
   ]
 })

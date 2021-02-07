@@ -9,18 +9,16 @@ import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 // NGRX
 import {State} from '../../reducers/index';
 import * as hospitalActions from './store/hospital.actions';
-import {Action, ActionsSubject, Store} from '@ngrx/store';
+import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {HospitalService} from './store/services/hospital.service';
-import {BrandService} from '../../shared/services/brand.service';
-import {SupplierService} from '../../shared/services/supplier.service';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
-import {EditButtonComponent} from '../../shared/components/edit-button.component';
 import {HospitalFilter} from './store/models/hospital-filter.model';
+import {ActionButtonComponent} from '../../shared/components/action-button.component';
 
 const initFilter: HospitalFilter = {
   name: '',
@@ -68,9 +66,7 @@ export class HospitalComponent implements OnInit, OnDestroy {
               private store: Store<State>,
               private actions: ActionsSubject,
               private formBuilder: FormBuilder,
-              private brandService: BrandService,
               private mappingService: HospitalService,
-              private supplierService: SupplierService,
               @Inject('config') private config: AppConfig) {
 
     // FILTER FORM CONFIG
@@ -83,12 +79,16 @@ export class HospitalComponent implements OnInit, OnDestroy {
       {headerName: 'Id', field: 'id'},
       {headerName: 'Name', field: 'name'},
       {headerName: 'Creation Date', field: 'creationDate'},
+      {headerName: 'createdBy', field: 'createdBy'},
+      {headerName: 'createdDate', field: 'createdDate'},
+      {headerName: 'lastModifiedBy', field: 'lastModifiedBy'},
+      {headerName: 'lastModifiedDate', field: 'lastModifiedDate'},
       {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'right'}
     ];
 
     this.context = {componentParent: this};
     this.frameworkComponents = {
-      editButtonComponent: EditButtonComponent
+      editButtonComponent: ActionButtonComponent
     };
 
     this.defaultColDef = {

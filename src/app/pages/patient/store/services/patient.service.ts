@@ -20,7 +20,7 @@ export class PatientService implements IDataService<HospitalFilter> {
       sort: filter.sort,
       name: filter.name
     });
-    return this.http.get(`${this.config.apiBaseUrl}patients`, {params: params, observe: 'response'});
+    return this.http.get(`${this.config.apiBaseUrl}patients-auditory`, {params: params, observe: 'response'});
   }
 
   public create(body: any): Observable<HttpResponse<any>> {

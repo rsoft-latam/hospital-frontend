@@ -1,5 +1,6 @@
 import {FilterModel} from '../../../../shared/models/filter.model';
 
-export interface HospitalFilter extends FilterModel {
-  name: string;
+export interface NoteFilter extends FilterModel {
+  name?: string;
+  idPatient?: number;
 }
