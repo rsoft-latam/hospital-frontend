@@ -24,23 +24,23 @@
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3",
 
-    "@angular/cdk": "^10.0.0",
-    "@angular/material": "^10.0.0",
-    "@angular/material-moment-adapter": "^10.0.0",
+    "@angular/cdk": "^11.1.0",
+    "@angular/material": "^11.1.0",
+    "@angular/material-moment-adapter": "^11.1.0",
 
-    "moment": "^2.27.0",
-    "@angular/flex-layout": "^10.0.0-beta.32",
+    "moment": "^2.29.0",
+    "@angular/flex-layout": "^11.0.0-beta.33",
 
-    "@ngrx/store": "^10.0.0",
-    "@ngrx/effects": "^10.0.0",
+    "@ngrx/store": "^10.1.0",
+    "@ngrx/effects": "^10.1.0",
     "ngrx-store-logger": "^0.2.4",
-    "ngrx-store-localstorage": "^9.0.0",
+    "ngrx-store-localstorage": "^10.1.0",
 
     "font-awesome": "^4.7.0",
-    "normalize.css": "^8.0.0",
     "reselect": "~4.0.0",
     "smooth-scrollbar": "^8.5.0",
-    "web-animations-js": "^2.3.0",
+    "normalize.css": "^8.0.0",
+    "web-animations-js": "^2.3.2",
 
     "@auth0/angular-jwt": "^5.0.0",
     "@ngx-pwa/local-storage": "^10.0.0",
@@ -48,8 +48,8 @@
     "lodash-es": "^4.17.0",
     "lodash": "^4.17.0",
 
-    "ag-grid-angular": "^23.2.0",
-    "ag-grid-community": "^23.2.0"
+    "ag-grid-angular": "^25.0.0",
+    "ag-grid-community": "^25.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1101.0",
@@ -70,7 +70,7 @@
     "tslint": "~6.1.0",
     "typescript": "~4.1.2",
 
-    "@ngrx/store-devtools": "^10.0.0",
+    "@ngrx/store-devtools": "^10.1.0",
     "ngrx-store-freeze": "^0.2.0"
   }
 }
