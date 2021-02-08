@@ -77,7 +77,6 @@ export class HospitalComponent implements OnInit, OnDestroy {
       {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 110, maxWidth: 110},
       {headerName: 'ID', field: 'id'},
       {headerName: 'Name', field: 'name'},
-      {headerName: 'Creation Date', field: 'creationDate'},
       {headerName: 'Created By', field: 'createdBy'},
       {headerName: 'Created Date', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
       {headerName: 'Last Modified By', field: 'lastModifiedBy'},

@@ -74,7 +74,7 @@ export class NoteComponent implements OnInit, OnDestroy {
       {headerName: 'ID Doctor', field: 'idDoctor'},
       {headerName: 'ID Patient', field: 'idPatient'},
       {headerName: 'Description', field: 'description'},
-      {headerName: 'Date', field: 'date'},
+      {headerName: 'Date', field: 'date', valueGetter: (p: any) => formatDate(p.data.date)},
       {headerName: 'Created By', field: 'createdBy'},
       {headerName: 'Created Date', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
       {headerName: 'Last Modified By', field: 'lastModifiedBy'},

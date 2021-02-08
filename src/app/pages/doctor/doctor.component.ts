@@ -84,7 +84,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
       {headerName: 'First Name', field: 'firstName'},
       {headerName: 'Last Name', field: 'lastName'},
       {headerName: 'Address', field: 'address'},
-      {headerName: 'Birthday', field: 'birthday'},
+      {headerName: 'Birthday', field: 'birthday', valueGetter: (p: any) => formatDate(p.data.birthday)},
       {headerName: 'Hospital', field: 'hospital', valueGetter: p => p?.data?.hospital?.name},
       {headerName: 'Created By', field: 'createdBy'},
       {headerName: 'Created Date', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
