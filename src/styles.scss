@@ -1,19 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~normalize.css/normalize.css";
 
-//$fa-font-path: "../node_modules/font-awesome/fonts";
-//@import "~font-awesome/scss/font-awesome.scss";
-
 @import "styles/var";
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
 @include mat-core();
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
 @include angular-material-theme($theme);
 
 @import "styles/misc";
@@ -41,36 +30,5 @@
 
 @import "~ag-grid-community/dist/styles/ag-grid.css";
 @import "~ag-grid-community/dist/styles/ag-theme-material.css";
-
-
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
-
-// AG GRID
-.ag-cell {
-  user-select: initial !important;
-  -moz-user-select: text !important;
-  -ms-user-select: text !important;
-  -webkit-user-select: text !important;
-}
-
-// CHECK
-.mat-checkbox-indeterminate.mat-warn .mat-checkbox-background, .mat-checkbox-checked.mat-warn .mat-checkbox-background {
-  background-color: white !important;
-  border: 2px solid rgba(0, 0, 0, 0.54) !important;
-}
-
-.mat-checkbox-mixedmark {
-  background-color: gray !important;
-}
-
-.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background, .mat-checkbox-checked.mat-primary .mat-checkbox-background {
-  background-color: #2ab177 !important;
-}
-
-.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-  background-color: #2ab177 !important;
-}
-
-.mat-checkbox-checkmark {
-  animation: none !important;
-}
+@import 'styles/ag_grid_material';
