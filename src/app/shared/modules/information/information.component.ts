@@ -6,7 +6,7 @@ import {PageEvent} from '@angular/material/paginator';
   template: `
     <div style="width: 1000px; height: 500px;">
       <ag-grid-angular
-        style="width: 100%; height: 100%;"
+        style="width: 100%; height: 450px;"
         class="ag-theme-material"
         [columnDefs]="columnDefs"
         (gridReady)="onGridReady($event)">
