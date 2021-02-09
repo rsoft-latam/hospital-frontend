@@ -181,7 +181,6 @@ export class PatientComponent implements OnInit, OnDestroy {
   onGridReady(params): void {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    params.api.sizeColumnsToFit();
     this.store.dispatch(patientActions.SetFilter({filter: initFilter}));
   }
 

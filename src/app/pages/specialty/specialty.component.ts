@@ -155,7 +155,6 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
   onGridReady(params): void {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    params.api.sizeColumnsToFit();
     this.store.dispatch(specialtyActions.SetFilter({filter: initFilter}));
   }
 

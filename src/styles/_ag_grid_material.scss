@@ -2,10 +2,22 @@
 
 .ag-theme-material {
 
-  border: 1px solid #dae0d7cc;
+  border: 1px solid rgb(237 237 237);;
 
-  .ag-header-cell {
-    background-color: #ededed;
+  .ag-header-row:nth-child(1) {
+    border-bottom: 2px solid #ededed;
+
+    .ag-header-cell {
+      background-color: #f7f7f7;
+    }
+  }
+
+  .ag-header-row:nth-child(2) {
+    border-bottom: 2px solid #ededed;
+
+    .ag-header-cell {
+      background-color: #ededed;
+    }
   }
 
   .ag-cell:focus {
