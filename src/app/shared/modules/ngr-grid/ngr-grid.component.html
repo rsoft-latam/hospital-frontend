@@ -1,0 +1,25 @@
+<div style="display: flex; flex-direction: column; width: 100%; height: 100%; border: 1px solid #ededed;">
+
+  <div
+    style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center;
+           background-color: #ededed; height: 54px; width: 100%; padding: 10px;">
+    <button mat-raised-button color="primary" style="width: 70px;" (click)="add()">
+      <span class="login-btn-text-align">Add</span>
+      <mat-icon style="font-size: 25px; margin-top: -3px;">add</mat-icon>
+    </button>
+  </div>
+
+  <ag-grid-angular
+    style="width: 100%; height: 100%;"
+    class="ag-theme-material"
+    [gridOptions]="gridOptions"
+    (gridReady)="gridReady($event)">
+  </ag-grid-angular>
+  <mat-paginator
+    style="display: flex; justify-content: flex-end; align-items: center; height: 54px; background-color: #f7f7f7;"
+    [length]="totalRows"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="page($event)">
+  </mat-paginator>
+</div>

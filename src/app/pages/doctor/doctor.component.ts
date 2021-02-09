@@ -43,9 +43,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
   // AG-GRID CONFIG
   private gridApi;
   private gridColumnApi;
-  public columnDefs;
-  public context;
-  public frameworkComponents;
+  public gridOptions;
 
   // FILTER SUBS
   filter: DoctorFilter;
@@ -77,26 +75,27 @@ export class DoctorComponent implements OnInit, OnDestroy {
     });
 
     // AG-GRID CONFIG
-    this.columnDefs = [
-      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 140, maxWidth: 140},
-      {headerName: 'ID', field: 'id'},
-      {headerName: 'Url Photo', field: 'urlPhoto'},
-      {headerName: 'First Name', field: 'firstName'},
-      {headerName: 'Last Name', field: 'lastName'},
-      {headerName: 'Address', field: 'address'},
-      {headerName: 'Birthday', field: 'birthday', valueGetter: (p: any) => formatDate(p.data.birthday)},
-      {headerName: 'Hospital', field: 'hospital', valueGetter: p => p?.data?.hospital?.name},
-      {headerName: 'Created By', field: 'createdBy'},
-      {headerName: 'Created Date', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
-      {headerName: 'Last Modified By', field: 'lastModifiedBy'},
-      {headerName: 'Last Modified Date', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
-    ];
 
-    this.context = {componentParent: this};
-    this.frameworkComponents = {
-      editButtonComponent: ActionsButtonPatientComponent
+    this.gridOptions = {
+      columnDefs: [
+        {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 140, maxWidth: 140},
+        {headerName: 'ID', field: 'id'},
+        {headerName: 'Url Photo', field: 'urlPhoto'},
+        {headerName: 'First Name', field: 'firstName'},
+        {headerName: 'Last Name', field: 'lastName'},
+        {headerName: 'Address', field: 'address'},
+        {headerName: 'Birthday', field: 'birthday', valueGetter: (p: any) => formatDate(p.data.birthday)},
+        {headerName: 'Hospital', field: 'hospital', valueGetter: p => p?.data?.hospital?.name},
+        {headerName: 'Created By', field: 'createdBy'},
+        {headerName: 'Created Date', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
+        {headerName: 'Last Modified By', field: 'lastModifiedBy'},
+        {headerName: 'Last Modified Date', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
+      ],
+      context: {componentParent: this},
+      frameworkComponents: {
+        editButtonComponent: ActionsButtonPatientComponent
+      }
     };
-
   }
 
   ngOnInit(): void {

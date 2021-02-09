@@ -41,9 +41,7 @@ export class HospitalComponent implements OnInit, OnDestroy {
   // AG-GRID CONFIG
   private gridApi;
   private gridColumnApi;
-  public columnDefs;
-  public context;
-  public frameworkComponents;
+  public gridOptions;
 
   // FILTER SUBS
   filter: HospitalFilter;
@@ -73,19 +71,20 @@ export class HospitalComponent implements OnInit, OnDestroy {
     });
 
     // AG-GRID CONFIG
-    this.columnDefs = [
-      {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 110, maxWidth: 110},
-      {headerName: 'ID', field: 'id'},
-      {headerName: 'Name', field: 'name'},
-      {headerName: 'Created By', field: 'createdBy'},
-      {headerName: 'Created Date', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
-      {headerName: 'Last Modified By', field: 'lastModifiedBy'},
-      {headerName: 'Last Modified Date', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
-    ];
-
-    this.context = {componentParent: this};
-    this.frameworkComponents = {
-      editButtonComponent: ActionButtonComponent
+    this.gridOptions = {
+      columnDefs: [
+        {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 110, maxWidth: 110},
+        {headerName: 'ID', field: 'id'},
+        {headerName: 'Name', field: 'name'},
+        {headerName: 'Created By', field: 'createdBy'},
+        {headerName: 'Created Date', field: 'createdDate', valueGetter: (p: any) => formatDate(p.data.createdDate)},
+        {headerName: 'Last Modified By', field: 'lastModifiedBy'},
+        {headerName: 'Last Modified Date', field: 'lastModifiedDate', valueGetter: (p: any) => formatDate(p.data.lastModifiedDate)}
+      ],
+      context: {componentParent: this},
+      frameworkComponents: {
+        editButtonComponent: ActionButtonComponent
+      }
     };
 
   }

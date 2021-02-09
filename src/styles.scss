@@ -2,6 +2,7 @@
 @import "~normalize.css/normalize.css";
 
 @import "styles/var";
+
 @include mat-core();
 @include angular-material-theme($theme);
 
@@ -32,3 +33,12 @@
 @import "~ag-grid-community/dist/styles/ag-theme-material.css";
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import 'styles/ag_grid_material';
+
+
+button.mat-raised-button {
+  border-radius: 0;
+}
+
+.mat-card {
+  border-radius: 0 !important;
+}

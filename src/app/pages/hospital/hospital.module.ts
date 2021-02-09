@@ -3,8 +3,6 @@ import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 // ANGULAR MATERIAL
 import {CdkTableModule} from '@angular/cdk/table';
-// AG-GRID
-import {AgGridModule} from 'ag-grid-angular';
 // Modules
 import {SharedLibsModule} from '../../shared/shared-libs.module';
 import {ScrollbarModule} from '../../core/scrollbar/scrollbar.module';
@@ -17,7 +15,7 @@ import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {HospitalComponent} from './hospital.component';
 import {HospitalFormComponent} from './hospital-form/hospital-form.component';
-import {ActionButtonComponent} from '../../shared/components/action-button.component';
+import {NgrGridModule} from '../../shared/modules/ngr-grid/ngr-grid.module';
 
 const routes: Routes = [
   {path: '', component: HospitalComponent}
@@ -33,7 +31,7 @@ const routes: Routes = [
     BreadcrumbsModule,
     CdkTableModule,
     RouterModule.forChild(routes),
-    AgGridModule.withComponents([ActionButtonComponent])
+    NgrGridModule
   ],
   declarations: [
     HospitalComponent,

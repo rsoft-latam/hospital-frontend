@@ -96,31 +96,15 @@
             </form>
           </div>
 
-          <div style="display: flex; flex-direction: column; width: 100%; height: 100%;">
-
-            <div
-              style="display: flex; flex-direction: row; justify-content: flex-end; align-items: center;
-               background-color: #ededed; height: 60px; padding: 10px;">
-              <button mat-raised-button color="primary" style="width: 70px;" (click)="onAdd();">
-                <span class="login-btn-text-align">Add</span>
-                <mat-icon style="font-size: 25px; margin-top: -3px;">add</mat-icon>
-              </button>
-            </div>
-
-            <ag-grid-angular
-              style="width: 100%; height: 100%;"
-              class="ag-theme-material"
-              [columnDefs]="columnDefs"
-              [context]="context"
-              [frameworkComponents]="frameworkComponents"
-              (gridReady)="onGridReady($event)">
-            </ag-grid-angular>
-            <mat-paginator [length]="total"
-                           [pageSize]="filter?.size"
-                           [pageSizeOptions]="pageSizeOptions"
-                           (page)="onPagination($event)">
-            </mat-paginator>
-          </div>
+          <ngr-grid
+            [totalRows]="total"
+            [pageSize]="filter?.size"
+            [gridOptions]="gridOptions"
+            [pageSizeOptions]="pageSizeOptions"
+            (onAdd)="onAdd()"
+            (onPage)="onPagination($event)"
+            (onGridReady)="onGridReady($event)">
+          </ngr-grid>
 
         </div>
 
