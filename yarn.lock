@@ -5973,6 +5973,13 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
+ngr-grid@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ngr-grid/-/ngr-grid-1.0.2.tgz#d836c74f38d8b60d53cb6901bc639d894e6d77c7"
+  integrity sha512-6MoMaA36LpuLt5dIJ5OBQanTUFu3RMcHlW7s8G04dfsuy5Xp2O4h3KZbLdvxU956Y2QWKbYNPfbh1pV2Bgj2gA==
+  dependencies:
+    tslib "^2.0.0"
+
 ngrx-store-freeze@^0.2.0:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/ngrx-store-freeze/-/ngrx-store-freeze-0.2.4.tgz#146687cdf7e21244eb9003c7e883f2125847076c"

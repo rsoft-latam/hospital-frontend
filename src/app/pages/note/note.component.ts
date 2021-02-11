@@ -18,7 +18,7 @@ import {AlertComponent} from '../../shared/modules/alert/alert.component';
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
 import {NoteFilter} from './models/note-filter.model';
-import {ActionButtonComponent} from '../../shared/components/action-button.component';
+import {ActionButtonComponent} from 'ngr-grid';
 import {PageEvent} from '@angular/material/paginator';
 import {formatDate} from '../../shared/utils/format.util';
 

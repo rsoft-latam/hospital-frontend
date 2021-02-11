@@ -17,10 +17,9 @@ import {AlertComponent} from '../../shared/modules/alert/alert.component';
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
 import {SpecialtyFilter} from './models/specialty-filter.model';
-import {ActionButtonComponent} from '../../shared/components/action-button.component';
+import {ActionButtonComponent} from 'ngr-grid';
 import {PageEvent} from '@angular/material/paginator';
 import * as specialtyActions from './status/specialty.actions';
-import {DatePipe} from '@angular/common';
 import {formatDate} from '../../shared/utils/format.util';
 
 const initFilter: SpecialtyFilter = {

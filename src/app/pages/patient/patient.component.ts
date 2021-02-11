@@ -18,12 +18,11 @@ import {AlertComponent} from '../../shared/modules/alert/alert.component';
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {AppConfig} from '../../shared/models/app-config.model';
 import {HospitalFilter} from './models/patient-filter.model';
-import {ActionsButtonPatientComponent} from '../../shared/components/actions-button-patient.component';
+import {ActionsButtonPatientComponent} from 'ngr-grid';
 import {InformationComponent} from '../../shared/modules/information/information.component';
 import {NoteService} from '../note/services/note.service';
 import {DoctorService} from '../doctor/services/doctor.service';
 import {PageEvent} from '@angular/material/paginator';
-import {DatePipe} from '@angular/common';
 import {formatDate} from '../../shared/utils/format.util';
 
 const initFilter: HospitalFilter = {

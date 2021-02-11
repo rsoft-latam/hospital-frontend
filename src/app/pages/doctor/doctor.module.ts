@@ -9,14 +9,13 @@ import {ScrollbarModule} from '../../core/scrollbar/scrollbar.module';
 import {PageHeaderModule} from '../../core/page-header/page-header.module';
 import {BreadcrumbsModule} from '../../core/breadcrumbs/breadcrumbs.module';
 import {SharedMaterialModule} from '../../shared/shared-material.module';
-import {SharedActionsTableModule} from '../../shared/shared-actions-table.module';
 // COMPONENTS
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
 // OTHERS
 import {DoctorComponent} from './doctor.component';
 import {DoctorFormComponent} from './doctor-form/doctor-form.component';
 import {HospitalService} from '../hospital/services/hospital.service';
-import {NgrGridModule} from '../../shared/modules/ngr-grid/ngr-grid.module';
+import {NgrGridModule} from 'ngr-grid';
 
 const routes: Routes = [
   {path: '', component: DoctorComponent}
@@ -26,7 +25,6 @@ const routes: Routes = [
   imports: [
     SharedLibsModule,
     SharedMaterialModule,
-    SharedActionsTableModule,
     ScrollbarModule,
     PageHeaderModule,
     BreadcrumbsModule,
