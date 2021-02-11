@@ -88,8 +88,8 @@ export class SidenavComponent implements OnInit {
         return 'repricer';
       case 'repricer.items & stock':
         return 'repricer.pricing';
-      case 'repricer.status':
-        return 'repricer.status';
+      case 'repricer.+state':
+        return 'repricer.+state';
       case 'crawler':
         return 'crawler';
       case 'crawler.search links':

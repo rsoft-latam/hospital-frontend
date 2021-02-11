@@ -4,7 +4,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 // NGRX
 import {Store} from '@ngrx/store';
-import * as authActions from './pages/login/store/auth.actions';
+import * as authActions from 'ngr-auth';
 
 @Component({
   selector: 'app-root',

@@ -7,16 +7,16 @@ import {ActionReducerMap} from '@ngrx/store';
  * the state of the reducer plus any selector functions. The `* as`
  * notation packages up all of the exports into a single object.
  */
-// import * as fromRouter from '@ngrx/router-status';
-import * as fromAuth from '../pages/login/store/auth.reducer';
+// import * as fromRouter from '@ngrx/router-+state';
+import * as fromAuth from 'ngr-auth';
 import * as fromLayout from '../core/layout/shared/layout.reducer';
 import * as fromSidenav from '../core/sidenav/shared/sidenav.reducer';
 
-import * as fromAppDoctor from '../pages/doctor/status/doctor.reducer';
-import * as fromAppHospital from '../pages/hospital/status/hospital.reducer';
-import * as fromAppPatient from '../pages/patient/status/patient.reducer';
-import * as fromAppSpecialty from '../pages/specialty/status/specialty.reducer';
-import * as fromAppNote from '../pages/note/status/note.reducer';
+import * as fromAppDoctor from '../pages/doctor/+state/doctor.reducer';
+import * as fromAppHospital from '../pages/hospital/+state/hospital.reducer';
+import * as fromAppPatient from '../pages/patient/+state/patient.reducer';
+import * as fromAppSpecialty from '../pages/specialty/+state/specialty.reducer';
+import * as fromAppNote from '../pages/note/+state/note.reducer';
 
 
 /**
@@ -64,8 +64,8 @@ export const reducers: ActionReducerMap<State> = {
  *
  * ```ts
  * class MyComponent {
- * 	constructor(status: Observable<State>) {
- * 	  this.booksState$ = status.select(getBooksState);
+ * 	constructor(+state: Observable<State>) {
+ * 	  this.booksState$ = +state.select(getBooksState);
  * 	}
  * }
  * ```

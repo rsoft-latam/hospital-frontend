@@ -7,7 +7,7 @@ import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} 
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as patientActions from '../status/patient.actions';
+import * as patientActions from '../+state/patient.actions';
 import {HospitalService} from '../../hospital/services/hospital.service';
 
 @Component({

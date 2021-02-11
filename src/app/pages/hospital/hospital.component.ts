@@ -8,7 +8,7 @@ import {filter, map, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 // NGRX
 import {State} from '../../reducers/index';
-import * as hospitalActions from './status/hospital.actions';
+import * as hospitalActions from './+state/hospital.actions';
 import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {HospitalService} from './services/hospital.service';

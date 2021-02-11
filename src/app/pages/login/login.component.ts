@@ -3,10 +3,10 @@ import {Router} from '@angular/router';
 import {ROUTE_TRANSITION} from '../../app.animation';
 import {Subscription} from 'rxjs';
 import {ActionsSubject, Store} from '@ngrx/store';
-import {AuthActionTypes} from './store/auth.actions';
+import {AuthActionTypes} from 'ngr-auth';
 import {State} from '../../reducers';
 import {filter, tap} from 'rxjs/operators';
-import * as AuthActions from './store/auth.actions';
+import * as AuthActions from 'ngr-auth';
 
 @Component({
   template: `

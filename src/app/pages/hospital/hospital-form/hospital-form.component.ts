@@ -7,7 +7,7 @@ import {filter, shareReplay, tap} from 'rxjs/operators';
 // NGRX
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as hospitalActions from '../status/hospital.actions';
+import * as hospitalActions from '../+state/hospital.actions';
 
 @Component({
   selector: 'hospital-form',

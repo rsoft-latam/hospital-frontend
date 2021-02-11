@@ -20,12 +20,12 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {SidenavModule} from './core/sidenav/shared/sidenav.module';
 // OTHERS
 import {environment} from '../environments/environment';
-import {AppHospitalModule} from './pages/hospital/status/hospital.module';
-import {AppAuthModule} from './pages/login/store/auth.module';
-import {AppDoctorModule} from './pages/doctor/status/doctor.module';
-import {AppPatientModule} from './pages/patient/status/patient.module';
-import {AppSpecialtyModule} from './pages/specialty/status/specialty.module';
-import {AppNoteModule} from './pages/note/status/note.module';
+import {AppHospitalModule} from './pages/hospital/+state/hospital.module';
+import {AppAuthModule} from 'ngr-auth';
+import {AppDoctorModule} from './pages/doctor/+state/doctor.module';
+import {AppPatientModule} from './pages/patient/+state/patient.module';
+import {AppSpecialtyModule} from './pages/specialty/+state/specialty.module';
+import {AppNoteModule} from './pages/note/+state/note.module';
 
 const NGRX_IMPORTS = [
   StoreModule.forRoot(reducers, {metaReducers}),

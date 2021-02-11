@@ -51,7 +51,8 @@
     "ag-grid-angular": "^25.0.0",
     "ag-grid-community": "^25.0.0",
 
-    "ngr-grid": "^1.0.2"
+    "ngr-grid": "^1.0.2",
+    "ngr-auth": "^1.0.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1101.0",

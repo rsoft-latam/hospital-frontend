@@ -19,7 +19,7 @@ import {AppConfig} from '../../shared/models/app-config.model';
 import {SpecialtyFilter} from './models/specialty-filter.model';
 import {ActionButtonComponent} from 'ngr-grid';
 import {PageEvent} from '@angular/material/paginator';
-import * as specialtyActions from './status/specialty.actions';
+import * as specialtyActions from './+state/specialty.actions';
 import {formatDate} from '../../shared/utils/format.util';
 
 const initFilter: SpecialtyFilter = {

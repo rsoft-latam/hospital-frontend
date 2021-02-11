@@ -1,11 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActionsSubject, Store} from '@ngrx/store';
 import {State} from '../../../reducers';
-import * as AuthActions from '../../../pages/login/store/auth.actions';
+import * as AuthActions from 'ngr-auth';
 import {Subscription} from 'rxjs';
 import {filter, shareReplay, tap} from 'rxjs/operators';
 import {Router} from '@angular/router';
-import * as authActions from '../../../pages/login/store/auth.actions';
+import * as authActions from 'ngr-auth';
 
 @Component({
   selector: 'elastic-toolbar-user-button',
