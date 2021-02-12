@@ -40,8 +40,7 @@ export class HospitalFormComponent implements OnInit, OnDestroy {
     // CONFIG FORM
     this.form = this.formBuilder.group({
       id: null,
-      name: [null, [Validators.required]],
-      creationDate: null
+      name: [null, [Validators.required]]
     });
 
     // GET HOSPITAL SUCCESS
@@ -51,8 +50,7 @@ export class HospitalFormComponent implements OnInit, OnDestroy {
         const form = Object.assign({}, s.entity.body);
         this.form.setValue({
           id: form.id,
-          name: form.name,
-          creationDate: form.creationDate
+          name: form.name
         });
       })
     ).subscribe());
