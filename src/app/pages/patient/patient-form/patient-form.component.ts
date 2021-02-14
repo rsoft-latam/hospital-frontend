@@ -1,13 +1,14 @@
-// Angular
+// ANGULAR
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // RXJS
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 // NGRX
+import * as patientActions from '../+state/patient.actions';
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as patientActions from '../+state/patient.actions';
+// SERVICES
 import {HospitalService} from '../../hospital/services/hospital.service';
 
 @Component({
@@ -53,7 +54,7 @@ export class PatientFormComponent implements OnInit, OnDestroy {
       hospital: null
     });
 
-    // GET HOSPITAL SUCCESS
+    // GET PATIENT SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s => s.type === patientActions.GetPatientSuccess.type),
       tap((s: any) => {
@@ -70,7 +71,7 @@ export class PatientFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // UPDATE OR ADD SUCCESS
+    // UPDATE OR ADD SUCCESS PATIENT
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
         s.type === patientActions.AddSuccess.type ||
@@ -81,7 +82,7 @@ export class PatientFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // UPDATE OR ADD FAILURE
+    // UPDATE OR ADD PATIENT FAILURE
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
         s.type === patientActions.AddFailure.type ||
@@ -91,7 +92,7 @@ export class PatientFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // RESULT HEADER SUBS
+    // SIDENAV FORM TYPE SUBS
     this.sidenavFormTypeSubs = this.sidenavFormType$.pipe(
       tap(s => {
         this.form.reset();

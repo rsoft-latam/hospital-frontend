@@ -13,15 +13,17 @@ import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {PatientService} from './services/patient.service';
 // COMPONENTS
-import {AlertComponent} from '../../shared/modules/alert/alert.component';
-// OTHERS
-import {ROUTE_TRANSITION} from '../../app.animation';
-import {AppConfig} from '../../shared/models/app-config.model';
-import {HospitalFilter} from './models/patient-filter.model';
 import {ActionsButtonPatientComponent} from 'ngr-grid';
+import {AlertComponent} from '../../shared/modules/alert/alert.component';
 import {InformationComponent} from '../../shared/modules/information/information.component';
+// SERVICES
 import {NoteService} from '../note/services/note.service';
 import {DoctorService} from '../doctor/services/doctor.service';
+// MODELS
+import {AppConfig} from '../../shared/models/app-config.model';
+import {HospitalFilter} from './models/patient-filter.model';
+// OTHERS
+import {ROUTE_TRANSITION} from '../../app.animation';
 import {PageEvent} from '@angular/material/paginator';
 import {formatDate} from '../../shared/utils/format.util';
 
@@ -40,7 +42,7 @@ const initFilter: HospitalFilter = {
 
 export class PatientComponent implements OnInit, OnDestroy {
 
-  // AG-GRID CONFIG
+  // NGR-GRID CONFIG
   private gridApi;
   private gridColumnApi;
   public gridOptions;
@@ -75,7 +77,7 @@ export class PatientComponent implements OnInit, OnDestroy {
       lastName: null
     });
 
-    // AG-GRID CONFIG
+    // NGR-GRID CONFIG
     this.gridOptions = {
       columnDefs: [
         {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 140, maxWidth: 140},
@@ -119,7 +121,7 @@ export class PatientComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // ADD UPDATE DELETE HOSPITAL SUCCESS
+    // ADD UPDATE DELETE PATIENT SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
         s.type === patientActions.AddSuccess.type ||

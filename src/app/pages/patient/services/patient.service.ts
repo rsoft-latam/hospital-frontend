@@ -1,9 +1,13 @@
-import {Observable} from 'rxjs';
-import {HttpClient, HttpResponse} from '@angular/common/http';
+// ANGULAR
 import {Inject, Injectable} from '@angular/core';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+// RXJS
+import {Observable} from 'rxjs';
+// NOTES
+import {HospitalFilter} from '../models/patient-filter.model';
 import {AppConfig} from '../../../shared/models/app-config.model';
 import {IDataService} from '../../../shared/models/data-service.model';
-import {HospitalFilter} from '../models/patient-filter.model';
+// OTHERS
 import {createRequestOption} from '../../../shared/utils/request-util';
 
 @Injectable()

@@ -1,13 +1,14 @@
-// Angular
+// ANGULAR
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // RXJS
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 // NGRX
+import * as doctorActions from '../+state/doctor.actions';
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as doctorActions from '../+state/doctor.actions';
+// SERVICES
 import {HospitalService} from '../../hospital/services/hospital.service';
 
 @Component({
@@ -53,7 +54,7 @@ export class DoctorFormComponent implements OnInit, OnDestroy {
       hospital: null
     });
 
-    // GET HOSPITAL SUCCESS
+    // GET DOCTOR SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s => s.type === doctorActions.GetDoctorSuccess.type),
       tap((s: any) => {
@@ -91,7 +92,7 @@ export class DoctorFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // RESULT HEADER SUBS
+    // SIDENAV FORM TYPE SUBS
     this.sidenavFormTypeSubs = this.sidenavFormType$.pipe(
       tap(s => {
         this.form.reset();

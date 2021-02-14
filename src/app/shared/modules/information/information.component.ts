@@ -1,6 +1,8 @@
+// ANGULAR
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+// ANGULAR MATERIAL
 import {PageEvent} from '@angular/material/paginator';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   template: `
@@ -21,7 +23,7 @@ import {PageEvent} from '@angular/material/paginator';
 })
 export class InformationComponent implements OnInit {
 
-  // AG-GRID CONFIG
+  // NGR-GRID CONFIG
   private gridApi;
   private gridColumnApi;
   public columnDefs;
@@ -35,7 +37,7 @@ export class InformationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // AG-GRID CONFIG
+    // NGR-GRID CONFIG
     this.filter = this.data.filter;
     this.columnDefs = this.data.columnDefs;
 

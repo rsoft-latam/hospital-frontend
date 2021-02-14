@@ -7,19 +7,20 @@ import {MatDialog} from '@angular/material/dialog';
 import {filter, map, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 // NGRX
+import * as specialtyActions from './+state/specialty.actions';
 import {State} from '../../reducers/index';
 import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {SpecialtyService} from './services/specialty.service';
 // COMPONENTS
+import {ActionButtonComponent} from 'ngr-grid';
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
-// OTHERS
-import {ROUTE_TRANSITION} from '../../app.animation';
+// MODELS
 import {AppConfig} from '../../shared/models/app-config.model';
 import {SpecialtyFilter} from './models/specialty-filter.model';
-import {ActionButtonComponent} from 'ngr-grid';
+// OTHERS
+import {ROUTE_TRANSITION} from '../../app.animation';
 import {PageEvent} from '@angular/material/paginator';
-import * as specialtyActions from './+state/specialty.actions';
 import {formatDate} from '../../shared/utils/format.util';
 
 const initFilter: SpecialtyFilter = {
@@ -111,7 +112,7 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // ADD UPDATE DELETE HOSPITAL SUCCESS
+    // ADD UPDATE DELETE SPECIALTY SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
         s.type === specialtyActions.AddSuccess.type ||

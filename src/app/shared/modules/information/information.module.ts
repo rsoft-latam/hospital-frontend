@@ -1,10 +1,13 @@
+// ANGULAR
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {InformationComponent} from './information.component';
+// MODULES
+import {AgGridModule} from 'ag-grid-angular';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
-import {AgGridModule} from 'ag-grid-angular';
 import {MatPaginatorModule} from '@angular/material/paginator';
+// COMPONENTS
+import {InformationComponent} from './information.component';
 
 @NgModule({
   imports: [
@@ -17,5 +20,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
   declarations: [InformationComponent],
   exports: [InformationComponent]
 })
+
 export class InformationModule {
 }

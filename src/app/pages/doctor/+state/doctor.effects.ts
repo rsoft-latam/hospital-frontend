@@ -1,4 +1,4 @@
-// Angular
+// ANGULAR
 import {Injectable} from '@angular/core';
 // RXJS
 import {of} from 'rxjs';
@@ -6,7 +6,7 @@ import {catchError, exhaustMap, map} from 'rxjs/operators';
 // NGRX
 import * as actionsDoctor from './doctor.actions';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-// Others
+// OTHERS
 import {DoctorService} from '../services/doctor.service';
 
 @Injectable()

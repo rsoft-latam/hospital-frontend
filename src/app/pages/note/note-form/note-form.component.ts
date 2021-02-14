@@ -1,15 +1,16 @@
-// Angular
+// ANGULAR
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // RXJS
 import {BehaviorSubject, forkJoin, Subscription} from 'rxjs';
 import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 // NGRX
+import * as noteActions from '../+state/note.actions';
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as noteActions from '../+state/note.actions';
-import {PatientService} from '../../patient/services/patient.service';
+// SERVICES
 import {DoctorService} from '../../doctor/services/doctor.service';
+import {PatientService} from '../../patient/services/patient.service';
 
 @Component({
   selector: 'note-form',
@@ -56,7 +57,7 @@ export class NoteFormComponent implements OnInit, OnDestroy {
       description: [null, [Validators.required]],
     });
 
-    // GET HOSPITAL SUCCESS
+    // GET NOTE SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s => s.type === noteActions.GetNoteSuccess.type),
       tap((s: any) => {
@@ -83,7 +84,7 @@ export class NoteFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // UPDATE OR ADD SUCCESS
+    // UPDATE OR ADD NOTE SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
         s.type === noteActions.AddSuccess.type ||
@@ -94,7 +95,7 @@ export class NoteFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // UPDATE OR ADD FAILURE
+    // UPDATE OR ADD NOTE FAILURE
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
         s.type === noteActions.AddFailure.type ||
@@ -104,14 +105,14 @@ export class NoteFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // RESULT HEADER SUBS
+    // SIDENAV FORM TYPE SUBS
     this.sidenavFormTypeSubs = this.sidenavFormType$.pipe(
       tap(s => {
         this.form.reset();
         this.sidenavFormType = s;
       })).subscribe();
 
-    // HOSPITAL FIELD SUBS
+    // PATIENT FIELD SUBS
     this.form.get('idPatient').valueChanges.pipe(
       debounceTime(1000),
       startWith(''),
@@ -125,7 +126,7 @@ export class NoteFormComponent implements OnInit, OnDestroy {
       )
     ).subscribe(res => this.patients = res.body);
 
-    // HOSPITAL FIELD SUBS
+    // DOCTOR FIELD SUBS
     this.form.get('idDoctor').valueChanges.pipe(
       debounceTime(1000),
       startWith(''),

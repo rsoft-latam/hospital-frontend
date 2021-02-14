@@ -1,9 +1,13 @@
-import {Observable} from 'rxjs';
-import {HttpClient, HttpResponse} from '@angular/common/http';
+// ANGULAR
 import {Inject, Injectable} from '@angular/core';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+// RXJS
+import {Observable} from 'rxjs';
+// MODELS
+import {SpecialtyFilter} from '../models/specialty-filter.model';
 import {AppConfig} from '../../../shared/models/app-config.model';
 import {IDataService} from '../../../shared/models/data-service.model';
-import {SpecialtyFilter} from '../models/specialty-filter.model';
+// OTHERS
 import {createRequestOption} from '../../../shared/utils/request-util';
 
 @Injectable()
@@ -14,12 +18,7 @@ export class SpecialtyService implements IDataService<SpecialtyFilter> {
   }
 
   public list(filter: SpecialtyFilter): Observable<HttpResponse<any>> {
-    const params = createRequestOption({
-      page: filter.page,
-      size: filter.size,
-      sort: filter.sort,
-      name: filter.name
-    });
+    const params = createRequestOption(filter);
     return this.http.get(`${this.config.apiBaseUrl}specialties-auditory`, {params: params, observe: 'response'});
   }
 

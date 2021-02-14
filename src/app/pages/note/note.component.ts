@@ -13,12 +13,13 @@ import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {NoteService} from './services/note.service';
 // COMPONENTS
+import {ActionButtonComponent} from 'ngr-grid';
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
+// MODELS
+import {NoteFilter} from './models/note-filter.model';
+import {AppConfig} from '../../shared/models/app-config.model';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
-import {AppConfig} from '../../shared/models/app-config.model';
-import {NoteFilter} from './models/note-filter.model';
-import {ActionButtonComponent} from 'ngr-grid';
 import {PageEvent} from '@angular/material/paginator';
 import {formatDate} from '../../shared/utils/format.util';
 
@@ -66,7 +67,7 @@ export class NoteComponent implements OnInit, OnDestroy {
       name: null
     });
 
-    // AG-GRID CONFIG
+    // NGR-GRID CONFIG
     this.gridOptions = {
       columnDefs: [
         {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 110, maxWidth: 110},
@@ -106,7 +107,7 @@ export class NoteComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // ADD UPDATE DELETE HOSPITAL SUCCESS
+    // ADD UPDATE DELETE NOTE SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
         s.type === noteActions.AddSuccess.type ||

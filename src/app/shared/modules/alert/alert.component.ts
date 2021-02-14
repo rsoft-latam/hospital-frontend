@@ -1,4 +1,6 @@
+// ANGULAR
 import {Component, Inject, OnInit} from '@angular/core';
+// ANGULAR MATERIAL
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({

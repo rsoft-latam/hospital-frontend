@@ -7,20 +7,21 @@ import {MatDialog} from '@angular/material/dialog';
 import {filter, map, tap} from 'rxjs/operators';
 import {BehaviorSubject, Observable, Subscription} from 'rxjs';
 // NGRX
-import {State} from '../../reducers/index';
 import * as doctorActions from './+state/doctor.actions';
-import {Action, ActionsSubject, Store} from '@ngrx/store';
-// SERVICESa
+import {State} from '../../reducers/index';
+import {ActionsSubject, Store} from '@ngrx/store';
+// SERVICES
 import {DoctorService} from './services/doctor.service';
+import {NoteService} from '../note/services/note.service';
 // COMPONENTS
+import {ActionsButtonPatientComponent} from 'ngr-grid';
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
+import {InformationComponent} from '../../shared/modules/information/information.component';
+// MODELS
+import {DoctorFilter} from './models/doctor-filter.model';
+import {AppConfig} from '../../shared/models/app-config.model';
 // OTHERS
 import {ROUTE_TRANSITION} from '../../app.animation';
-import {AppConfig} from '../../shared/models/app-config.model';
-import {DoctorFilter} from './models/doctor-filter.model';
-import {ActionsButtonPatientComponent} from 'ngr-grid';
-import {InformationComponent} from '../../shared/modules/information/information.component';
-import {NoteService} from '../note/services/note.service';
 import {PageEvent} from '@angular/material/paginator';
 import {formatDate} from '../../shared/utils/format.util';
 
@@ -39,7 +40,7 @@ const initFilter: DoctorFilter = {
 
 export class DoctorComponent implements OnInit, OnDestroy {
 
-  // AG-GRID CONFIG
+  // NGR-GRID CONFIG
   private gridApi;
   private gridColumnApi;
   public gridOptions;
@@ -73,8 +74,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
       lastName: null
     });
 
-    // AG-GRID CONFIG
-
+    // NGR-GRID CONFIG
     this.gridOptions = {
       columnDefs: [
         {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 140, maxWidth: 140},
@@ -99,7 +99,7 @@ export class DoctorComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // SUBS
+    // SIDENAV OPEN AND FILTER OPEN SUBS
     this.sidenavOpen$ = this.store.select(s => s.appDoctor.sidenavOpen);
     this.filterOpen$ = this.store.select(s => s.appDoctor.filterOpen);
 
@@ -209,7 +209,6 @@ export class DoctorComponent implements OnInit, OnDestroy {
       this.store.dispatch(doctorActions.CloseFilter());
     }
   }
-
 
   onPagination(event: PageEvent): void {
     this.store.dispatch(doctorActions.SetFilter({

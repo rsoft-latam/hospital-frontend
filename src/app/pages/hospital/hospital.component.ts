@@ -13,12 +13,13 @@ import {ActionsSubject, Store} from '@ngrx/store';
 // SERVICES
 import {HospitalService} from './services/hospital.service';
 // COMPONENTS
+import {ActionButtonComponent} from 'ngr-grid';
 import {AlertComponent} from '../../shared/modules/alert/alert.component';
-// OTHERS
-import {ROUTE_TRANSITION} from '../../app.animation';
+// MODELS
 import {AppConfig} from '../../shared/models/app-config.model';
 import {HospitalFilter} from './models/hospital-filter.model';
-import {ActionButtonComponent} from 'ngr-grid';
+// OTHERS
+import {ROUTE_TRANSITION} from '../../app.animation';
 import {PageEvent} from '@angular/material/paginator';
 import {formatDate} from '../../shared/utils/format.util';
 

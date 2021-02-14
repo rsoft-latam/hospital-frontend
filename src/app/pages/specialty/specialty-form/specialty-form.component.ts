@@ -1,13 +1,14 @@
-// Angular
+// ANGULAR
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // RXJS
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {debounceTime, filter, finalize, shareReplay, startWith, switchMap, tap} from 'rxjs/operators';
 // NGRX
+import * as specialtyActions from '../+state/specialty.actions';
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as specialtyActions from '../+state/specialty.actions';
+// SERVICES
 import {DoctorService} from '../../doctor/services/doctor.service';
 
 @Component({
@@ -51,7 +52,7 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
       doctor: null
     });
 
-    // GET HOSPITAL SUCCESS
+    // GET SPECIALTY SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s => s.type === specialtyActions.GetSpecialtySuccess.type),
       tap((s: any) => {
@@ -66,7 +67,7 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // UPDATE OR ADD SUCCESS
+    // UPDATE OR ADD SPECIALTY SUCCESS
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
         s.type === specialtyActions.AddSuccess.type ||
@@ -77,7 +78,7 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // UPDATE OR ADD FAILURE
+    // UPDATE OR ADD SPECIALTY FAILURE
     this.actionSubs.push(this.actions.pipe(
       filter(s =>
         s.type === specialtyActions.AddFailure.type ||
@@ -87,14 +88,14 @@ export class SpecialtyFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // RESULT HEADER SUBS
+    // SIDENAV FORM TYPE SUBS
     this.sidenavFormTypeSubs = this.sidenavFormType$.pipe(
       tap(s => {
         this.form.reset();
         this.sidenavFormType = s;
       })).subscribe();
 
-    // HOSPITAL FIELD SUBS
+    // DOCTOR FIELD SUBS
     this.form.get('doctor').valueChanges.pipe(
       debounceTime(1000),
       startWith(''),

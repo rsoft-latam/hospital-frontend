@@ -1,12 +1,16 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+// ANGULAR
 import {Router} from '@angular/router';
-import {ROUTE_TRANSITION} from '../../app.animation';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+// RXJS
 import {Subscription} from 'rxjs';
-import {ActionsSubject, Store} from '@ngrx/store';
+import {filter, tap} from 'rxjs/operators';
+// NGRX
+import * as AuthActions from 'ngr-auth';
 import {AuthActionTypes} from 'ngr-auth';
 import {State} from '../../reducers';
-import {filter, tap} from 'rxjs/operators';
-import * as AuthActions from 'ngr-auth';
+import {ActionsSubject, Store} from '@ngrx/store';
+// OTHERS
+import {ROUTE_TRANSITION} from '../../app.animation';
 
 @Component({
   template: `
@@ -38,7 +42,6 @@ import * as AuthActions from 'ngr-auth';
             </mat-form-field>
 
             <br>
-
 
             <button type="submit" mat-raised-button color="primary" [disabled]="isLoading">
               <span class="login-btn-text-align">Login</span>
@@ -75,12 +78,15 @@ export class LoginComponent implements OnInit, OnDestroy {
               private actions: ActionsSubject) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+
+    // AUTHENTICATION SUCCESS SUBS
     this.actionSubsc.push(this.actions.pipe(
       filter(s => s.type === AuthActionTypes.AuthenticationSuccess),
       tap(() => this.router.navigate(['hospital']))
     ).subscribe());
 
+    // AUTHENTICATION FAILURE SUBS
     this.actionSubsc.push(this.actions.pipe(
       filter(s => s.type === AuthActionTypes.AuthenticationFailure),
       tap(s => {
@@ -91,13 +97,19 @@ export class LoginComponent implements OnInit, OnDestroy {
     ).subscribe());
   }
 
-  login() {
+  login(): void {
     this.isLoading = true;
-    this.store.dispatch(
-      new AuthActions.Login({credentials: {username: this.username, password: this.password, rememberMe: true}}));
+    this.store.dispatch(new AuthActions.Login({
+      credentials: {
+        username: this.username,
+        password: this.password,
+        rememberMe: true
+      }
+    }));
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.actionSubsc.forEach(subs => subs.unsubscribe());
   }
+
 }

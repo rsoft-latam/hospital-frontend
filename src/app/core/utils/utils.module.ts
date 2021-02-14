@@ -1,7 +1,7 @@
 // ANGULAR
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-// Directives
+// DIRECTIVES
 import {MaskDirective} from './mask.directive';
 import {ClickOutsideDirective} from './click-outside.directive';
 

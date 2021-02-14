@@ -1,13 +1,13 @@
-// Angular
+// ANGULAR
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Component, OnDestroy, OnInit} from '@angular/core';
 // RXJS
 import {BehaviorSubject, Subscription} from 'rxjs';
 import {filter, shareReplay, tap} from 'rxjs/operators';
 // NGRX
+import * as hospitalActions from '../+state/hospital.actions';
 import {State} from '../../../reducers';
 import {ActionsSubject, Store} from '@ngrx/store';
-import * as hospitalActions from '../+state/hospital.actions';
 
 @Component({
   selector: 'hospital-form',
@@ -76,7 +76,7 @@ export class HospitalFormComponent implements OnInit, OnDestroy {
       })
     ).subscribe());
 
-    // RESULT HEADER SUBS
+    // SIDENAV FORM TYPE SUBS
     this.sidenavFormTypeSubs = this.sidenavFormType$.pipe(
       tap(s => {
         this.form.reset();

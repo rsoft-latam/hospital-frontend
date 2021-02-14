@@ -26,35 +26,35 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   exports: [
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatDatepickerModule,
-    MatIconModule,
-    MatInputModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatRadioModule,
-    MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
-    MatSlideToggleModule,
-    MatTableModule,
-    MatTabsModule,
-    MatTooltipModule,
-    MatAutocompleteModule,
-    MatProgressSpinnerModule,
-    MatProgressBarModule,
-    MatDialogModule,
-    MatChipsModule,
-    MatSliderModule,
     MatSortModule,
-    MatPaginatorModule
+    MatTabsModule,
+    MatIconModule,
+    MatCardModule,
+    MatTableModule,
+    MatInputModule,
+    MatRadioModule,
+    MatChipsModule,
+    MatDialogModule,
+    MatSliderModule,
+    MatSelectModule,
+    MatSliderModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatSidenavModule,
+    MatCheckboxModule,
+    MatPaginatorModule,
+    MatPaginatorModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    MatProgressBarModule,
+    MatAutocompleteModule,
+    MatProgressSpinnerModule
   ]
 })
 
 export class SharedMaterialModule {
-  static forRoot() {
+  static forRoot(): any {
     return {
       ngModule: SharedMaterialModule
     };

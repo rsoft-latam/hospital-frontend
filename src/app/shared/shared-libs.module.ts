@@ -2,7 +2,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-// Modules
+// MODULES
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {AlertModule} from './modules/alert/alert.module';
 
@@ -17,7 +17,7 @@ import {AlertModule} from './modules/alert/alert.module';
 })
 
 export class SharedLibsModule {
-  static forRoot() {
+  static forRoot(): any {
     return {
       ngModule: SharedLibsModule
     };
