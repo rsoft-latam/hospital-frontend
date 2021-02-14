@@ -38,7 +38,7 @@ const initFilter: NoteFilter = {
 
 export class NoteComponent implements OnInit, OnDestroy {
 
-  // AG-GRID CONFIG
+  // NGR-GRID CONFIG
   private gridApi;
   private gridColumnApi;
   public gridOptions;

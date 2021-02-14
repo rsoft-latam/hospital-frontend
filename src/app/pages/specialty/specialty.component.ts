@@ -38,7 +38,7 @@ const initFilter: SpecialtyFilter = {
 
 export class SpecialtyComponent implements OnInit, OnDestroy {
 
-  // AG-GRID CONFIG
+  // NGR-GRID CONFIG
   private gridApi;
   private gridColumnApi;
   public gridOptions;
@@ -70,7 +70,7 @@ export class SpecialtyComponent implements OnInit, OnDestroy {
       name: null
     });
 
-    // AG-GRID CONFIG
+    // NGR-GRID CONFIG
     this.gridOptions = {
       columnDefs: [
         {headerName: 'Actions', cellRenderer: 'editButtonComponent', pinned: 'left', minWidth: 110, maxWidth: 110},
